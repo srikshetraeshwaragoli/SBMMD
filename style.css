@@ -109,7 +109,7 @@ a {
    HERO SECTION
    ========================================================================== */
 .hero {
-  background: url('https://raw.githubusercontent.com/srikshetraeshwaragoli/SBMMD/main/image2.png') center center / cover no-repeat;
+  background: url('image2.png') center center / cover no-repeat;
   height: 60vh;
   min-height: 380px;
   position: relative;
