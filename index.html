@@ -217,21 +217,87 @@
         </div>
       </div>
 
-      <!-- GALLERY -->
-      <div class="gallery-column" id="gallery">
-        <div class="column-header">
-          <h3><i class="fa-regular fa-images"></i> Gallery</h3>
-          <a href="#" class="view-all">View All &rarr;</a>
-        </div>
-        <div class="gallery-grid">
-          <img src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=400" alt="Temple Exterior">
-          <img src="https://images.unsplash.com/photo-1609766857041-ed402ea8069a?q=80&w=400" alt="Ritual Performance">
-          <img src="https://images.unsplash.com/photo-1542382257-80dedb725088?q=80&w=400" alt="Temple Lighting">
-          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=400" alt="Cultural Event">
-        </div>
+  <!-- GALLERY SECTION -->
+<div class="gallery-column" id="gallery">
+  <div class="column-header">
+    <h3><i class="fa-regular fa-images"></i> Gallery</h3>
+  </div>
+
+  <div class="folder-grid">
+    
+    <!-- FOLDER 1: PHOTOS -->
+    <div class="folder-group">
+      <div class="folder-header">
+        <h4><i class="fa-solid fa-folder-open"></i> Photos</h4>
+      </div>
+      <div class="media-grid">
+        <!-- Direct GitHub Raw Links or Local Paths -->
+        <a href="https://raw.githubusercontent.com/your-username/your-repo/main/Gallery/Photos/photo1.jpg" 
+           class="glightbox" 
+           data-gallery="photos" 
+           data-glightbox="title: Temple Exterior; description: Main Entrance">
+          <img src="https://raw.githubusercontent.com/your-username/your-repo/main/Gallery/Photos/photo1.jpg" alt="Temple Exterior" />
+        </a>
+        <a href="https://raw.githubusercontent.com/your-username/your-repo/main/Gallery/Photos/photo2.jpg" 
+           class="glightbox" 
+           data-gallery="photos" 
+           data-glightbox="title: Ritual Lighting">
+          <img src="https://raw.githubusercontent.com/your-username/your-repo/main/Gallery/Photos/photo2.jpg" alt="Ritual Lighting" />
+        </a>
       </div>
     </div>
-  </section>
+
+    <!-- FOLDER 2: VIDEOS -->
+    <div class="folder-group">
+      <div class="folder-header">
+        <h4><i class="fa-solid fa-folder-open"></i> Videos</h4>
+      </div>
+      <div class="media-grid">
+        <!-- MP4 Video or YouTube/Vimeo Link -->
+        <a href="https://raw.githubusercontent.com/your-username/your-repo/main/Gallery/Videos/video1.mp4" 
+           class="glightbox" 
+           data-gallery="videos" 
+           data-glightbox="title: Ritual Performance Video">
+          <div class="video-thumbnail">
+            <i class="fa-solid fa-circle-play"></i>
+            <span>Play Ritual Video</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- FOLDER 3: ANNUAL NEMOTHSAVA 2026 -->
+    <div class="folder-group">
+      <div class="folder-header">
+        <h4><i class="fa-solid fa-folder-open"></i> Annual Nemothsava 2026</h4>
+      </div>
+      <div class="media-grid">
+        <a href="https://raw.githubusercontent.com/your-username/your-repo/main/Gallery/Annual%20Nemothsava%202026/nemothsava1.jpg" 
+           class="glightbox" 
+           data-gallery="nemothsava2026" 
+           data-glightbox="title: Nemothsava Celebration">
+          <img src="https://raw.githubusercontent.com/your-username/your-repo/main/Gallery/Annual%20Nemothsava%202026/nemothsava1.jpg" alt="Nemothsava" />
+        </a>
+      </div>
+    </div>
+
+    <!-- FOLDER 4: BRAHMA KALASHOTHSAVA 2024 -->
+    <div class="folder-group">
+      <div class="folder-header">
+        <h4><i class="fa-solid fa-folder-open"></i> Brahma Kalashothsava 2024</h4>
+      </div>
+      <div class="media-grid">
+        <a href="https://raw.githubusercontent.com/your-username/your-repo/main/Gallery/Brahma%20Kalashothsava%202024/kalasha1.jpg" 
+           class="glightbox" 
+           data-gallery="kalashothsava2024" 
+           data-glightbox="title: Kalashothsava Ritual">
+          <img src="https://raw.githubusercontent.com/your-username/your-repo/main/Gallery/Brahma%20Kalashothsava%202024/kalasha1.jpg" alt="Kalashothsava" />
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
 
   <!-- DONATION BANNER -->
   <section class="donation-section" id="donation">
@@ -348,5 +414,16 @@ function toggleLearnMore() {
   }
 </script>
 
+<script>
+  // Initialize Lightbox for Enlarging and Prev/Next Navigation
+  const lightbox = GLightbox({
+    selector: '.glightbox',
+    touchNavigation: true,
+    loop: true,               // Loops back to first item after last
+    zoomable: true,
+    autoplayVideos: true
+  });
+</script>
+      
 </body>
 </html>	
