@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sri Brahma Mugera Mahankali Daivasthana (R.), Eshwaragoli, Kulai-Hosabettu</title>
   
-  <!-- Google Fonts for Traditional / Elegant Typography -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -108,7 +108,7 @@
   <section class="about-section" id="about">
     <div class="container about-container">
       <div class="about-image">
-      <img src="image1.png" alt="Temple Deity at Sri Brahma Mugera Mahankali Daivasthana">
+        <img src="image1.png" alt="Temple Deity at Sri Brahma Mugera Mahankali Daivasthana">
       </div>
       <div class="about-content">
         <h2>About Our Daivasthana</h2>
@@ -222,18 +222,21 @@
           </button>
         </div>
 
-        <!-- LEVEL 1: MAIN GALLERY FOLDERS -->
+        <!-- 3 MAIN GALLERY FOLDERS -->
         <div id="mainGalleryFolders" class="folder-grid">
+          <!-- Folder 1: Photos -->
           <div class="folder-card" onclick="openMediaContent('general_photos')" role="button" tabindex="0">
-            <div class="folder-icon"><i class="fa-regular fa-image"></i></div>
+            <div class="folder-icon"><i class="fa-solid fa-folder-open"></i></div>
             <h4>Photos</h4>
             <p>12 Items</p>
           </div>
+          <!-- Folder 2: Brahma Kalashotsava 2024 -->
           <div class="folder-card" onclick="openEventFolder('kalashotsava2024')" role="button" tabindex="0">
             <div class="folder-icon"><i class="fa-solid fa-folder"></i></div>
             <h4>Brahma Kalashotsava 2024</h4>
             <p>Photos & Videos</p>
           </div>
+          <!-- Folder 3: Annual Nemotsava 2026 -->
           <div class="folder-card" onclick="openEventFolder('nemothsava2026')" role="button" tabindex="0">
             <div class="folder-icon"><i class="fa-solid fa-folder"></i></div>
             <h4>Annual Nemotsava 2026</h4>
@@ -269,7 +272,7 @@
           </div>
         </div>
 
-        <!-- CONTENT: GENERAL PHOTOS -->
+        <!-- CONTENT: GENERAL PHOTOS (FOLDER 1) -->
         <div id="general_photos" class="gallery-media-content" style="display: none;">
           <div class="gallery-grid">
             <img src="Gallery/Photos/image1.jpeg" alt="Temple Photo 1" loading="lazy">
@@ -351,7 +354,7 @@
     </div>
   </section>
 
-  <!-- Lightbox Modal -->
+  <!-- LIGHTBOX MODAL -->
   <div id="lightbox" class="lightbox" aria-hidden="true">
     <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
     <button class="lightbox-arrow prev-arrow" onclick="changeImage(-1)" aria-label="Previous Image">&#10094;</button>
@@ -588,7 +591,7 @@
       document.getElementById("lightbox-img").src = galleryImages[currentImageIndex];
     }
 
-    // Keyboard Navigation Support
+    // Keyboard Navigation
     document.addEventListener("keydown", (event) => {
       const lightbox = document.getElementById("lightbox");
       if (lightbox && lightbox.style.display === "flex") {
