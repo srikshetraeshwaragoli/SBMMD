@@ -9,7 +9,7 @@
   --accent-gold-light: #FFF8E7;
   --text-dark: #2B2B2B;
   --text-muted: #666666;
-  --bg-light: #FDFBF7;             /* Warm Ivory Background */
+  --bg-light: #FDFBF7;              /* Warm Ivory Background */
   --bg-white: #FFFFFF;
   --border-color: #E2D7C5;
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -517,7 +517,9 @@ img {
   color: var(--text-muted);
 }
 
-/* Gallery Folders & Interactivity */
+/* ==========================================
+   GALLERY FOLDERS & INTERACTIVITY
+   ========================================== */
 .folder-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -529,7 +531,8 @@ img {
   border: 1px solid var(--border-color);
   border-radius: 6px;
   padding: 0.8rem;
-  cursor: pointer;
+  cursor: pointer; /* Makes whole card clickable */
+  user-select: none;
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
@@ -542,6 +545,7 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  pointer-events: none; /* Prevents text/icon children from intercepting folder clicks */
 }
 
 .folder-header h4 {
@@ -557,33 +561,19 @@ img {
   color: var(--accent-gold);
 }
 
-.back-btn {
-  display: none;
-  font-size: 0.75rem;
-  color: var(--primary-maroon);
-  font-weight: 600;
-  background-color: var(--accent-gold-light);
-  padding: 0.2rem 0.5rem;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: var(--transition-fast);
-}
-
-.back-btn:hover {
-  background-color: var(--primary-maroon);
-  color: var(--bg-white);
-}
-
+/* Hide close/back button completely across all states */
+.back-btn,
 .folder-group.active .back-btn {
-  display: inline-block;
+  display: none !important;
 }
 
-/* Media Grid Layout */
+/* Ensure links/media inside open folders stay clickable */
 .media-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
   gap: 0.6rem;
   margin-top: 0.5rem;
+  pointer-events: auto; /* Re-enables clicking for photos/videos inside */
 }
 
 .media-grid a {
