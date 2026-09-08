@@ -213,7 +213,7 @@
         </div>
       </div>
 
-      <!-- GALLERY SECTION -->
+  <!-- GALLERY SECTION -->
       <div class="gallery-column" id="gallery">
         <div class="column-header">
           <h3 id="galleryTitle"><i class="fa-regular fa-images"></i> Gallery</h3>
@@ -241,6 +241,13 @@
             <div class="folder-icon"><i class="fa-solid fa-folder"></i></div>
             <h4>Annual Nemothsava 2026</h4>
             <p>Photos & Videos</p>
+          </div>
+        </div>
+        <!-- Folder 4: Videos -->
+          <div class="folder-card" onclick="openEventFolder('nemothsava2026')" role="button" tabindex="0">
+            <div class="folder-icon"><i class="fa-solid fa-folder"></i></div>
+            <h4>Videos</h4>
+            <p>1 Items</p>
           </div>
         </div>
 
@@ -275,20 +282,33 @@
         <!-- CONTENT: GENERAL PHOTOS (FOLDER 1) -->
         <div id="general_photos" class="gallery-media-content" style="display: none;">
         <div class="gallery-grid">
-        <img src="Gallery/Photos/image1.jpeg" alt="Temple Photo 1" loading="lazy">
-        <img src="Gallery/Photos/image2.jpeg" alt="Temple Photo 2" loading="lazy">
-        <img src="Gallery/Photos/image3.jpeg" alt="Temple Photo 3" loading="lazy">
-        <img src="Gallery/Photos/image4.jpeg" alt="Temple Photo 4" loading="lazy">
-        <img src="Gallery/Photos/image5.jpeg" alt="Temple Photo 5" loading="lazy">
-        <img src="Gallery/Photos/image6.jpeg" alt="Temple Photo 6" loading="lazy">
-        <img src="Gallery/Photos/image7.jpeg" alt="Temple Photo 7" loading="lazy">
-        <img src="Gallery/Photos/image8.jpeg" alt="Temple Photo 8" loading="lazy">
-        <img src="Gallery/Photos/image9.jpeg" alt="Temple Photo 9" loading="lazy">
-        <img src="Gallery/Photos/image10.jpeg" alt="Temple Photo 10" loading="lazy">
-        <img src="Gallery/Photos/image11.jpeg" alt="Temple Photo 11" loading="lazy">
-        <img src="Gallery/Photos/image12.jpeg" alt="Temple Photo 12" loading="lazy">
-    </div>
-  </div>
+            <img src="Gallery/Photos/image1.jpeg" alt="Temple Photo 1">
+            <img src="Gallery/Photos/image2.jpeg" alt="Temple Photo 2">
+            <img src="Gallery/Photos/image3.jpeg" alt="Temple Photo 3">
+            <img src="Gallery/Photos/image4.jpeg" alt="Temple Photo 4">
+            <img src="Gallery/Photos/image5.jpeg" alt="Temple Photo 5">
+            <img src="Gallery/Photos/image6.jpeg" alt="Temple Photo 6">
+            <img src="Gallery/Photos/image7.jpeg" alt="Temple Photo 7">
+            <img src="Gallery/Photos/image8.jpeg" alt="Temple Photo 8">
+            <img src="Gallery/Photos/image9.jpeg" alt="Temple Photo 9">
+            <img src="Gallery/Photos/image10.jpeg" alt="Temple Photo 10">
+            <img src="Gallery/Photos/image11.jpeg" alt="Temple Photo 11">
+            <img src="Gallery/Photos/image12.jpeg" alt="Temple Photo 12">
+          </div>
+        </div>
+
+         <!-- VIDEOS CONTENT -->
+        <div id="videosContent" class="gallery-media-content" style="display: none;">
+          <div class="gallery-grid">
+            <div class="video-card">
+              <video id="galleryVideo" controls width="100%">
+                <source src="Gallery/Videos/Sankramana.mp4" type="video/mp4">
+                Your browser does not support video playback.
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
 
         <!-- CONTENT: KALASHOTSAVA 2024 PHOTOS -->
         <div id="kalashotsava2024_photos" class="gallery-media-content" style="display: none;">
