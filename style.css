@@ -213,13 +213,11 @@ img {
 /* ==========================================
    HERO SECTION
    ========================================== */
-hero {
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-              url('https://raw.githubusercontent.com/srikshetraeshwaragoli/SBMMD/main/image2.png') no-repeat center center/cover;
-  min-height: 70vh;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start; /* Ensures content aligns to the far left */
+.hero {
+  background: url('https://raw.githubusercontent.com/srikshetraeshwaragoli/SBMMD/main/image2.png') center center / cover no-repeat;
+  height: 60vh;
+  min-height: 380px;
+  position: relative;
 }
 
 .hero-overlay {
