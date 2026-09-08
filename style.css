@@ -2,11 +2,11 @@
    GLOBAL VARIABLES & RESET
    ========================================== */
 :root {
-  --primary-color: #8B0000;       /* Deep Crimson / Temple Red */
+  --primary-maroon: #5B0E14;       
+  --secondary-maroon: #7D181E;
   --primary-hover: #A52A2A;
   --accent-gold: #D4AF37;         /* Traditional Brass/Gold */
   --accent-gold-light: #FFF8E7;
-  --secondary-color: #2C1810;     /* Warm Dark Brown */
   --text-dark: #2B2B2B;
   --text-muted: #666666;
   --bg-light: #FDFBF7;           /* Warm Ivory Background */
