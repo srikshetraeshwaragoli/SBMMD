@@ -108,7 +108,7 @@
   <section class="about-section" id="about">
     <div class="container about-container">
       <div class="about-image">
-        <img src="image1.png" alt="Temple Deity at Sri Brahma Mugera Mahankali Daivasthana">
+        <img src="image1.png" alt="Temple Deity at Sri Brahma Mugera Mahankali Daivasthana" onerror="this.src='https://picsum.photos/600/400?temple=1'">
       </div>
       <div class="about-content">
         <h2>About Our Daivasthana</h2>
@@ -118,7 +118,7 @@
           This sacred Daivasthana serves as a spiritual center for the worship of several revered Daivas of Tulu Nadu, including Daivarasu Ullaya, Mahankali, Brahma Mugera, Thangadi, Alera Panjurli, Swami Koragajja, and Daivaraja Mantra Guliga.
         </p>
 
-        <!-- HIDDEN KANNADA CONTENT -->
+        <!-- KANNADA CONTENT TOGGLE -->
         <div id="kannadaContent" class="kannada-details" style="display: none;">
           <p>
             ದೈವ ದೇವರ ಕೃಪೆಯಲ್ಲಿ ಕಂಗೊಳಿಸುತ್ತಿರುವ ನಮ್ಮ ತುಳುನಾಡಿನ ಅನೇಕ ಆರಾಧನಾ ಕ್ಷೇತ್ರಗಳಲ್ಲಿ ಮಂಗಳೂರು ತಾಲೂಕು ಹೊಸಬೆಟ್ಟು ಗ್ರಾಮದ ಶ್ರೀ ಕ್ಷೇತ್ರ ಈಶ್ವರಗೋಳಿಯೂ ಒಂದು. ಸುಮಾರು 350 ವರ್ಷಗಳಷ್ಟು ಇತಿಹಾಸವುಳ್ಳ ಈ ಕ್ಷೇತ್ರವು ಮುಗೇರ ಜನಾಂಗದಲ್ಲಿ ಜನಿಸಿ ನಾಟಿ ವೈದ್ಯೆಯಾದ ಪಯ್ಯು ಮುಗೆರ್ತಿಯು ಗಿಡಮುಲಿಕೆಯಾದ "ಇಸರ ಬೇರ"ನ್ನು ಹುಡುಕುತ್ತಾ ಗೋಳಿ ಮರದ ಬುಡದಲ್ಲಿ ಶಿವನನ್ನು ಪ್ರಾರ್ಥಿಸಿದ ಸಂದರ್ಭದಲ್ಲಿ ಅವಳ ಭಕ್ತಿಗೆ ಮೆಚ್ಚಿ ಪರಮ ಭಕ್ತೆಯಾದ ನಿನಗೆ ಮುಂದೊಂದು ದಿನ ಶಿವಜಾಯೆಯಾದ ಶ್ರೀ ಪಾರ್ವತಿಯು ಮಹಾಂಕಾಳಿಯಾಗಿ ಧರ್ಮದೈವಗಳು ಇಲ್ಲಿ ನೆಲೆಯಾಗಿ ಈ ನೆಲದ ಸತ್ಯವನ್ನು ಕಾಪಾಡುವರು ಎಂದು ಅಭಯ ನೀಡಿದರು.
@@ -129,7 +129,6 @@
           </p>
         </div>
 
-        <!-- TOGGLE BUTTON -->
         <button id="toggleBtn" class="btn btn-dark" onclick="toggleLearnMore()">Learn More &rarr;</button>
       </div>
     </div>
@@ -222,27 +221,23 @@
           </button>
         </div>
 
-        <!-- 4 MAIN GALLERY FOLDERS -->
+        <!-- MAIN GALLERY FOLDERS -->
         <div id="mainGalleryFolders" class="folder-grid">
-          <!-- Folder 1: General Photos -->
           <div class="folder-card" onclick="openMediaContent('general_photos')" role="button" tabindex="0">
             <div class="folder-icon"><i class="fa-solid fa-folder-open"></i></div>
             <h4>Photos</h4>
             <p>12 Items</p>
           </div>
-          <!-- Folder 2: Brahma Kalashothsava 2024 -->
           <div class="folder-card" onclick="openEventFolder('kalashotsava2024')" role="button" tabindex="0">
             <div class="folder-icon"><i class="fa-solid fa-folder"></i></div>
             <h4>Brahma Kalashothsava 2024</h4>
             <p>Photos & Videos</p>
           </div>
-          <!-- Folder 3: Annual Nemothsava 2026 -->
           <div class="folder-card" onclick="openEventFolder('nemothsava2026')" role="button" tabindex="0">
             <div class="folder-icon"><i class="fa-solid fa-folder"></i></div>
             <h4>Annual Nemothsava 2026</h4>
             <p>Photos & Videos</p>
           </div>
-          <!-- Folder 4: Standalone Videos -->
           <div class="folder-card" onclick="openMediaContent('videosContent')" role="button" tabindex="0">
             <div class="folder-icon"><i class="fa-solid fa-film"></i></div>
             <h4>Videos</h4>
@@ -250,7 +245,7 @@
           </div>
         </div>
 
-        <!-- LEVEL 2: BRAHMA KALASHOTHSAVA 2024 SUB-FOLDERS -->
+        <!-- KALASHOTHSAVA 2024 SUB-FOLDERS -->
         <div id="kalashotsava2024SubFolders" class="folder-grid" style="display: none;">
           <div class="folder-card" onclick="openMediaContent('kalashotsava2024_photos')" role="button" tabindex="0">
             <div class="folder-icon"><i class="fa-regular fa-image"></i></div>
@@ -264,7 +259,7 @@
           </div>
         </div>
 
-        <!-- LEVEL 2: ANNUAL NEMOTHSAVA 2026 SUB-FOLDERS -->
+        <!-- ANNUAL NEMOTHSAVA 2026 SUB-FOLDERS -->
         <div id="nemothsava2026SubFolders" class="folder-grid" style="display: none;">
           <div class="folder-card" onclick="openMediaContent('nemothsava2026_photos')" role="button" tabindex="0">
             <div class="folder-icon"><i class="fa-regular fa-image"></i></div>
@@ -278,25 +273,25 @@
           </div>
         </div>
 
-        <!-- CONTENT: GENERAL PHOTOS (FOLDER 1) -->
+        <!-- MEDIA CONTENT: GENERAL PHOTOS -->
         <div id="general_photos" class="gallery-media-content" style="display: none;">
           <div class="gallery-grid">
-            <img src="Gallery/Photos/image1.jpeg" alt="Temple Photo 1">
-            <img src="Gallery/Photos/image2.jpeg" alt="Temple Photo 2">
-            <img src="Gallery/Photos/image3.jpeg" alt="Temple Photo 3">
-            <img src="Gallery/Photos/image4.jpeg" alt="Temple Photo 4">
-            <img src="Gallery/Photos/image5.jpeg" alt="Temple Photo 5">
-            <img src="Gallery/Photos/image6.jpeg" alt="Temple Photo 6">
-            <img src="Gallery/Photos/image7.jpeg" alt="Temple Photo 7">
-            <img src="Gallery/Photos/image8.jpeg" alt="Temple Photo 8">
-            <img src="Gallery/Photos/image9.jpeg" alt="Temple Photo 9">
-            <img src="Gallery/Photos/image10.jpeg" alt="Temple Photo 10">
-            <img src="Gallery/Photos/image11.jpeg" alt="Temple Photo 11">
-            <img src="Gallery/Photos/image12.jpeg" alt="Temple Photo 12">
+            <img src="Gallery/Photos/image1.jpeg" alt="Temple Photo 1" onerror="this.src='https://picsum.photos/300/200?random=1'">
+            <img src="Gallery/Photos/image2.jpeg" alt="Temple Photo 2" onerror="this.src='https://picsum.photos/300/200?random=2'">
+            <img src="Gallery/Photos/image3.jpeg" alt="Temple Photo 3" onerror="this.src='https://picsum.photos/300/200?random=3'">
+            <img src="Gallery/Photos/image4.jpeg" alt="Temple Photo 4" onerror="this.src='https://picsum.photos/300/200?random=4'">
+            <img src="Gallery/Photos/image5.jpeg" alt="Temple Photo 5" onerror="this.src='https://picsum.photos/300/200?random=5'">
+            <img src="Gallery/Photos/image6.jpeg" alt="Temple Photo 6" onerror="this.src='https://picsum.photos/300/200?random=6'">
+            <img src="Gallery/Photos/image7.jpeg" alt="Temple Photo 7" onerror="this.src='https://picsum.photos/300/200?random=7'">
+            <img src="Gallery/Photos/image8.jpeg" alt="Temple Photo 8" onerror="this.src='https://picsum.photos/300/200?random=8'">
+            <img src="Gallery/Photos/image9.jpeg" alt="Temple Photo 9" onerror="this.src='https://picsum.photos/300/200?random=9'">
+            <img src="Gallery/Photos/image10.jpeg" alt="Temple Photo 10" onerror="this.src='https://picsum.photos/300/200?random=10'">
+            <img src="Gallery/Photos/image11.jpeg" alt="Temple Photo 11" onerror="this.src='https://picsum.photos/300/200?random=11'">
+            <img src="Gallery/Photos/image12.jpeg" alt="Temple Photo 12" onerror="this.src='https://picsum.photos/300/200?random=12'">
           </div>
         </div>
 
-        <!-- CONTENT: STANDALONE VIDEOS (FOLDER 4) -->
+        <!-- MEDIA CONTENT: STANDALONE VIDEOS -->
         <div id="videosContent" class="gallery-media-content" style="display: none;">
           <div class="gallery-grid single-video">
             <div class="video-card">
@@ -308,21 +303,21 @@
           </div>
         </div>
 
-        <!-- CONTENT: KALASHOTSAVA 2024 PHOTOS -->
+        <!-- MEDIA CONTENT: KALASHOTSAVA 2024 PHOTOS -->
         <div id="kalashotsava2024_photos" class="gallery-media-content" style="display: none;">
           <div class="gallery-grid">
-            <img src="Gallery/Brahma Kalashotsava 2024/image1.jpeg" alt="Kalashotsava 2024 Photo 1" loading="lazy">
-            <img src="Gallery/Brahma Kalashotsava 2024/image2.jpeg" alt="Kalashotsava 2024 Photo 2" loading="lazy">
-            <img src="Gallery/Brahma Kalashotsava 2024/image7.jpeg" alt="Kalashotsava 2024 Photo 7" loading="lazy">
-            <img src="Gallery/Brahma Kalashotsava 2024/image8.jpeg" alt="Kalashotsava 2024 Photo 8" loading="lazy">
-            <img src="Gallery/Brahma Kalashotsava 2024/image9.jpeg" alt="Kalashotsava 2024 Photo 9" loading="lazy">
-            <img src="Gallery/Brahma Kalashotsava 2024/image10.jpeg" alt="Kalashotsava 2024 Photo 10" loading="lazy">
-            <img src="Gallery/Brahma Kalashotsava 2024/image11.jpeg" alt="Kalashotsava 2024 Photo 11" loading="lazy">
-            <img src="Gallery/Brahma Kalashotsava 2024/image17.jpeg" alt="Kalashotsava 2024 Photo 17" loading="lazy">
+            <img src="Gallery/Brahma Kalashotsava 2024/image1.jpeg" alt="Kalashotsava 2024 Photo 1" loading="lazy" onerror="this.src='https://picsum.photos/300/200?random=13'">
+            <img src="Gallery/Brahma Kalashotsava 2024/image2.jpeg" alt="Kalashotsava 2024 Photo 2" loading="lazy" onerror="this.src='https://picsum.photos/300/200?random=14'">
+            <img src="Gallery/Brahma Kalashotsava 2024/image7.jpeg" alt="Kalashotsava 2024 Photo 7" loading="lazy" onerror="this.src='https://picsum.photos/300/200?random=15'">
+            <img src="Gallery/Brahma Kalashotsava 2024/image8.jpeg" alt="Kalashotsava 2024 Photo 8" loading="lazy" onerror="this.src='https://picsum.photos/300/200?random=16'">
+            <img src="Gallery/Brahma Kalashotsava 2024/image9.jpeg" alt="Kalashotsava 2024 Photo 9" loading="lazy" onerror="this.src='https://picsum.photos/300/200?random=17'">
+            <img src="Gallery/Brahma Kalashotsava 2024/image10.jpeg" alt="Kalashotsava 2024 Photo 10" loading="lazy" onerror="this.src='https://picsum.photos/300/200?random=18'">
+            <img src="Gallery/Brahma Kalashotsava 2024/image11.jpeg" alt="Kalashotsava 2024 Photo 11" loading="lazy" onerror="this.src='https://picsum.photos/300/200?random=19'">
+            <img src="Gallery/Brahma Kalashotsava 2024/image17.jpeg" alt="Kalashotsava 2024 Photo 17" loading="lazy" onerror="this.src='https://picsum.photos/300/200?random=20'">
           </div>
         </div>
 
-        <!-- CONTENT: KALASHOTSAVA 2024 VIDEOS -->
+        <!-- MEDIA CONTENT: KALASHOTSAVA 2024 VIDEOS -->
         <div id="kalashotsava2024_videos" class="gallery-media-content" style="display: none;">
           <div class="gallery-grid single-video">
             <div class="video-card">
@@ -334,25 +329,25 @@
           </div>
         </div>
 
-        <!-- CONTENT: NEMOTSAVA 2026 PHOTOS -->
+        <!-- MEDIA CONTENT: NEMOTSAVA 2026 PHOTOS -->
         <div id="nemothsava2026_photos" class="gallery-media-content" style="display: none;">
           <div class="gallery-grid">
-            <img src="Gallery/Annual Nemotsava 2026/image1.jpeg" alt="Nemotsava 2026 Photo 1" loading="lazy">
-            <img src="Gallery/Annual Nemotsava 2026/image2.jpeg" alt="Nemotsava 2026 Photo 2" loading="lazy">
-            <img src="Gallery/Annual Nemotsava 2026/image3.jpeg" alt="Nemotsava 2026 Photo 3" loading="lazy">
-            <img src="Gallery/Annual Nemotsava 2026/image4.jpeg" alt="Nemotsava 2026 Photo 4" loading="lazy">
-            <img src="Gallery/Annual Nemotsava 2026/image5.jpeg" alt="Nemotsava 2026 Photo 5" loading="lazy">
-            <img src="Gallery/Annual Nemotsava 2026/image6.jpeg" alt="Nemotsava 2026 Photo 6" loading="lazy">
-            <img src="Gallery/Annual Nemotsava 2026/image7.jpeg" alt="Nemotsava 2026 Photo 7" loading="lazy">
-            <img src="Gallery/Annual Nemotsava 2026/image8.jpeg" alt="Nemotsava 2026 Photo 8" loading="lazy">
-            <img src="Gallery/Annual Nemotsava 2026/image9.jpeg" alt="Nemotsava 2026 Photo 9" loading="lazy">
-            <img src="Gallery/Annual Nemotsava 2026/image10.jpeg" alt="Nemotsava 2026 Photo 10" loading="lazy">
-            <img src="Gallery/Annual Nemotsava 2026/image11.jpeg" alt="Nemotsava 2026 Photo 11" loading="lazy">
-            <img src="Gallery/Annual Nemotsava 2026/image12.jpeg" alt="Nemotsava 2026 Photo 12" loading="lazy">
+            <img src="Gallery/Annual Nemotsava 2026/image1.jpeg" alt="Nemotsava 2026 Photo 1" loading="lazy" onerror="this.src='https://picsum.photos/300/200?random=21'">
+            <img src="Gallery/Annual Nemotsava 2026/image2.jpeg" alt="Nemotsava 2026 Photo 2" loading="lazy" onerror="this.src='https://picsum.photos/300/200?random=22'">
+            <img src="Gallery/Annual Nemotsava 2026/image3.jpeg" alt="Nemotsava 2026 Photo 3" loading="lazy" onerror="this.src='https://picsum.photos/300/200?random=23'">
+            <img src="Gallery/Annual Nemotsava 2026/image4.jpeg" alt="Nemotsava 2026 Photo 4" loading="lazy" onerror="this.src='https://picsum.photos/300/200?random=24'">
+            <img src="Gallery/Annual Nemotsava 2026/image5.jpeg" alt="Nemotsava 2026 Photo 5" loading="lazy" onerror="this.src='https://picsum.photos/300/200?random=25'">
+            <img src="Gallery/Annual Nemotsava 2026/image6.jpeg" alt="Nemotsava 2026 Photo 6" loading="lazy" onerror="this.src='https://picsum.photos/300/200?random=26'">
+            <img src="Gallery/Annual Nemotsava 2026/image7.jpeg" alt="Nemotsava 2026 Photo 7" loading="lazy" onerror="this.src='https://picsum.photos/300/200?random=27'">
+            <img src="Gallery/Annual Nemotsava 2026/image8.jpeg" alt="Nemotsava 2026 Photo 8" loading="lazy" onerror="this.src='https://picsum.photos/300/200?random=28'">
+            <img src="Gallery/Annual Nemotsava 2026/image9.jpeg" alt="Nemotsava 2026 Photo 9" loading="lazy" onerror="this.src='https://picsum.photos/300/200?random=29'">
+            <img src="Gallery/Annual Nemotsava 2026/image10.jpeg" alt="Nemotsava 2026 Photo 10" loading="lazy" onerror="this.src='https://picsum.photos/300/200?random=30'">
+            <img src="Gallery/Annual Nemotsava 2026/image11.jpeg" alt="Nemotsava 2026 Photo 11" loading="lazy" onerror="this.src='https://picsum.photos/300/200?random=31'">
+            <img src="Gallery/Annual Nemotsava 2026/image12.jpeg" alt="Nemotsava 2026 Photo 12" loading="lazy" onerror="this.src='https://picsum.photos/300/200?random=32'">
           </div>
         </div>
 
-        <!-- CONTENT: NEMOTSAVA 2026 VIDEOS -->
+        <!-- MEDIA CONTENT: NEMOTSAVA 2026 VIDEOS -->
         <div id="nemothsava2026_videos" class="gallery-media-content" style="display: none;">
           <div class="gallery-grid single-video">
             <div class="video-card">
@@ -465,7 +460,6 @@
 
   <!-- SCRIPT SECTION -->
   <script>
-    // Learn More Toggle Function
     function toggleLearnMore() {
       const content = document.getElementById("kannadaContent");
       const btn = document.getElementById("toggleBtn");
@@ -481,8 +475,7 @@
       }
     }
 
-    // Gallery Folder Navigation State
-    let galleryState = 'main'; // States: 'main', 'event', 'media', 'main_media'
+    let galleryState = 'main';
     let activeEvent = '';
     let currentImageIndex = 0;
     let galleryImages = [];
@@ -500,7 +493,6 @@
       document.getElementById('nemothsava2026_photos').style.display = 'none';
       document.getElementById('nemothsava2026_videos').style.display = 'none';
 
-      // Pause playing videos on view change
       document.querySelectorAll('.gallery-video-player').forEach(video => video.pause());
     }
 
@@ -534,7 +526,9 @@
       const title = document.getElementById('galleryTitle');
 
       backBtn.style.display = 'inline-flex';
-      document.getElementById(contentId).style.display = 'block';
+      
+      const contentEl = document.getElementById(contentId);
+      if(contentEl) contentEl.style.display = 'block';
 
       if (contentId === 'general_photos') {
         backText.textContent = 'Back to Gallery';
@@ -576,7 +570,6 @@
       document.getElementById('galleryTitle').innerHTML = '<i class="fa-regular fa-images"></i> Gallery';
     }
 
-    // Lightbox Functionality
     function setupLightboxForActiveMedia(activeContentId) {
       galleryImages = [];
       const images = document.querySelectorAll(`#${activeContentId} .gallery-grid img`);
@@ -610,7 +603,6 @@
       document.getElementById("lightbox-img").src = galleryImages[currentImageIndex];
     }
 
-    // Keyboard Navigation
     document.addEventListener("keydown", (event) => {
       const lightbox = document.getElementById("lightbox");
       if (lightbox && lightbox.style.display === "flex") {
@@ -624,10 +616,8 @@
       }
     });
 
-    // Mobile Swipe Gesture Support
     document.addEventListener("DOMContentLoaded", () => {
       const lightbox = document.getElementById("lightbox");
-      
       if (lightbox) {
         lightbox.addEventListener("touchstart", (e) => {
           touchStartX = e.changedTouches[0].screenX;
@@ -644,9 +634,9 @@
       const diff = touchEndX - touchStartX;
       if (Math.abs(diff) > 50) {
         if (diff < 0) {
-          changeImage(1);  // Swipe Left -> Next Image
+          changeImage(1);
         } else {
-          changeImage(-1); // Swipe Right -> Previous Image
+          changeImage(-1);
         }
       }
     }
