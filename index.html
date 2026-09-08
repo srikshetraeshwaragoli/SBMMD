@@ -345,105 +345,154 @@
   </footer>
 
   <!-- GLightbox JS -->
-  <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
 
-  <script>
-    let lightbox;
+<script>
+  let lightboxInstance = null;
 
-    function initLightbox() {
-      if (lightbox) lightbox.destroy();
-      lightbox = GLightbox({
-        selector: '.glightbox',
-        touchNavigation: true,
-        loop: true,
-        zoomable: true,
-        autoplayVideos: true
-      });
+  const repoOwner = 'srikshetraeshwaragoli';
+  const repoName = 'SBMMD';
+
+  const galleryFolders = [
+    { folderPath: 'Gallery/Photos', containerId: 'gallery-photos', galleryGroup: 'photos' },
+    { folderPath: 'Gallery/Videos', containerId: 'gallery-videos', galleryGroup: 'videos' },
+    { folderPath: 'Gallery/Annual Nemothsava 2026', containerId: 'gallery-nemothsava2026', galleryGroup: 'nemothsava2026' },
+    { folderPath: 'Gallery/Brahma Kalashothsava 2024', containerId: 'gallery-kalashothsava2024', galleryGroup: 'kalashothsava2024' }
+  ];
+
+  // Open a specific folder view
+  function openFolder(folderId) {
+    document.querySelectorAll('.folder-group').forEach(group => group.classList.remove('active'));
+    
+    const targetFolder = document.getElementById(folderId).closest('.folder-group');
+    if (targetFolder) {
+      targetFolder.classList.add('active');
     }
 
-    const repoOwner = 'srikshetraeshwaragoli';
-    const repoName = 'SBMMD';
+    // Refresh Lightbox for arrow navigation within the active folder
+    initLightbox();
+  }
 
-    const galleryFolders = [
-      { folderPath: 'Gallery/Photos', containerId: 'gallery-photos', galleryGroup: 'photos' },
-      { folderPath: 'Gallery/Videos', containerId: 'gallery-videos', galleryGroup: 'videos' },
-      { folderPath: 'Gallery/Annual Nemothsava 2026', containerId: 'gallery-nemothsava2026', galleryGroup: 'nemothsava2026' },
-      { folderPath: 'Gallery/Brahma Kalashothsava 2024', containerId: 'gallery-kalashothsava2024', galleryGroup: 'kalashothsava2024' }
-    ];
+  // Close folder view and go back to all folders
+  function closeFolder(event) {
+    event.stopPropagation();
+    document.querySelectorAll('.folder-group').forEach(group => group.classList.remove('active'));
+  }
 
-    async function loadGithubGallery() {
-      for (const folder of galleryFolders) {
-        const container = document.getElementById(folder.containerId);
-        if (!container) continue;
+  // Initialize or update Lightbox with navigation arrows enabled
+  function initLightbox() {
+    if (lightboxInstance) {
+      lightboxInstance.destroy();
+    }
 
-        const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${encodeURIComponent(folder.folderPath)}`;
+    lightboxInstance = GLightbox({
+      selector: '.glightbox',
+      touchNavigation: true,
+      loop: true,
+      zoomable: true,
+      autoplayVideos: true,
+      openEffect: 'zoom',
+      closeEffect: 'zoom',
+      slideEffect: 'slide'
+    });
+  }
 
-        try {
-          const response = await fetch(apiUrl);
-          if (!response.ok) continue;
+  // Load repository images into their respective folders
+  async function loadGithubGallery() {
+    for (const folder of galleryFolders) {
+      const container = document.getElementById(folder.containerId);
+      if (!container) continue;
 
-          const files = await response.json();
-          container.innerHTML = ''; 
+      const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${encodeURIComponent(folder.folderPath)}`;
 
-          files.forEach(file => {
-            const fileUrl = file.download_url;
-            const fileName = file.name;
+      try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) continue;
 
-            if (fileUrl.match(/\.(mp4|webm|ogg)$/i)) {
-              const anchor = document.createElement('a');
-              anchor.href = fileUrl;
-              anchor.className = 'glightbox';
-              anchor.setAttribute('data-gallery', folder.galleryGroup);
-              anchor.setAttribute('data-glightbox', `title: ${fileName}`);
+        const files = await response.json();
+        container.innerHTML = ''; 
 
-              anchor.innerHTML = `
-                <div class="video-thumbnail">
-                  <i class="fa-solid fa-circle-play"></i>
-                  <span>Play</span>
-                </div>
-              `;
-              container.appendChild(anchor);
-            } 
-            else if (fileUrl.match(/\.(jpg|jpeg|png|gif|webp|svg)$/i)) {
-              const anchor = document.createElement('a');
-              anchor.href = fileUrl;
-              anchor.className = 'glightbox';
-              anchor.setAttribute('data-gallery', folder.galleryGroup);
-              anchor.setAttribute('data-glightbox', `title: ${fileName}`);
+        files.forEach(file => {
+          const fileUrl = file.download_url;
+          const fileName = file.name;
 
-              const img = document.createElement('img');
-              img.src = fileUrl;
-              img.alt = fileName;
+          // Video element
+          if (fileUrl.match(/\.(mp4|webm|ogg)$/i)) {
+            const anchor = document.createElement('a');
+            anchor.href = fileUrl;
+            anchor.className = 'glightbox';
+            anchor.setAttribute('data-gallery', folder.galleryGroup);
+            anchor.setAttribute('data-glightbox', `title: ${fileName}`);
 
-              anchor.appendChild(img);
-              container.appendChild(anchor);
-            }
-          });
-        } catch (error) {
-          console.error(`Error loading images for ${folder.folderPath}:`, error);
+            anchor.innerHTML = `
+              <div class="video-thumbnail">
+                <i class="fa-solid fa-circle-play"></i>
+                <span>Play</span>
+              </div>
+            `;
+            container.appendChild(anchor);
+          } 
+          // Image element
+          else if (fileUrl.match(/\.(jpg|jpeg|png|gif|webp|svg)$/i)) {
+            const anchor = document.createElement('a');
+            anchor.href = fileUrl;
+            anchor.className = 'glightbox';
+            anchor.setAttribute('data-gallery', folder.galleryGroup);
+            anchor.setAttribute('data-glightbox', `title: ${fileName}`);
+
+            const img = document.createElement('img');
+            img.src = fileUrl;
+            img.alt = fileName;
+
+            anchor.appendChild(img);
+            container.appendChild(anchor);
+          }
+        });
+      } catch (error) {
+        console.error(`Error loading images for ${folder.folderPath}:`, error);
+      }
+    }
+
+    // Attach click listeners to folder headers to enable opening/closing
+    document.querySelectorAll('.folder-group').forEach(group => {
+      const header = group.querySelector('.folder-header');
+      const mediaGrid = group.querySelector('.media-grid');
+
+      if (header && mediaGrid) {
+        // Add back button dynamically
+        if (!header.querySelector('.back-btn')) {
+          const backBtn = document.createElement('span');
+          backBtn.className = 'back-btn';
+          backBtn.innerHTML = '<i class="fa-solid fa-arrow-left"></i> Back';
+          backBtn.onclick = closeFolder;
+          header.appendChild(backBtn);
         }
+
+        // Header click toggles folder
+        header.onclick = () => openFolder(mediaGrid.id);
       }
+    });
 
-      initLightbox();
+    initLightbox();
+  }
+
+  document.addEventListener('DOMContentLoaded', loadGithubGallery);
+
+  function toggleLearnMore() {
+    const content = document.getElementById("kannadaContent");
+    const btn = document.getElementById("toggleBtn");
+
+    if (content.style.display === "block" || content.classList.contains("show")) {
+      content.style.display = "none";
+      content.classList.remove("show");
+      btn.innerHTML = "Learn More &rarr;";
+    } else {
+      content.style.display = "block";
+      content.classList.add("show");
+      btn.innerHTML = "Show Less &larr;";
     }
-
-    document.addEventListener('DOMContentLoaded', loadGithubGallery);
-
-    function toggleLearnMore() {
-      const content = document.getElementById("kannadaContent");
-      const btn = document.getElementById("toggleBtn");
-
-      if (content.style.display === "block" || content.classList.contains("show")) {
-        content.style.display = "none";
-        content.classList.remove("show");
-        btn.innerHTML = "Learn More &rarr;";
-      } else {
-        content.style.display = "block";
-        content.classList.add("show");
-        btn.innerHTML = "Show Less &larr;";
-      }
-    }
-  </script>
+  }
+</script>
 
 </body>
 </html>
