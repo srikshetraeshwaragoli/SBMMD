@@ -364,7 +364,7 @@ img {
 }
 
 .kannada-details {
-  display: none;
+  display: none; /* Keeps it hidden by default */
   margin-top: 1.2rem;
   padding: 1.2rem;
   background-color: var(--accent-gold-light);
@@ -372,10 +372,12 @@ img {
   border-radius: 4px;
   font-size: 0.95rem;
   line-height: 1.8;
+  transition: all var(--transition-fast);
 }
 
-.kannada-details.show {
-  display: block;
+.kannada-details.show,
+.kannada-details.active {
+  display: block !important;
 }
 
 .about-content button {
