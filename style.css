@@ -1,34 +1,25 @@
 /* ==========================================
-   1. DESIGN SYSTEM & BASE RESET
+   GLOBAL VARIABLES & RESET
    ========================================== */
 :root {
-  /* Brand Color Palette */
-  --primary-maroon: #5B0E14;     
+  --primary-maroon: #5B0E14;        
   --secondary-maroon: #7D181E;
   --primary-hover: #A52A2A;
-  --accent-gold: #D4AF37;           /* Traditional Brass/Gold */
+  --accent-gold: #D4AF37;          /* Traditional Brass/Gold */
   --accent-gold-light: #FFF8E7;
-  
-  /* Neutral Color Palette */
   --text-dark: #2B2B2B;
   --text-muted: #666666;
-  --bg-light: #FDFBF7;              /* Warm Ivory Background */
+  --bg-light: #FDFBF7;            /* Warm Ivory Background */
   --bg-white: #FFFFFF;
   --border-color: #E2D7C5;
-  
-  /* Elevation & Motion */
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
-  --transition-fast: 0.3s ease;
-  
-  /* Typography Tokens */
   --font-heading: 'Cinzel', serif;
   --font-body: 'Poppins', sans-serif;
+  --transition-fast: 0.3s ease;
 }
 
-*,
-*::before,
-*::after {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -45,9 +36,7 @@ body {
   line-height: 1.6;
 }
 
-/* ==========================================
-   2. TYPOGRAPHY & GLOBAL REUSABLES
-   ========================================== */
+/* Base Typography & Helpers */
 h1, h2, h3, h4 {
   font-family: var(--font-heading);
   color: var(--secondary-maroon);
@@ -69,14 +58,12 @@ img {
   display: block;
 }
 
-/* Layout Containers */
 .container {
   width: 90%;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-/* Section Decoration */
 .divider {
   font-size: 1.5rem;
   text-align: center;
@@ -94,13 +81,7 @@ img {
   color: var(--primary-maroon);
 }
 
-.highlight {
-  color: var(--primary-maroon);
-  font-weight: 600;
-  margin-top: 0.2rem;
-}
-
-/* Component: Buttons & Links */
+/* Buttons */
 .btn {
   display: inline-block;
   padding: 0.75rem 1.8rem;
@@ -158,7 +139,7 @@ img {
 }
 
 /* ==========================================
-   3. SITE HEADER & NAVIGATION
+   HEADER / NAVBAR
    ========================================== */
 .navbar {
   position: sticky;
@@ -230,10 +211,10 @@ img {
 }
 
 /* ==========================================
-   4. HERO & QUICK INFO BAR
+   HERO SECTION
    ========================================== */
-/* Hero Unit */
 .hero {
+  /* Subtle dark vignette on the left side to keep text sharp and legible */
   background: linear-gradient(to right, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 45%, rgba(0, 0, 0, 0.1) 100%), 
               url('https://raw.githubusercontent.com/srikshetraeshwaragoli/SBMMD/main/image2.png') center center / cover no-repeat;
   min-height: 50vh;
@@ -248,7 +229,7 @@ img {
 }
 
 .hero-content {
-  max-width: 480px;
+  max-width: 480px; /* Constrains content to the left side */
   text-align: left;
   margin: 0;
 }
@@ -256,14 +237,14 @@ img {
 .welcome-text {
   font-size: 0.95rem;
   letter-spacing: 3px;
-  color: #FFFFFF;
+  color: #FFFFFF; /* Pure white */
   font-weight: 600;
   text-transform: uppercase;
   margin-bottom: 0.75rem;
 }
 
 .hero-content h1 {
-  color: #FFFFFF;
+  color: #FFFFFF; /* Pure white */
   font-size: 3rem;
   font-weight: 700;
   line-height: 1.15;
@@ -272,7 +253,7 @@ img {
 }
 
 .subtext {
-  color: #FFFFFF;
+  color: #FFFFFF; /* Pure white */
   font-size: 1.1rem;
   font-weight: 500;
   margin-bottom: 0.5rem;
@@ -283,7 +264,7 @@ img {
   font-size: 1rem;
   line-height: 1.6;
   margin-bottom: 2rem;
-  color: #FFFFFF;
+  color: #FFFFFF; /* Pure white */
   max-width: 420px;
 }
 
@@ -294,7 +275,9 @@ img {
   justify-content: flex-start;
 }
 
-/* Quick Info Section */
+/* ==========================================
+   QUICK INFO BAR
+   ========================================== */
 .quick-info {
   margin-top: -3rem;
   position: relative;
@@ -344,10 +327,15 @@ img {
   border-bottom: 1px dashed var(--border-color);
 }
 
+.highlight {
+  color: var(--primary-maroon);
+  font-weight: 600;
+  margin-top: 0.2rem;
+}
+
 /* ==========================================
-   5. ABOUT & POOJA/SEVA SECTIONS
+   ABOUT SECTION
    ========================================== */
-/* About Section */
 .about-section {
   padding: 4rem 0;
   background-color: var(--bg-white);
@@ -375,10 +363,6 @@ img {
   text-align: left;
 }
 
-.about-content button {
-  margin-top: 1.5rem;
-}
-
 .kannada-details {
   display: none;
   margin-top: 1.2rem;
@@ -394,7 +378,13 @@ img {
   display: block;
 }
 
-/* Pooja / Seva Section */
+.about-content button {
+  margin-top: 1.5rem;
+}
+
+/* ==========================================
+   POOJA / SEVA SECTION
+   ========================================== */
 .pooja-section {
   padding: 2rem 0;
   background-color: var(--bg-light);
@@ -439,7 +429,7 @@ img {
 }
 
 /* ==========================================
-   6. EVENTS & INTERACTIVE GALLERY
+   EVENTS & GALLERY SPLIT SECTION
    ========================================== */
 .events-gallery-section {
   padding: 4rem 0;
@@ -476,7 +466,7 @@ img {
   font-weight: 600;
 }
 
-/* Sub-Module: Event List */
+/* Events Column */
 .event-list {
   display: flex;
   flex-direction: column;
@@ -525,7 +515,7 @@ img {
   color: var(--text-muted);
 }
 
-/* Sub-Module: Interactive Folder Gallery */
+/* Gallery Folders */
 .folder-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -535,117 +525,47 @@ img {
 .folder-group {
   background-color: var(--bg-light);
   border: 1px solid var(--border-color);
-  border-radius: 8px;
-  padding: 1rem;
-  transition: var(--transition-fast);
-  cursor: pointer;
-  position: relative;
-  user-select: none;
-}
-
-.folder-group:hover {
-  border-color: var(--primary-maroon);
-  box-shadow: var(--shadow-sm);
-}
-
-.folder-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.folder-header, 
-.folder-header h4, 
-.folder-header i {
-  pointer-events: none;
+  border-radius: 6px;
+  padding: 0.8rem;
 }
 
 .folder-header h4 {
-  font-size: 1rem;
+  font-size: 0.9rem;
+  margin-bottom: 0.8rem;
   color: var(--secondary-maroon);
-  margin-bottom: 0;
 }
 
 .folder-header i {
   color: var(--accent-gold);
-  margin-right: 0.4rem;
+  margin-right: 0.3rem;
 }
 
-.folder-header .back-btn {
-  pointer-events: auto;
-  display: none;
-  font-size: 0.8rem;
-  color: var(--primary-maroon);
-  font-weight: 600;
-  cursor: pointer;
-  padding: 0.2rem 0.6rem;
-  border-radius: 4px;
-  background-color: var(--accent-gold-light);
-}
-
-/* Hidden Media Grid Initial State */
-.folder-group .media-grid {
-  display: none;
-  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-  gap: 0.8rem;
-  margin-top: 1rem;
-}
-
-/* Dynamic Media Loader States */
-.media-grid .loading,
-.media-grid .empty,
-.media-grid .error {
-  grid-column: 1 / -1;
-  text-align: center;
-  padding: 1rem 0;
-  font-size: 0.9rem;
-  color: var(--text-muted);
-}
-
-.media-grid .loading i {
-  margin-right: 0.4rem;
-  color: var(--primary-maroon);
-}
-
-/* Expanded Active Folder State */
-.folder-group.active {
-  grid-column: 1 / -1;
-  background-color: var(--bg-white);
-  border-color: var(--accent-gold);
-  cursor: default;
-}
-
-.folder-group.active .media-grid {
+.media-grid {
   display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+  gap: 0.5rem;
 }
 
-.folder-group.active .folder-header .back-btn {
-  display: inline-block;
-}
-
-/* Media Gallery Thumbnails & Overlays */
 .media-grid a {
   display: block;
-  height: 85px;
-  border-radius: 6px;
+  height: 70px;
+  border-radius: 4px;
   overflow: hidden;
   position: relative;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
 }
 
 .media-grid img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  transition: var(--transition-fast);
 }
 
 .media-grid a:hover img {
-  transform: scale(1.12);
+  transform: scale(1.1);
 }
 
-/* Video Thumbnail Custom Styling */
-.media-grid a .video-thumbnail {
+.video-thumbnail {
   width: 100%;
   height: 100%;
   background-color: var(--secondary-maroon);
@@ -654,35 +574,17 @@ img {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: 0.75rem;
-  gap: 0.3rem;
-  border-radius: 6px;
-  transition: background-color var(--transition-fast);
+  font-size: 0.65rem;
+  gap: 0.2rem;
 }
 
-.media-grid a:hover .video-thumbnail {
-  background-color: var(--primary-maroon);
-}
-
-.media-grid a .video-thumbnail i {
-  font-size: 1.4rem;
+.video-thumbnail i {
+  font-size: 1.2rem;
   color: var(--accent-gold);
 }
 
-/* Sub-Module: GLightbox Overrides */
-.gnext, .gprev {
-  background-color: rgba(91, 14, 20, 0.75) !important;
-  border-radius: 50% !important;
-  width: 45px !important;
-  height: 45px !important;
-}
-
-.gnext:hover, .gprev:hover {
-  background-color: var(--primary-maroon) !important;
-}
-
 /* ==========================================
-   7. DONATION SECTION
+   DONATION SECTION
    ========================================== */
 .donation-section {
   padding: 3rem 0;
@@ -733,7 +635,7 @@ img {
 }
 
 /* ==========================================
-   8. SITE FOOTER
+   FOOTER
    ========================================== */
 .footer {
   background-color: var(--secondary-maroon);
@@ -757,13 +659,6 @@ img {
   color: var(--accent-gold);
 }
 
-.footer h4 {
-  color: var(--accent-gold);
-  font-size: 1.1rem;
-  margin-bottom: 1.2rem;
-  position: relative;
-}
-
 .social-links {
   display: flex;
   gap: 0.8rem;
@@ -783,6 +678,13 @@ img {
 
 .social-links a:hover {
   background-color: var(--primary-maroon);
+}
+
+.footer h4 {
+  color: var(--accent-gold);
+  font-size: 1.1rem;
+  margin-bottom: 1.2rem;
+  position: relative;
 }
 
 .footer-links ul li {
@@ -836,9 +738,8 @@ img {
 }
 
 /* ==========================================
-   9. MEDIA QUERIES & RESPONSIVE BREAKPOINTS
+   RESPONSIVE DESIGN (MEDIA QUERIES)
    ========================================== */
-/* Medium Devices / Tablets (Landscape) */
 @media (max-width: 992px) {
   .about-container,
   .split-grid {
@@ -850,7 +751,6 @@ img {
   }
 }
 
-/* Small Devices / Mobile Phones */
 @media (max-width: 768px) {
   .nav-container {
     flex-direction: column;
