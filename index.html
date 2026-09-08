@@ -207,7 +207,7 @@
 
         <div class="folder-grid">
 
-          <div class="folder-group" data-repo-path="Gallery/Photos">
+          <div class="folder-group" data-folder-id="photos">
             <div class="folder-header">
               <h4><i class="fa-solid fa-folder-open"></i> Photos</h4>
               <span class="back-btn"><i class="fa-solid fa-xmark"></i> Close</span>
@@ -215,7 +215,7 @@
             <div class="media-grid"></div>
           </div>
 
-          <div class="folder-group" data-repo-path="Gallery/Videos">
+          <div class="folder-group" data-folder-id="videos">
             <div class="folder-header">
               <h4><i class="fa-solid fa-folder-open"></i> Videos</h4>
               <span class="back-btn"><i class="fa-solid fa-xmark"></i> Close</span>
@@ -223,7 +223,7 @@
             <div class="media-grid"></div>
           </div>
 
-          <div class="folder-group" data-repo-path="Gallery/Annual Nemothsava 2026">
+          <div class="folder-group" data-folder-id="nemothsava2026">
             <div class="folder-header">
               <h4><i class="fa-solid fa-folder-open"></i> Annual Nemothsava 2026</h4>
               <span class="back-btn"><i class="fa-solid fa-xmark"></i> Close</span>
@@ -231,7 +231,7 @@
             <div class="media-grid"></div>
           </div>
 
-          <div class="folder-group" data-repo-path="Gallery/Brahma Kalashothsava 2024">
+          <div class="folder-group" data-folder-id="kalashothsava2024">
             <div class="folder-header">
               <h4><i class="fa-solid fa-folder-open"></i> Brahma Kalashothsava 2024</h4>
               <span class="back-btn"><i class="fa-solid fa-xmark"></i> Close</span>
@@ -326,14 +326,27 @@
   <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
 
   <script>
-    // GitHub Repository Configuration
-    const REPO_OWNER = 'srikshetraeshwaragoli';
-    const REPO_NAME = 'SBMMD';
-    const REPO_BRANCH = 'main';
+    // DIRECT MEDIA MANIFEST (NO API CALLS REQUIRED)
+    const BASE_URL = 'https://raw.githubusercontent.com/srikshetraeshwaragoli/SBMMD/main/Gallery/';
+
+    const GALLERY_DATA = {
+      photos: [
+        { type: 'image', file: 'Photos/photo1.png', title: 'Temple Shrine' },
+        { type: 'image', file: 'Photos/photo2.png', title: 'Sacred Altar' }
+      ],
+      videos: [
+        { type: 'video', file: 'Videos/video1.mp4', title: 'Ritual Video' }
+      ],
+      nemothsava2026: [
+        { type: 'image', file: 'Annual%20Nemothsava%202026/nemothsava1.png', title: 'Nemothsava 2026' }
+      ],
+      kalashothsava2024: [
+        { type: 'image', file: 'Brahma%20Kalashothsava%202024/kalasha1.png', title: 'Brahma Kalashothsava 2024' }
+      ]
+    };
 
     let lightboxInstance = null;
 
-    // Helper: Toggle "Learn More" Kannada Content
     function toggleLearnMore() {
       const kannadaContent = document.getElementById('kannadaContent');
       const toggleBtn = document.getElementById('toggleBtn');
@@ -348,7 +361,6 @@
       }
     }
 
-    // Helper: Safe Lightbox Initialization
     function initLightbox() {
       if (lightboxInstance) {
         lightboxInstance.destroy();
@@ -361,91 +373,51 @@
       });
     }
 
-    // Fetch images and videos from a specific directory in GitHub
-    async function loadFolderImages(folderGroup) {
-      const repoPath = folderGroup.getAttribute('data-repo-path');
+    function renderFolderImages(folderGroup) {
+      const folderId = folderGroup.getAttribute('data-folder-id');
       const mediaGrid = folderGroup.querySelector('.media-grid');
 
-      if (!repoPath || !mediaGrid) return;
+      if (!folderId || !mediaGrid) return;
+      if (mediaGrid.children.length > 0) return; // Prevent duplicate rendering
 
-      // Prevent redundant fetches if content is already rendered
-      if (mediaGrid.children.length > 0 && !mediaGrid.querySelector('.loading, .error')) return;
+      const items = GALLERY_DATA[folderId] || [];
 
-      mediaGrid.innerHTML = '<p class="loading"><i class="fa-solid fa-spinner fa-spin"></i> Loading media...</p>';
-
-      try {
-        const apiUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${encodeURIComponent(repoPath)}?ref=${REPO_BRANCH}`;
-        const response = await fetch(apiUrl);
-
-        // Handle GitHub Rate Limits (60 req/hr unauthenticated)
-        if (response.status === 403) {
-          const resetTime = response.headers.get('X-RateLimit-Reset');
-          const resetDate = resetTime ? new Date(resetTime * 1000).toLocaleTimeString() : 'later';
-          throw new Error(`API rate limit reached. Resets around ${resetDate}.`);
-        }
-
-        if (!response.ok) {
-          throw new Error(`Directory not found (${response.status})`);
-        }
-
-        const files = await response.json();
-        mediaGrid.innerHTML = '';
-
-        const imageExts = ['.png', '.jpg', '.jpeg', '.webp', '.gif'];
-        const videoExts = ['.mp4', '.webm', '.ogg'];
-
-        const mediaFiles = files.filter(file => {
-          if (file.type !== 'file') return false;
-          const lowerName = file.name.toLowerCase();
-          return imageExts.some(ext => lowerName.endsWith(ext)) || videoExts.some(ext => lowerName.endsWith(ext));
-        });
-
-        if (mediaFiles.length === 0) {
-          mediaGrid.innerHTML = '<p class="empty">No images or videos found in this folder.</p>';
-          return;
-        }
-
-        const galleryId = repoPath.replace(/[^a-zA-Z0-9]/g, '-');
-
-        mediaFiles.forEach(file => {
-          const rawUrl = file.download_url;
-          const lowerName = file.name.toLowerCase();
-          const isVideo = videoExts.some(ext => lowerName.endsWith(ext));
-
-          const anchor = document.createElement('a');
-          anchor.href = rawUrl;
-          anchor.className = 'glightbox';
-          anchor.setAttribute('data-gallery', galleryId);
-
-          if (isVideo) {
-            anchor.setAttribute('data-type', 'video');
-            anchor.innerHTML = `
-              <div class="video-thumbnail">
-                <i class="fa-solid fa-circle-play"></i>
-                <span>Video</span>
-              </div>
-            `;
-          } else {
-            const img = document.createElement('img');
-            img.src = rawUrl;
-            img.alt = file.name;
-            img.loading = 'lazy';
-            anchor.appendChild(img);
-          }
-
-          mediaGrid.appendChild(anchor);
-        });
-
-        initLightbox();
-
-      } catch (error) {
-        console.error('Error fetching media from GitHub:', error);
-        mediaGrid.innerHTML = `<p class="error" style="font-size:0.85rem; color:#A52A2A; padding:0.5rem 0;">${error.message}</p>`;
+      if (items.length === 0) {
+        mediaGrid.innerHTML = '<p class="empty">No media available.</p>';
+        return;
       }
+
+      items.forEach(item => {
+        const fullUrl = BASE_URL + item.file;
+        const anchor = document.createElement('a');
+        anchor.href = fullUrl;
+        anchor.className = 'glightbox';
+        anchor.setAttribute('data-gallery', folderId);
+        anchor.setAttribute('data-glightbox', `title: ${item.title}`);
+
+        if (item.type === 'video') {
+          anchor.setAttribute('data-type', 'video');
+          anchor.innerHTML = `
+            <div class="video-thumbnail">
+              <i class="fa-solid fa-circle-play"></i>
+              <span>${item.title}</span>
+            </div>
+          `;
+        } else {
+          const img = document.createElement('img');
+          img.src = fullUrl;
+          img.alt = item.title;
+          img.loading = 'lazy';
+          anchor.appendChild(img);
+        }
+
+        mediaGrid.appendChild(anchor);
+      });
+
+      initLightbox();
     }
 
-    // Toggle and render active folder
-    async function handleFolderToggle(folderGroup) {
+    function handleFolderToggle(folderGroup) {
       const isActive = folderGroup.classList.contains('active');
 
       document.querySelectorAll('.folder-group').forEach(group => {
@@ -454,15 +426,14 @@
 
       if (!isActive) {
         folderGroup.classList.add('active');
-        await loadFolderImages(folderGroup);
+        renderFolderImages(folderGroup);
       }
 
       setTimeout(() => {
         initLightbox();
-      }, 100);
+      }, 50);
     }
 
-    // DOM Ready Setup
     document.addEventListener('DOMContentLoaded', () => {
       initLightbox();
 
