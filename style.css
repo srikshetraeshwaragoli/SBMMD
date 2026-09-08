@@ -237,6 +237,8 @@ img {
   color: var(--accent-gold);
   font-weight: 600;
   margin-bottom: 0.5rem;
+  text-align: left;
+  margin-left: 0;
 }
 
 .hero-content h1 {
