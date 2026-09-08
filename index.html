@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sri Brahma Mugera Mahankali Daivasthana (R.), Eshwaragoli, Kulai-Hosabettu</title>
   
-  <!-- Google Fonts for Traditional / Elegant Typography -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -19,22 +19,27 @@
   <!-- TOP HEADER / NAVBAR -->
   <header class="navbar">
     <div class="container nav-container">
-      <div class="logo">
+      <a href="#home" class="logo">
         <i class="fa-solid fa-gopuram logo-icon"></i>
         <div class="logo-text">
           <h2>Sri Kshetra Eshwaragoli</h2>
           <span>Faith • Tradition • Community</span>
         </div>
-      </div>
+      </a>
+      
+      <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle Navigation Menu">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
       <nav aria-label="Main Navigation">
-        <ul class="nav-links">
-          <li><a href="#home" class="active">Home</a></li>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#pooja">Pooja / Seva</a></li>
-          <li><a href="#events">Events</a></li>
-          <li><a href="#gallery">Gallery</a></li>
-          <li><a href="#donation">Donation</a></li>
-          <li><a href="#contact">Contact</a></li>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home" class="nav-item active">Home</a></li>
+          <li><a href="#about" class="nav-item">About Us</a></li>
+          <li><a href="#pooja" class="nav-item">Pooja / Seva</a></li>
+          <li><a href="#events" class="nav-item">Events</a></li>
+          <li><a href="#gallery" class="nav-item">Gallery</a></li>
+          <li><a href="#donation" class="nav-item">Donation</a></li>
+          <li><a href="#contact" class="nav-item">Contact</a></li>
         </ul>
       </nav>
     </div>
@@ -47,14 +52,13 @@
         <div class="hero-content">
           <p class="welcome-text">WELCOME TO</p>
           <h1>Sri Brahma Sri Mugera<br>Sri Mahankali Daivasthana (R.)</h1>
-          <p class="subtext">Eshwaragoli, Kulai-Hosabettu.</p>
-          <br>
+          <p class="subtext">Eshwaragoli, Kulai-Hosabettu</p>
           <p class="blessing-text">
             May the divine blessings of our deities bring peace, prosperity, and happiness to all.
           </p>
           <div class="hero-buttons">
-            <a href="#about" class="btn btn-primary">About Our Daivasthana &rarr;</a>
-            <a href="#events" class="btn btn-outline">Upcoming Events &rarr;</a>
+            <a href="#about" class="btn btn-primary">About Our Daivasthana <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="#events" class="btn btn-outline">Upcoming Events <i class="fa-solid fa-arrow-right"></i></a>
           </div>
         </div>
       </div>
@@ -68,26 +72,26 @@
         <i class="fa-regular fa-clock info-icon"></i>
         <div>
           <h4>Monthly Sankramana Pooja – 2026</h4>
-          <ul>
-            <li>January 14: Makara Sankranti</li>
-            <li>February 13: Kumbha Sankranti</li>
-            <li>March 15: Meena Sankranti</li>
-            <li>April 14: Mesha Sankranti</li>
-            <li>May 15: Vrishabha Sankranti</li>
-            <li>June 15: Mithuna Sankranti</li>
-            <li>July 16: Karka Sankranti</li>
-            <li>August 17: Simha Sankranti</li>
-            <li>September 17: Kanya Sankranti</li>
-            <li>October 17: Tula Sankranti</li>
-            <li>November 16: Vrischika Sankranti</li>
-            <li>December 16: Dhanu Sankranti</li>
+          <ul class="sankramana-list">
+            <li><span>Jan 14:</span> Makara Sankranti</li>
+            <li><span>Feb 13:</span> Kumbha Sankranti</li>
+            <li><span>Mar 15:</span> Meena Sankranti</li>
+            <li><span>Apr 14:</span> Mesha Sankranti</li>
+            <li><span>May 15:</span> Vrishabha Sankranti</li>
+            <li><span>Jun 15:</span> Mithuna Sankranti</li>
+            <li><span>Jul 16:</span> Karka Sankranti</li>
+            <li><span>Aug 17:</span> Simha Sankranti</li>
+            <li><span>Sep 17:</span> Kanya Sankranti</li>
+            <li><span>Oct 17:</span> Tula Sankranti</li>
+            <li><span>Nov 16:</span> Vrischika Sankranti</li>
+            <li><span>Dec 16:</span> Dhanu Sankranti</li>
           </ul>
         </div>
       </div>
       <div class="info-card">
         <i class="fa-regular fa-calendar-days info-icon"></i>
         <div>
-          <h4>Next Event</h4>
+          <h4>Next Major Event</h4>
           <p>Annual Nemothsava</p>
           <p class="highlight">(3rd week Feb 2027)</p>
         </div>
@@ -95,10 +99,10 @@
       <div class="info-card">
         <i class="fa-solid fa-location-dot info-icon"></i>
         <div>
-          <h4>Daivasthana's Location</h4>
+          <h4>Daivasthana Location</h4>
           <p>Eshwaragoli, Kulai - Hosabettu,</p>
           <p>Mangaluru, Karnataka – 575019</p>
-          <a href="#contact" class="link-btn">View on Map &rarr;</a>
+          <a href="#contact" class="link-btn">View on Map <i class="fa-solid fa-arrow-right"></i></a>
         </div>
       </div>
     </div>
@@ -108,7 +112,7 @@
   <section class="about-section" id="about">
     <div class="container about-container">
       <div class="about-image">
-      <img src="image1.png" alt="Temple Deity at Sri Brahma Mugera Mahankali Daivasthana">
+        <img src="image1.png" alt="Temple Deity at Sri Brahma Mugera Mahankali Daivasthana">
       </div>
       <div class="about-content">
         <h2>About Our Daivasthana</h2>
@@ -118,8 +122,8 @@
           This sacred Daivasthana serves as a spiritual center for the worship of several revered Daivas of Tulu Nadu, including Daivarasu Ullaya, Mahankali, Brahma Mugera, Thangadi, Alera Panjurli, Swami Koragajja, and Daivaraja Mantra Guliga.
         </p>
 
-        <!-- HIDDEN KANNADA CONTENT -->
-        <div id="kannadaContent" class="kannada-details" style="display: none;">
+        <!-- KANNADA CONTENT -->
+        <div id="kannadaContent" class="kannada-details">
           <p>
             ದೈವ ದೇವರ ಕೃಪೆಯಲ್ಲಿ ಕಂಗೊಳಿಸುತ್ತಿರುವ ನಮ್ಮ ತುಳುನಾಡಿನ ಅನೇಕ ಆರಾಧನಾ ಕ್ಷೇತ್ರಗಳಲ್ಲಿ ಮಂಗಳೂರು ತಾಲೂಕು ಹೊಸಬೆಟ್ಟು ಗ್ರಾಮದ ಶ್ರೀ ಕ್ಷೇತ್ರ ಈಶ್ವರಗೋಳಿಯೂ ಒಂದು. ಸುಮಾರು 350 ವರ್ಷಗಳಷ್ಟು ಇತಿಹಾಸವುಳ್ಳ ಈ ಕ್ಷೇತ್ರವು ಮುಗೇರ ಜನಾಂಗದಲ್ಲಿ ಜನಿಸಿ ನಾಟಿ ವೈದ್ಯೆಯಾದ ಪಯ್ಯು ಮುಗೆರ್ತಿಯು ಗಿಡಮುಲಿಕೆಯಾದ "ಇಸರ ಬೇರ"ನ್ನು ಹುಡುಕುತ್ತಾ ಗೋಳಿ ಮರದ ಬುಡದಲ್ಲಿ ಶಿವನನ್ನು ಪ್ರಾರ್ಥಿಸಿದ ಸಂದರ್ಭದಲ್ಲಿ ಅವಳ ಭಕ್ತಿಗೆ ಮೆಚ್ಚಿ ಪರಮ ಭಕ್ತೆಯಾದ ನಿನಗೆ ಮುಂದೊಂದು ದಿನ ಶಿವಜಾಯೆಯಾದ ಶ್ರೀ ಪಾರ್ವತಿಯು ಮಹಾಂಕಾಳಿಯಾಗಿ ಧರ್ಮದೈವಗಳು ಇಲ್ಲಿ ನೆಲೆಯಾಗಿ ಈ ನೆಲದ ಸತ್ಯವನ್ನು ಕಾಪಾಡುವರು ಎಂದು ಅಭಯ ನೀಡಿದರು.
             <br><br>
@@ -129,8 +133,9 @@
           </p>
         </div>
 
-        <!-- TOGGLE BUTTON -->
-        <button id="toggleBtn" class="btn btn-dark" onclick="toggleLearnMore()">Learn More &rarr;</button>
+        <button id="toggleBtn" class="btn btn-dark" onclick="toggleLearnMore()">
+          Learn More <i class="fa-solid fa-arrow-right btn-arrow"></i>
+        </button>
       </div>
     </div>
   </section>
@@ -147,21 +152,21 @@
       <div class="seva-grid">
         <div class="seva-card">
           <i class="fa-solid fa-water seva-icon"></i>
-          <h3>Sankramana and Annadana Seva</h3>
+          <h3>Sankramana & Annadana Seva</h3>
           <p>Every Month Sankramana</p>
-          <p>Contact Office</p>
+          <span class="contact-badge">Contact Office</span>
         </div>
         <div class="seva-card">
           <i class="fa-solid fa-spa seva-icon"></i>
           <h3>Sankramana Seva</h3>
           <p>Every Month Sankramana</p>
-          <p>Contact Office</p>
+          <span class="contact-badge">Contact Office</span>
         </div>
         <div class="seva-card">
           <i class="fa-solid fa-bowl-rice seva-icon"></i>
           <h3>Swami Koraga Thaniya Agelu Seva</h3>
-          <p>Only During Annual Nemotsava</p>
-          <p>Contact Office</p>
+          <p>During Annual Nemotsava</p>
+          <span class="contact-badge">Contact Office</span>
         </div>
       </div>
     </div>
@@ -175,7 +180,6 @@
       <div class="events-column">
         <div class="column-header">
           <h3><i class="fa-regular fa-calendar-check"></i> Upcoming Events</h3>
-          <a href="#events" class="view-all">View All &rarr;</a>
         </div>
         <div class="event-list">
           <div class="event-item">
@@ -185,7 +189,7 @@
             </div>
             <div class="event-info">
               <h4>Sankramana Seva</h4>
-              <p>Full Day</p>
+              <p>Full Day Services</p>
               <h4>Annadaana</h4>
               <p>1:00 PM - 3:00 PM</p>
             </div>
@@ -197,7 +201,7 @@
             </div>
             <div class="event-info">
               <h4>Annual Nemothsava</h4>
-              <p>Feb 2027</p>
+              <p>Grand Celebration (Feb 2027)</p>
             </div>
           </div>
           <div class="event-item">
@@ -218,7 +222,7 @@
         <div class="column-header">
           <h3><i class="fa-regular fa-images"></i> Gallery</h3>
           <button id="backToFoldersBtn" class="btn-back" onclick="showFolderGrid()" style="display: none;">
-            &larr; Back to Folders
+            <i class="fa-solid fa-arrow-left"></i> Back to Folders
           </button>
         </div>
 
@@ -239,24 +243,24 @@
         <!-- PHOTOS CONTENT -->
         <div id="photosContent" class="gallery-media-content" style="display: none;">
           <div class="gallery-grid">
-            <img src="Photos/image1.jpeg" alt="Temple Photo 1">
-            <img src="Photos/image2.jpeg" alt="Temple Photo 2">
-            <img src="Photos/image3.jpeg" alt="Temple Photo 3">
-            <img src="Photos/image4.jpeg" alt="Temple Photo 4">
-            <img src="Photos/image5.jpeg" alt="Temple Photo 5">
-            <img src="Photos/image6.jpeg" alt="Temple Photo 6">
-            <img src="Photos/image7.jpeg" alt="Temple Photo 7">
-            <img src="Photos/image8.jpeg" alt="Temple Photo 8">
-            <img src="Photos/image9.jpeg" alt="Temple Photo 9">
-            <img src="Photos/image10.jpeg" alt="Temple Photo 10">
-            <img src="Photos/image11.jpeg" alt="Temple Photo 11">
-            <img src="Photos/image12.jpeg" alt="Temple Photo 12">
+            <img src="Photos/image1.jpeg" alt="Temple Photo 1" loading="lazy">
+            <img src="Photos/image2.jpeg" alt="Temple Photo 2" loading="lazy">
+            <img src="Photos/image3.jpeg" alt="Temple Photo 3" loading="lazy">
+            <img src="Photos/image4.jpeg" alt="Temple Photo 4" loading="lazy">
+            <img src="Photos/image5.jpeg" alt="Temple Photo 5" loading="lazy">
+            <img src="Photos/image6.jpeg" alt="Temple Photo 6" loading="lazy">
+            <img src="Photos/image7.jpeg" alt="Temple Photo 7" loading="lazy">
+            <img src="Photos/image8.jpeg" alt="Temple Photo 8" loading="lazy">
+            <img src="Photos/image9.jpeg" alt="Temple Photo 9" loading="lazy">
+            <img src="Photos/image10.jpeg" alt="Temple Photo 10" loading="lazy">
+            <img src="Photos/image11.jpeg" alt="Temple Photo 11" loading="lazy">
+            <img src="Photos/image12.jpeg" alt="Temple Photo 12" loading="lazy">
           </div>
         </div>
 
         <!-- VIDEOS CONTENT -->
         <div id="videosContent" class="gallery-media-content" style="display: none;">
-          <div class="gallery-grid">
+          <div class="gallery-grid single-video">
             <div class="video-card">
               <video id="galleryVideo" controls width="100%">
                 <source src="Videos/Sankramana.mp4" type="video/mp4">
@@ -270,16 +274,12 @@
     </div>
   </section>
 
-  <!-- Lightbox Modal -->
-  <div id="lightbox" class="lightbox">
+  <!-- LIGHTBOX MODAL -->
+  <div id="lightbox" class="lightbox" aria-hidden="true">
     <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
-    
-    <!-- Navigation Arrows -->
     <button class="lightbox-arrow prev-arrow" onclick="changeImage(-1)" aria-label="Previous Image">&#10094;</button>
     <button class="lightbox-arrow next-arrow" onclick="changeImage(1)" aria-label="Next Image">&#10095;</button>
-    
-    <!-- Main Display Image -->
-    <img id="lightbox-img" class="lightbox-content" src="" alt="Gallery Image">
+    <img id="lightbox-img" class="lightbox-content" src="" alt="Gallery Preview">
   </div>
 
   <!-- DONATION BANNER -->
@@ -289,16 +289,16 @@
         <i class="fa-solid fa-hand-holding-heart donation-icon"></i>
         <div>
           <h3>Support Our Daivasthana</h3>
-          <p>Your generous donations help us maintain the Daivasthana and serve the community.</p>
+          <p>Your generous contributions assist in daily poojas, monthly annadana, and temple development.</p>
         </div>
       </div>
       <div class="donation-actions">
-        <a href="#contact" class="btn btn-primary">Donate Now &rarr;</a>
+        <a href="#contact" class="btn btn-primary">Donate Now <i class="fa-solid fa-arrow-right"></i></a>
         <div class="qr-code-box">
           <i class="fa-solid fa-qrcode qr-icon"></i>
           <div>
             <p><strong>Scan to Donate</strong></p>
-            <p><small>UPI | Bank Transfer | Online Payment</small></p>
+            <p><small>UPI | Bank Transfer</small></p>
           </div>
         </div>
       </div>
@@ -309,7 +309,7 @@
   <footer class="footer" id="contact">
     <div class="container footer-grid">
       
-      <!-- Brand column -->
+      <!-- Brand Column -->
       <div class="footer-brand">
         <div class="logo">
           <i class="fa-solid fa-gopuram logo-icon"></i>
@@ -318,6 +318,7 @@
             <span>Faith • Tradition • Community</span>
           </div>
         </div>
+        <p class="footer-desc">A sacred center of faith, heritage, and devotion located in Kulai-Hosabettu.</p>
         <div class="social-links">
           <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
           <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
@@ -354,9 +355,11 @@
           <iframe 
             title="Google Map Location of Kulai, Mangaluru"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15551.815598951817!2d74.8080!3d12.9730!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba353e6bb6bc8f1%3A0x6b306a4b127453!2sKulai%2C%20Mangaluru%2C%20Karnataka%20575019!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
-            width="100%" height="100" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            width="100%" height="120" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
-        <a href="https://maps.app.goo.gl/pkzcqt6EuibGCv247" target="_blank" rel="noopener noreferrer" class="map-link">View Larger Map &rarr;</a>
+        <a href="https://maps.app.goo.gl/pkzcqt6EuibGCv247" target="_blank" rel="noopener noreferrer" class="map-link">
+          View Larger Map <i class="fa-solid fa-arrow-right"></i>
+        </a>
       </div>
 
     </div>
@@ -368,28 +371,66 @@
     </div>
   </footer>
 
-  <!-- SCRIPT SECTION -->
+  <!-- JAVASCRIPT LOGIC -->
   <script>
-    // Learn More Toggle Function
+    // Mobile Navigation Menu Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+      const icon = menuToggle.querySelector('i');
+      icon.classList.toggle('fa-bars');
+      icon.classList.toggle('fa-xmark');
+    });
+
+    // Close Mobile Menu on Click
+    document.querySelectorAll('.nav-item').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        const icon = menuToggle.querySelector('i');
+        icon.classList.add('fa-bars');
+        icon.classList.remove('fa-xmark');
+      });
+    });
+
+    // Active Navigation Highlight on Scroll
+    window.addEventListener('scroll', () => {
+      let current = '';
+      const sections = document.querySelectorAll('section, footer');
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        if (pageYOffset >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      document.querySelectorAll('.nav-links a').forEach(a => {
+        a.classList.remove('active');
+        if (a.getAttribute('href') === `#${current}`) {
+          a.classList.add('active');
+        }
+      });
+    });
+
+    // Learn More Kannada Toggle
     function toggleLearnMore() {
       const content = document.getElementById("kannadaContent");
       const btn = document.getElementById("toggleBtn");
 
-      if (content.style.display === "block") {
-        content.style.display = "none";
+      if (content.classList.contains("show")) {
         content.classList.remove("show");
-        btn.innerHTML = "Learn More &rarr;";
+        btn.innerHTML = 'Learn More <i class="fa-solid fa-arrow-right btn-arrow"></i>';
       } else {
-        content.style.display = "block";
         content.classList.add("show");
-        btn.innerHTML = "Show Less &larr;";
+        btn.innerHTML = 'Show Less <i class="fa-solid fa-arrow-left btn-arrow"></i>';
       }
     }
 
-    // Gallery Folder Navigation Functions
+    // Gallery Folders Navigation
     function openFolder(folderType) {
       document.getElementById('folderGrid').style.display = 'none';
-      document.getElementById('backToFoldersBtn').style.display = 'inline-block';
+      document.getElementById('backToFoldersBtn').style.display = 'inline-flex';
 
       if (folderType === 'photos') {
         document.getElementById('photosContent').style.display = 'block';
@@ -406,34 +447,24 @@
       document.getElementById('videosContent').style.display = 'none';
       document.getElementById('backToFoldersBtn').style.display = 'none';
 
-      // Pause active video when switching back
       const video = document.getElementById('galleryVideo');
-      if (video) {
-        video.pause();
-      }
+      if (video) video.pause();
     }
 
-    // Lightbox & Navigation JavaScript
+    // Lightbox & Touch Navigation
     let currentImageIndex = 0;
     let galleryImages = [];
-
-    // Touch Tracking Variables
     let touchStartX = 0;
     let touchEndX = 0;
 
     document.addEventListener("DOMContentLoaded", () => {
       const images = document.querySelectorAll(".gallery-grid img");
-      
       images.forEach((img, index) => {
         galleryImages.push(img.src);
-        img.addEventListener("click", () => {
-          openLightbox(index);
-        });
+        img.addEventListener("click", () => openLightbox(index));
       });
 
       const lightbox = document.getElementById("lightbox");
-
-      // Touch Event Listeners for Mobile Swiping
       lightbox.addEventListener("touchstart", (e) => {
         touchStartX = e.changedTouches[0].screenX;
       }, { passive: true });
@@ -444,63 +475,41 @@
       }, { passive: true });
     });
 
-    // Handle Swipe Gestures
     function handleSwipe() {
-      const swipeThreshold = 50; // Minimum distance (in px) to qualify as a swipe
       const diff = touchEndX - touchStartX;
-
-      if (Math.abs(diff) > swipeThreshold) {
-        if (diff < 0) {
-          // Swiped Left -> Go to Next Image
-          changeImage(1);
-        } else {
-          // Swiped Right -> Go to Previous Image
-          changeImage(-1);
-        }
+      if (Math.abs(diff) > 50) {
+        if (diff < 0) changeImage(1);  // Swipe Left -> Next
+        else changeImage(-1);          // Swipe Right -> Prev
       }
     }
 
-    // Open Lightbox
     function openLightbox(index) {
       currentImageIndex = index;
       const lightbox = document.getElementById("lightbox");
       const lightboxImg = document.getElementById("lightbox-img");
-      
       lightboxImg.src = galleryImages[currentImageIndex];
       lightbox.style.display = "flex";
+      lightbox.setAttribute("aria-hidden", "false");
     }
 
-    // Close Lightbox
     function closeLightbox() {
-      document.getElementById("lightbox").style.display = "none";
+      const lightbox = document.getElementById("lightbox");
+      lightbox.style.display = "none";
+      lightbox.setAttribute("aria-hidden", "true");
     }
 
-    // Change Image (Next / Previous)
     function changeImage(direction) {
       if (galleryImages.length === 0) return;
-
-      currentImageIndex += direction;
-      
-      if (currentImageIndex < 0) {
-        currentImageIndex = galleryImages.length - 1;
-      } else if (currentImageIndex >= galleryImages.length) {
-        currentImageIndex = 0;
-      }
-      
+      currentImageIndex = (currentImageIndex + direction + galleryImages.length) % galleryImages.length;
       document.getElementById("lightbox-img").src = galleryImages[currentImageIndex];
     }
 
-    // Keyboard Navigation Support
     document.addEventListener("keydown", (event) => {
       const lightbox = document.getElementById("lightbox");
       if (lightbox && lightbox.style.display === "flex") {
-        if (event.key === "ArrowLeft") {
-          changeImage(-1);
-        } else if (event.key === "ArrowRight") {
-          changeImage(1);
-        } else if (event.key === "Escape") {
-          closeLightbox();
-        }
+        if (event.key === "ArrowLeft") changeImage(-1);
+        else if (event.key === "ArrowRight") changeImage(1);
+        else if (event.key === "Escape") closeLightbox();
       }
     });
   </script>
