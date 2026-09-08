@@ -218,7 +218,7 @@ img {
               url('https://raw.githubusercontent.com/srikshetraeshwaragoli/SBMMD/main/image2.png') no-repeat center center/cover;
   min-height: 70vh;
   display: flex;
-  align-items: center;
+  align-items: right;
   justify-content: flex-start;
 }
 
