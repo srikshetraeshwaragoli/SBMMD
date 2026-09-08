@@ -109,7 +109,7 @@ a {
    HERO SECTION
    ========================================================================== */
 .hero {
-  background: url('/Users/vasanth/Pictures/temple-website/Gallery/image2.png') center center / cover no-repeat;
+  background: url('https://github.com/srikshetraeshwaragoli/SBMMD/blob/main/image2.png') center center / cover no-repeat;
   height: 60vh;            /* Reduced from 80vh to 55vh */
   min-height: 380px;        /* Reduced from 500px to 380px */
   position: relative;
