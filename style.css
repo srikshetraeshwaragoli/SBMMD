@@ -5,11 +5,11 @@
   --primary-maroon: #5B0E14;        
   --secondary-maroon: #7D181E;
   --primary-hover: #A52A2A;
-  --accent-gold: #D4AF37;          /* Traditional Brass/Gold */
+  --accent-gold: #D4AF37;           /* Traditional Brass/Gold */
   --accent-gold-light: #FFF8E7;
   --text-dark: #2B2B2B;
   --text-muted: #666666;
-  --bg-light: #FDFBF7;            /* Warm Ivory Background */
+  --bg-light: #FDFBF7;             /* Warm Ivory Background */
   --bg-white: #FFFFFF;
   --border-color: #E2D7C5;
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -214,7 +214,7 @@ img {
    HERO SECTION
    ========================================== */
 .hero {
-  /* Subtle dark vignette on the left side to keep text sharp and legible */
+  /* Subtle dark vignette with background shifted slightly right */
   background: linear-gradient(to right, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 45%, rgba(0, 0, 0, 0.1) 100%), 
               url('https://raw.githubusercontent.com/srikshetraeshwaragoli/SBMMD/main/image2.png') center center / cover no-repeat;
   min-height: 50vh;
@@ -229,7 +229,7 @@ img {
 }
 
 .hero-content {
-  max-width: 480px; /* Constrains content to the left side */
+  max-width: 480px;
   text-align: left;
   margin: 0;
 }
@@ -544,6 +544,7 @@ img {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
   gap: 0.5rem;
+  min-height: 70px;
 }
 
 .media-grid a {
