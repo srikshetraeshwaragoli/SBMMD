@@ -212,18 +212,19 @@ h1, h2, h3, h4 {
    HERO SECTION
    ========================================== */
 .hero {
-  background: linear-gradient(rgba(26, 11, 11, 0.75), rgba(26, 11, 11, 0.75)),
-              url('image1.png') center/cover no-repeat;
-  min-height: 80vh;
+  /* Set image2 as background with fallbacks for centering and sizing */
+  background: url('image2.png') no-repeat center center/cover;
+  position: relative;
+  min-height: 80vh; /* Ensures full height display */
   display: flex;
   align-items: center;
-  color: #ffffff;
-  text-align: center;
 }
 
 .hero-overlay {
+  background-color: rgba(0, 0, 0, 0.55); /* Dark transparent overlay */
   width: 100%;
-  padding: 60px 0;
+  height: 100%;
+  padding: 80px 0;
 }
 
 .hero-content {
