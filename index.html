@@ -10,6 +10,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- GLightbox CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -51,8 +53,8 @@
             May the divine blessings of our deities bring peace, prosperity, and happiness to all.
           </p>
           <div class="hero-buttons">
-            <a href="#about" class="btn btn-primary">About Our Daivasthana</a>
-            <a href="#events" class="btn btn-outline">Upcoming Events</a>
+            <a href="#about" class="btn btn-primary">About Our Daivasthana &rarr;</a>
+            <a href="#events" class="btn btn-outline">Upcoming Events &rarr;</a>
           </div>
         </div>
       </div>
@@ -66,6 +68,7 @@
         <i class="fa-regular fa-clock info-icon"></i>
         <div>
           <h4>Monthly Sankramana Pooja – 2026</h4>
+          <ul>
             <li>January 14: Makara Sankranti</li>
             <li>February 13: Kumbha Sankranti</li>
             <li>March 15: Meena Sankranti</li>
@@ -78,6 +81,7 @@
             <li>October 17: Tula Sankranti</li>
             <li>November 16: Vrischika Sankranti</li>
             <li>December 16: Dhanu Sankranti</li>
+          </ul>
         </div>
       </div>
       <div class="info-card">
@@ -102,17 +106,17 @@
 
   <!-- ABOUT OUR DAIVASTHANA -->
   <section class="about-section" id="about">
-  <div class="container about-container">
-    <div class="about-image">
-      <img src="https://raw.githubusercontent.com/srikshetraeshwaragoli/SBMMD/main/image1.png" alt="Temple Deity">
-    </div>
-    <div class="about-content">
-      <h2>About Our Daivasthana</h2>
-      <div class="divider">🪔</div>
-      <p>
-        Sri Brahma Mugera Mahankali Daivasthana (R.), Eshwaragoli is a revered center of worship in Kulai-Hosabettu. 
-        This sacred Daivastana serves as a spiritual center for the worship of several revered Daivas of Tulu Nadu, including Daivarasu Ullaya, Mahankali, Brahma Mugera, Thangadi, Alera Panjurli, Swami Koragajja, and Daivaraja Mantra Guliga.
-      </p>
+    <div class="container about-container">
+      <div class="about-image">
+        <img src="https://raw.githubusercontent.com/srikshetraeshwaragoli/SBMMD/main/image1.png" alt="Temple Deity">
+      </div>
+      <div class="about-content">
+        <h2>About Our Daivasthana</h2>
+        <div class="divider">🪔</div>
+        <p>
+          Sri Brahma Mugera Mahankali Daivasthana (R.), Eshwaragoli is a revered center of worship in Kulai-Hosabettu. 
+          This sacred Daivastana serves as a spiritual center for the worship of several revered Daivas of Tulu Nadu, including Daivarasu Ullaya, Mahankali, Brahma Mugera, Thangadi, Alera Panjurli, Swami Koragajja, and Daivaraja Mantra Guliga.
+        </p>
 
         <!-- HIDDEN KANNADA CONTENT -->
         <div id="kannadaContent" class="kannada-details">
@@ -209,7 +213,7 @@
         </div>
       </div>
 
-      <!-- GALLERY COLUMN (4 FOLDERS) -->
+      <!-- GALLERY COLUMN (DYNAMIC GITHUB FOLDERS) -->
       <div class="gallery-column" id="gallery">
         <div class="column-header">
           <h3><i class="fa-regular fa-images"></i> Gallery</h3>
@@ -222,14 +226,7 @@
             <div class="folder-header">
               <h4><i class="fa-solid fa-folder-open"></i> Photos</h4>
             </div>
-            <div class="media-grid">
-              <a href="Gallery/Photos/photo1.png" class="glightbox" data-gallery="photos" data-glightbox="title: Temple Shrine">
-                <img src="Gallery/Photos/photo1.png" alt="Temple Shrine" />
-              </a>
-              <a href="Gallery/Photos/photo2.png" class="glightbox" data-gallery="photos" data-glightbox="title: Sacred Altar">
-                <img src="Gallery/Photos/photo2.png" alt="Sacred Altar" />
-              </a>
-            </div>
+            <div class="media-grid" id="gallery-photos"></div>
           </div>
 
           <!-- FOLDER 2: VIDEOS -->
@@ -237,14 +234,7 @@
             <div class="folder-header">
               <h4><i class="fa-solid fa-folder-open"></i> Videos</h4>
             </div>
-            <div class="media-grid">
-              <a href="Gallery/Videos/video1.mp4" class="glightbox" data-gallery="videos" data-glightbox="title: Ritual Video">
-                <div class="video-thumbnail">
-                  <i class="fa-solid fa-circle-play"></i>
-                  <span>Play Ritual</span>
-                </div>
-              </a>
-            </div>
+            <div class="media-grid" id="gallery-videos"></div>
           </div>
 
           <!-- FOLDER 3: ANNUAL NEMOTHSAVA 2026 -->
@@ -252,11 +242,7 @@
             <div class="folder-header">
               <h4><i class="fa-solid fa-folder-open"></i> Annual Nemothsava 2026</h4>
             </div>
-            <div class="media-grid">
-              <a href="Gallery/Annual%20Nemothsava%202026/nemothsava1.png" class="glightbox" data-gallery="nemothsava2026" data-glightbox="title: Nemothsava Celebration">
-                <img src="Gallery/Annual%20Nemothsava%202026/nemothsava1.png" alt="Nemothsava 2026" />
-              </a>
-            </div>
+            <div class="media-grid" id="gallery-nemothsava2026"></div>
           </div>
 
           <!-- FOLDER 4: BRAHMA KALASHOTHSAVA 2024 -->
@@ -264,11 +250,7 @@
             <div class="folder-header">
               <h4><i class="fa-solid fa-folder-open"></i> Brahma Kalashothsava 2024</h4>
             </div>
-            <div class="media-grid">
-              <a href="Gallery/Brahma%20Kalashothsava%202024/kalasha1.png" class="glightbox" data-gallery="kalashothsava2024" data-glightbox="title: Brahma Kalashothsava Event">
-                <img src="Gallery/Brahma%20Kalashothsava%202024/kalasha1.png" alt="Brahma Kalashothsava 2024" />
-              </a>
-            </div>
+            <div class="media-grid" id="gallery-kalashothsava2024"></div>
           </div>
 
         </div>
@@ -366,16 +348,87 @@
   <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
 
   <script>
-    // Initialize Lightbox for image & video modals
-    const lightbox = GLightbox({
-      selector: '.glightbox',
-      touchNavigation: true,
-      loop: true,
-      zoomable: true,
-      autoplayVideos: true
-    });
+    let lightbox;
 
-    // Toggle Learn More Kannada Text
+    function initLightbox() {
+      if (lightbox) lightbox.destroy();
+      lightbox = GLightbox({
+        selector: '.glightbox',
+        touchNavigation: true,
+        loop: true,
+        zoomable: true,
+        autoplayVideos: true
+      });
+    }
+
+    const repoOwner = 'srikshetraeshwaragoli';
+    const repoName = 'SBMMD';
+
+    const galleryFolders = [
+      { folderPath: 'Gallery/Photos', containerId: 'gallery-photos', galleryGroup: 'photos' },
+      { folderPath: 'Gallery/Videos', containerId: 'gallery-videos', galleryGroup: 'videos' },
+      { folderPath: 'Gallery/Annual Nemothsava 2026', containerId: 'gallery-nemothsava2026', galleryGroup: 'nemothsava2026' },
+      { folderPath: 'Gallery/Brahma Kalashothsava 2024', containerId: 'gallery-kalashothsava2024', galleryGroup: 'kalashothsava2024' }
+    ];
+
+    async function loadGithubGallery() {
+      for (const folder of galleryFolders) {
+        const container = document.getElementById(folder.containerId);
+        if (!container) continue;
+
+        const apiUrl = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${encodeURIComponent(folder.folderPath)}`;
+
+        try {
+          const response = await fetch(apiUrl);
+          if (!response.ok) continue;
+
+          const files = await response.json();
+          container.innerHTML = ''; 
+
+          files.forEach(file => {
+            const fileUrl = file.download_url;
+            const fileName = file.name;
+
+            if (fileUrl.match(/\.(mp4|webm|ogg)$/i)) {
+              const anchor = document.createElement('a');
+              anchor.href = fileUrl;
+              anchor.className = 'glightbox';
+              anchor.setAttribute('data-gallery', folder.galleryGroup);
+              anchor.setAttribute('data-glightbox', `title: ${fileName}`);
+
+              anchor.innerHTML = `
+                <div class="video-thumbnail">
+                  <i class="fa-solid fa-circle-play"></i>
+                  <span>Play</span>
+                </div>
+              `;
+              container.appendChild(anchor);
+            } 
+            else if (fileUrl.match(/\.(jpg|jpeg|png|gif|webp|svg)$/i)) {
+              const anchor = document.createElement('a');
+              anchor.href = fileUrl;
+              anchor.className = 'glightbox';
+              anchor.setAttribute('data-gallery', folder.galleryGroup);
+              anchor.setAttribute('data-glightbox', `title: ${fileName}`);
+
+              const img = document.createElement('img');
+              img.src = fileUrl;
+              img.alt = fileName;
+
+              anchor.appendChild(img);
+              container.appendChild(anchor);
+            }
+          });
+        } catch (error) {
+          console.error(`Error loading images for ${folder.folderPath}:`, error);
+        }
+      }
+
+      initLightbox();
+    }
+
+    document.addEventListener('DOMContentLoaded', loadGithubGallery);
+
     function toggleLearnMore() {
       const content = document.getElementById("kannadaContent");
       const btn = document.getElementById("toggleBtn");
