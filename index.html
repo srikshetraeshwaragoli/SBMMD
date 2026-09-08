@@ -213,103 +213,151 @@
         </div>
       </div>
 
-<!-- GALLERY SECTION -->
-<div class="gallery-column" id="gallery">
-  <div class="column-header">
-    <h3 id="galleryTitle"><i class="fa-regular fa-images"></i> Gallery</h3>
-    <button id="backToFoldersBtn" class="btn-back" onclick="navigateGalleryBack()" style="display: none;">
-      <i class="fa-solid fa-arrow-left"></i> <span id="backBtnText">Back</span>
-    </button>
-  </div>
+      <!-- GALLERY SECTION -->
+      <div class="gallery-column" id="gallery">
+        <div class="column-header">
+          <h3 id="galleryTitle"><i class="fa-regular fa-images"></i> Gallery</h3>
+          <button id="backToFoldersBtn" class="btn-back" onclick="navigateGalleryBack()" style="display: none;">
+            <i class="fa-solid fa-arrow-left"></i> <span id="backBtnText">Back</span>
+          </button>
+        </div>
 
-  <!-- LEVEL 1: MAIN EVENT FOLDERS -->
-  <div id="mainGalleryFolders" class="folder-grid">
-    <div class="folder-card" onclick="openEventFolder('kalashotsava2026')" role="button" tabindex="0">
-      <div class="folder-icon"><i class="fa-solid fa-folder"></i></div>
-      <h4>Brahma Kalashotsava 2026</h4>
-      <p>10 Photos</p>
-    </div>
-    <div class="folder-card" onclick="openEventFolder('nemothsava2026')" role="button" tabindex="0">
-      <div class="folder-icon"><i class="fa-solid fa-folder"></i></div>
-      <h4>Annual Nemotsava 2026</h4>
-      <p>Photos & Videos</p>
-    </div>
-  </div>
+        <!-- LEVEL 1: MAIN GALLERY FOLDERS -->
+        <div id="mainGalleryFolders" class="folder-grid">
+          <div class="folder-card" onclick="openMediaContent('general_photos')" role="button" tabindex="0">
+            <div class="folder-icon"><i class="fa-regular fa-image"></i></div>
+            <h4>Photos</h4>
+            <p>12 Items</p>
+          </div>
+          <div class="folder-card" onclick="openEventFolder('kalashotsava2024')" role="button" tabindex="0">
+            <div class="folder-icon"><i class="fa-solid fa-folder"></i></div>
+            <h4>Brahma Kalashotsava 2024</h4>
+            <p>Photos & Videos</p>
+          </div>
+          <div class="folder-card" onclick="openEventFolder('nemothsava2026')" role="button" tabindex="0">
+            <div class="folder-icon"><i class="fa-solid fa-folder"></i></div>
+            <h4>Annual Nemotsava 2026</h4>
+            <p>Photos & Videos</p>
+          </div>
+        </div>
 
-  <!-- LEVEL 2: BRAHMA KALASHOTSAVA 2026 SUB-FOLDERS -->
-  <div id="kalashotsava2026SubFolders" class="folder-grid" style="display: none;">
-    <div class="folder-card" onclick="openMediaContent('kalashotsava2026_photos')" role="button" tabindex="0">
-      <div class="folder-icon"><i class="fa-regular fa-image"></i></div>
-      <h4>Photos</h4>
-      <p>10 Items</p>
-    </div>
-  </div>
+        <!-- LEVEL 2: BRAHMA KALASHOTSAVA 2024 SUB-FOLDERS -->
+        <div id="kalashotsava2024SubFolders" class="folder-grid" style="display: none;">
+          <div class="folder-card" onclick="openMediaContent('kalashotsava2024_photos')" role="button" tabindex="0">
+            <div class="folder-icon"><i class="fa-regular fa-image"></i></div>
+            <h4>Photos</h4>
+            <p>12 Items</p>
+          </div>
+          <div class="folder-card" onclick="openMediaContent('kalashotsava2024_videos')" role="button" tabindex="0">
+            <div class="folder-icon"><i class="fa-solid fa-film"></i></div>
+            <h4>Videos</h4>
+            <p>1 Item</p>
+          </div>
+        </div>
 
-  <!-- LEVEL 2: ANNUAL NEMOTSAVA 2026 SUB-FOLDERS -->
-  <div id="nemothsava2026SubFolders" class="folder-grid" style="display: none;">
-    <div class="folder-card" onclick="openMediaContent('nemothsava2026_photos')" role="button" tabindex="0">
-      <div class="folder-icon"><i class="fa-regular fa-image"></i></div>
-      <h4>Photos</h4>
-      <p>12 Items</p>
-    </div>
-    <div class="folder-card" onclick="openMediaContent('nemothsava2026_videos')" role="button" tabindex="0">
-      <div class="folder-icon"><i class="fa-solid fa-film"></i></div>
-      <h4>Videos</h4>
-      <p>1 Item</p>
-    </div>
-  </div>
+        <!-- LEVEL 2: ANNUAL NEMOTSAVA 2026 SUB-FOLDERS -->
+        <div id="nemothsava2026SubFolders" class="folder-grid" style="display: none;">
+          <div class="folder-card" onclick="openMediaContent('nemothsava2026_photos')" role="button" tabindex="0">
+            <div class="folder-icon"><i class="fa-regular fa-image"></i></div>
+            <h4>Photos</h4>
+            <p>12 Items</p>
+          </div>
+          <div class="folder-card" onclick="openMediaContent('nemothsava2026_videos')" role="button" tabindex="0">
+            <div class="folder-icon"><i class="fa-solid fa-film"></i></div>
+            <h4>Videos</h4>
+            <p>1 Item</p>
+          </div>
+        </div>
 
-  <!-- MEDIA CONTENT: BRAHMA KALASHOTSAVA 2026 PHOTOS (10 Images) -->
-  <div id="kalashotsava2026_photos" class="gallery-media-content" style="display: none;">
-    <div class="gallery-grid">
-      <img src="Gallery/Brahma Kalashotsava 2026/image1.jpeg" alt="Brahma Kalashotsava 2026 Photo 1" loading="lazy">
-      <img src="Gallery/Brahma Kalashotsava 2026/image2.jpeg" alt="Brahma Kalashotsava 2026 Photo 2" loading="lazy">
-      <img src="Gallery/Brahma Kalashotsava 2026/image7.jpeg" alt="Brahma Kalashotsava 2026 Photo 3" loading="lazy">
-      <img src="Gallery/Brahma Kalashotsava 2026/image8.jpeg" alt="Brahma Kalashotsava 2026 Photo 4" loading="lazy">
-      <img src="Gallery/Brahma Kalashotsava 2026/image9.jpeg" alt="Brahma Kalashotsava 2026 Photo 5" loading="lazy">
-      <img src="Gallery/Brahma Kalashotsava 2026/image10.jpeg" alt="Brahma Kalashotsava 2026 Photo 6" loading="lazy">
-      <img src="Gallery/Brahma Kalashotsava 2026/image11.jpeg" alt="Brahma Kalashotsava 2026 Photo 7" loading="lazy">
-    </div>
-  </div>
+        <!-- CONTENT: GENERAL PHOTOS -->
+        <div id="general_photos" class="gallery-media-content" style="display: none;">
+          <div class="gallery-grid">
+            <img src="Gallery/Photos/image1.jpeg" alt="Temple Photo 1" loading="lazy">
+            <img src="Gallery/Photos/image2.jpeg" alt="Temple Photo 2" loading="lazy">
+            <img src="Gallery/Photos/image3.jpeg" alt="Temple Photo 3" loading="lazy">
+            <img src="Gallery/Photos/image4.jpeg" alt="Temple Photo 4" loading="lazy">
+            <img src="Gallery/Photos/image5.jpeg" alt="Temple Photo 5" loading="lazy">
+            <img src="Gallery/Photos/image6.jpeg" alt="Temple Photo 6" loading="lazy">
+            <img src="Gallery/Photos/image7.jpeg" alt="Temple Photo 7" loading="lazy">
+            <img src="Gallery/Photos/image8.jpeg" alt="Temple Photo 8" loading="lazy">
+            <img src="Gallery/Photos/image9.jpeg" alt="Temple Photo 9" loading="lazy">
+            <img src="Gallery/Photos/image10.jpeg" alt="Temple Photo 10" loading="lazy">
+            <img src="Gallery/Photos/image11.jpeg" alt="Temple Photo 11" loading="lazy">
+            <img src="Gallery/Photos/image12.jpeg" alt="Temple Photo 12" loading="lazy">
+          </div>
+        </div>
 
-  <!-- MEDIA CONTENT: ANNUAL NEMOTSAVA 2026 PHOTOS -->
-  <div id="nemothsava2026_photos" class="gallery-media-content" style="display: none;">
-    <div class="gallery-grid">
-      <img src="Gallery/Photos/image1.jpeg" alt="Nemotsava 2026 Photo 1" loading="lazy">
-      <img src="Gallery/Photos/image2.jpeg" alt="Nemotsava 2026 Photo 2" loading="lazy">
-      <img src="Gallery/Photos/image3.jpeg" alt="Nemotsava 2026 Photo 3" loading="lazy">
-      <img src="Gallery/Photos/image4.jpeg" alt="Nemotsava 2026 Photo 4" loading="lazy">
-      <img src="Gallery/Photos/image5.jpeg" alt="Nemotsava 2026 Photo 5" loading="lazy">
-      <img src="Gallery/Photos/image6.jpeg" alt="Nemotsava 2026 Photo 6" loading="lazy">
-      <img src="Gallery/Photos/image7.jpeg" alt="Nemotsava 2026 Photo 7" loading="lazy">
-      <img src="Gallery/Photos/image8.jpeg" alt="Nemotsava 2026 Photo 8" loading="lazy">
-      <img src="Gallery/Photos/image9.jpeg" alt="Nemotsava 2026 Photo 9" loading="lazy">
-      <img src="Gallery/Photos/image10.jpeg" alt="Nemotsava 2026 Photo 10" loading="lazy">
-      <img src="Gallery/Photos/image11.jpeg" alt="Nemotsava 2026 Photo 11" loading="lazy">
-      <img src="Gallery/Photos/image12.jpeg" alt="Nemotsava 2026 Photo 12" loading="lazy">
-    </div>
-  </div>
+        <!-- CONTENT: KALASHOTSAVA 2024 PHOTOS -->
+        <div id="kalashotsava2024_photos" class="gallery-media-content" style="display: none;">
+          <div class="gallery-grid">
+            <img src="Gallery/Brahma Kalashotsava 2024/image1.jpeg" alt="Kalashotsava 2024 Photo 1" loading="lazy">
+            <img src="Gallery/Brahma Kalashotsava 2024/image2.jpeg" alt="Kalashotsava 2024 Photo 2" loading="lazy">
+            <img src="Gallery/Brahma Kalashotsava 2024/image3.jpeg" alt="Kalashotsava 2024 Photo 3" loading="lazy">
+            <img src="Gallery/Brahma Kalashotsava 2024/image4.jpeg" alt="Kalashotsava 2024 Photo 4" loading="lazy">
+            <img src="Gallery/Brahma Kalashotsava 2024/image5.jpeg" alt="Kalashotsava 2024 Photo 5" loading="lazy">
+            <img src="Gallery/Brahma Kalashotsava 2024/image6.jpeg" alt="Kalashotsava 2024 Photo 6" loading="lazy">
+            <img src="Gallery/Brahma Kalashotsava 2024/image7.jpeg" alt="Kalashotsava 2024 Photo 7" loading="lazy">
+            <img src="Gallery/Brahma Kalashotsava 2024/image8.jpeg" alt="Kalashotsava 2024 Photo 8" loading="lazy">
+            <img src="Gallery/Brahma Kalashotsava 2024/image9.jpeg" alt="Kalashotsava 2024 Photo 9" loading="lazy">
+            <img src="Gallery/Brahma Kalashotsava 2024/image10.jpeg" alt="Kalashotsava 2024 Photo 10" loading="lazy">
+            <img src="Gallery/Brahma Kalashotsava 2024/image11.jpeg" alt="Kalashotsava 2024 Photo 11" loading="lazy">
+            <img src="Gallery/Brahma Kalashotsava 2024/image12.jpeg" alt="Kalashotsava 2024 Photo 12" loading="lazy">
+          </div>
+        </div>
 
-  <!-- MEDIA CONTENT: ANNUAL NEMOTSAVA 2026 VIDEOS -->
-  <div id="nemothsava2026_videos" class="gallery-media-content" style="display: none;">
-    <div class="gallery-grid single-video">
-      <div class="video-card">
-        <video class="gallery-video-player" controls width="100%">
-          <source src="Gallery/Videos/Sankramana.mp4" type="video/mp4">
-          Your browser does not support video playback.
-        </video>
+        <!-- CONTENT: KALASHOTSAVA 2024 VIDEOS -->
+        <div id="kalashotsava2024_videos" class="gallery-media-content" style="display: none;">
+          <div class="gallery-grid single-video">
+            <div class="video-card">
+              <video class="gallery-video-player" controls width="100%">
+                <source src="Gallery/Videos/Sankramana.mp4" type="video/mp4">
+                Your browser does not support video playback.
+              </video>
+            </div>
+          </div>
+        </div>
+
+        <!-- CONTENT: NEMOTSAVA 2026 PHOTOS -->
+        <div id="nemothsava2026_photos" class="gallery-media-content" style="display: none;">
+          <div class="gallery-grid">
+            <img src="Gallery/Annual Nemotsava 2026/image1.jpeg" alt="Nemotsava 2026 Photo 1" loading="lazy">
+            <img src="Gallery/Annual Nemotsava 2026/image2.jpeg" alt="Nemotsava 2026 Photo 2" loading="lazy">
+            <img src="Gallery/Annual Nemotsava 2026/image3.jpeg" alt="Nemotsava 2026 Photo 3" loading="lazy">
+            <img src="Gallery/Annual Nemotsava 2026/image4.jpeg" alt="Nemotsava 2026 Photo 4" loading="lazy">
+            <img src="Gallery/Annual Nemotsava 2026/image5.jpeg" alt="Nemotsava 2026 Photo 5" loading="lazy">
+            <img src="Gallery/Annual Nemotsava 2026/image6.jpeg" alt="Nemotsava 2026 Photo 6" loading="lazy">
+            <img src="Gallery/Annual Nemotsava 2026/image7.jpeg" alt="Nemotsava 2026 Photo 7" loading="lazy">
+            <img src="Gallery/Annual Nemotsava 2026/image8.jpeg" alt="Nemotsava 2026 Photo 8" loading="lazy">
+            <img src="Gallery/Annual Nemotsava 2026/image9.jpeg" alt="Nemotsava 2026 Photo 9" loading="lazy">
+            <img src="Gallery/Annual Nemotsava 2026/image10.jpeg" alt="Nemotsava 2026 Photo 10" loading="lazy">
+            <img src="Gallery/Annual Nemotsava 2026/image11.jpeg" alt="Nemotsava 2026 Photo 11" loading="lazy">
+            <img src="Gallery/Annual Nemotsava 2026/image12.jpeg" alt="Nemotsava 2026 Photo 12" loading="lazy">
+          </div>
+        </div>
+
+        <!-- CONTENT: NEMOTSAVA 2026 VIDEOS -->
+        <div id="nemothsava2026_videos" class="gallery-media-content" style="display: none;">
+          <div class="gallery-grid single-video">
+            <div class="video-card">
+              <video class="gallery-video-player" controls width="100%">
+                <source src="Gallery/Videos/Sankramana.mp4" type="video/mp4">
+                Your browser does not support video playback.
+              </video>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
 
-<!-- Lightbox Modal -->
-<div id="lightbox" class="lightbox" aria-hidden="true">
-  <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
-  <button class="lightbox-arrow prev-arrow" onclick="changeImage(-1)" aria-label="Previous Image">&#10094;</button>
-  <button class="lightbox-arrow next-arrow" onclick="changeImage(1)" aria-label="Next Image">&#10095;</button>
-  <img id="lightbox-img" class="lightbox-content" src="" alt="Gallery Image">
-</div>
+    </div>
+  </section>
+
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+    <button class="lightbox-arrow prev-arrow" onclick="changeImage(-1)" aria-label="Previous Image">&#10094;</button>
+    <button class="lightbox-arrow next-arrow" onclick="changeImage(1)" aria-label="Next Image">&#10095;</button>
+    <img id="lightbox-img" class="lightbox-content" src="" alt="Gallery Image">
+  </div>
 
   <!-- DONATION BANNER -->
   <section class="donation-section" id="donation">
@@ -415,107 +463,128 @@
       }
     }
 
-    // Gallery Folder Navigation Functions
-    function openFolder(folderType) {
-      document.getElementById('folderGrid').style.display = 'none';
-      document.getElementById('backToFoldersBtn').style.display = 'inline-block';
-
-      if (folderType === 'photos') {
-        document.getElementById('photosContent').style.display = 'block';
-        document.getElementById('videosContent').style.display = 'none';
-      } else if (folderType === 'videos') {
-        document.getElementById('videosContent').style.display = 'block';
-        document.getElementById('photosContent').style.display = 'none';
-      }
-    }
-
-    function showFolderGrid() {
-      document.getElementById('folderGrid').style.display = 'grid';
-      document.getElementById('photosContent').style.display = 'none';
-      document.getElementById('videosContent').style.display = 'none';
-      document.getElementById('backToFoldersBtn').style.display = 'none';
-
-      // Pause active video when switching back
-      const video = document.getElementById('galleryVideo');
-      if (video) {
-        video.pause();
-      }
-    }
-
-    // Lightbox & Navigation JavaScript
+    // Gallery Folder Navigation State
+    let galleryState = 'main'; // States: 'main', 'event', 'media', 'main_media'
+    let activeEvent = '';
     let currentImageIndex = 0;
     let galleryImages = [];
-
-    // Touch Tracking Variables
     let touchStartX = 0;
     let touchEndX = 0;
 
-    document.addEventListener("DOMContentLoaded", () => {
-      const images = document.querySelectorAll(".gallery-grid img");
-      
-      images.forEach((img, index) => {
-        galleryImages.push(img.src);
-        img.addEventListener("click", () => {
-          openLightbox(index);
-        });
-      });
+    function resetGalleryViews() {
+      document.getElementById('mainGalleryFolders').style.display = 'none';
+      document.getElementById('kalashotsava2024SubFolders').style.display = 'none';
+      document.getElementById('nemothsava2026SubFolders').style.display = 'none';
+      document.getElementById('general_photos').style.display = 'none';
+      document.getElementById('kalashotsava2024_photos').style.display = 'none';
+      document.getElementById('kalashotsava2024_videos').style.display = 'none';
+      document.getElementById('nemothsava2026_photos').style.display = 'none';
+      document.getElementById('nemothsava2026_videos').style.display = 'none';
 
-      const lightbox = document.getElementById("lightbox");
+      // Pause playing videos on view change
+      document.querySelectorAll('.gallery-video-player').forEach(video => video.pause());
+    }
 
-      // Touch Event Listeners for Mobile Swiping
-      lightbox.addEventListener("touchstart", (e) => {
-        touchStartX = e.changedTouches[0].screenX;
-      }, { passive: true });
+    function openEventFolder(eventId) {
+      resetGalleryViews();
+      activeEvent = eventId;
+      galleryState = 'event';
 
-      lightbox.addEventListener("touchend", (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
-      }, { passive: true });
-    });
+      const backBtn = document.getElementById('backToFoldersBtn');
+      const backText = document.getElementById('backBtnText');
+      const title = document.getElementById('galleryTitle');
 
-    // Handle Swipe Gestures
-    function handleSwipe() {
-      const swipeThreshold = 50; // Minimum distance (in px) to qualify as a swipe
-      const diff = touchEndX - touchStartX;
+      backBtn.style.display = 'inline-flex';
+      backText.textContent = 'Back to Gallery';
 
-      if (Math.abs(diff) > swipeThreshold) {
-        if (diff < 0) {
-          // Swiped Left -> Go to Next Image
-          changeImage(1);
-        } else {
-          // Swiped Right -> Go to Previous Image
-          changeImage(-1);
-        }
+      if (eventId === 'kalashotsava2024') {
+        document.getElementById('kalashotsava2024SubFolders').style.display = 'grid';
+        title.innerHTML = '<i class="fa-regular fa-folder-open"></i> Brahma Kalashotsava 2024';
+      } else if (eventId === 'nemothsava2026') {
+        document.getElementById('nemothsava2026SubFolders').style.display = 'grid';
+        title.innerHTML = '<i class="fa-regular fa-folder-open"></i> Annual Nemotsava 2026';
       }
     }
 
-    // Open Lightbox
+    function openMediaContent(contentId) {
+      resetGalleryViews();
+      galleryState = contentId === 'general_photos' ? 'main_media' : 'media';
+
+      const backBtn = document.getElementById('backToFoldersBtn');
+      const backText = document.getElementById('backBtnText');
+      const title = document.getElementById('galleryTitle');
+
+      backBtn.style.display = 'inline-flex';
+      document.getElementById(contentId).style.display = 'block';
+
+      if (contentId === 'general_photos') {
+        backText.textContent = 'Back to Gallery';
+        title.innerHTML = '<i class="fa-regular fa-image"></i> Photos';
+      } else {
+        backText.textContent = 'Back to Event';
+        if (contentId.includes('kalashotsava2024')) {
+          title.innerHTML = contentId.includes('photos') 
+            ? '<i class="fa-regular fa-image"></i> Kalashotsava 2024 - Photos' 
+            : '<i class="fa-solid fa-film"></i> Kalashotsava 2024 - Videos';
+        } else if (contentId.includes('nemothsava2026')) {
+          title.innerHTML = contentId.includes('photos') 
+            ? '<i class="fa-regular fa-image"></i> Nemotsava 2026 - Photos' 
+            : '<i class="fa-solid fa-film"></i> Nemotsava 2026 - Videos';
+        }
+      }
+
+      setupLightboxForActiveMedia(contentId);
+    }
+
+    function navigateGalleryBack() {
+      if (galleryState === 'media') {
+        openEventFolder(activeEvent);
+      } else if (galleryState === 'event' || galleryState === 'main_media') {
+        showMainGalleryFolders();
+      }
+    }
+
+    function showMainGalleryFolders() {
+      resetGalleryViews();
+      galleryState = 'main';
+      activeEvent = '';
+
+      document.getElementById('mainGalleryFolders').style.display = 'grid';
+      document.getElementById('backToFoldersBtn').style.display = 'none';
+      document.getElementById('galleryTitle').innerHTML = '<i class="fa-regular fa-images"></i> Gallery';
+    }
+
+    // Lightbox Functionality
+    function setupLightboxForActiveMedia(activeContentId) {
+      galleryImages = [];
+      const images = document.querySelectorAll(`#${activeContentId} .gallery-grid img`);
+      images.forEach((img, index) => {
+        galleryImages.push(img.src);
+        img.onclick = () => openLightbox(index);
+      });
+    }
+
     function openLightbox(index) {
+      if (galleryImages.length === 0) return;
       currentImageIndex = index;
+      
       const lightbox = document.getElementById("lightbox");
       const lightboxImg = document.getElementById("lightbox-img");
       
       lightboxImg.src = galleryImages[currentImageIndex];
       lightbox.style.display = "flex";
+      lightbox.setAttribute("aria-hidden", "false");
     }
 
-    // Close Lightbox
     function closeLightbox() {
-      document.getElementById("lightbox").style.display = "none";
+      const lightbox = document.getElementById("lightbox");
+      lightbox.style.display = "none";
+      lightbox.setAttribute("aria-hidden", "true");
     }
 
-    // Change Image (Next / Previous)
     function changeImage(direction) {
       if (galleryImages.length === 0) return;
-
-      currentImageIndex += direction;
-      
-      if (currentImageIndex < 0) {
-        currentImageIndex = galleryImages.length - 1;
-      } else if (currentImageIndex >= galleryImages.length) {
-        currentImageIndex = 0;
-      }
-      
+      currentImageIndex = (currentImageIndex + direction + galleryImages.length) % galleryImages.length;
       document.getElementById("lightbox-img").src = galleryImages[currentImageIndex];
     }
 
@@ -532,6 +601,33 @@
         }
       }
     });
+
+    // Mobile Swipe Gesture Support
+    document.addEventListener("DOMContentLoaded", () => {
+      const lightbox = document.getElementById("lightbox");
+      
+      if (lightbox) {
+        lightbox.addEventListener("touchstart", (e) => {
+          touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        lightbox.addEventListener("touchend", (e) => {
+          touchEndX = e.changedTouches[0].screenX;
+          handleSwipe();
+        }, { passive: true });
+      }
+    });
+
+    function handleSwipe() {
+      const diff = touchEndX - touchStartX;
+      if (Math.abs(diff) > 50) {
+        if (diff < 0) {
+          changeImage(1);  // Swipe Left -> Next Image
+        } else {
+          changeImage(-1); // Swipe Right -> Previous Image
+        }
+      }
+    }
   </script>
 
 </body>
