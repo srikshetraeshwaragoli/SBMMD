@@ -2,7 +2,7 @@
    1. GLOBAL VARIABLES & RESET
    ========================================== */
 :root {
-  --primary-color: #8b0000;       /* Sacred Deep Red / Crimson */
+  --primary-color: #8b0000;       /* Sacred Deep Red */
   --primary-hover: #660000;
   --secondary-color: #d4af37;     /* Temple Gold */
   --secondary-hover: #b89628;
@@ -58,14 +58,12 @@ ul {
   list-style: none;
 }
 
-/* Container */
 .container {
   width: 90%;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-/* Section Title Typography */
 .section-title {
   text-align: center;
   margin-bottom: 2.5rem;
@@ -84,7 +82,7 @@ ul {
   margin: 0.5rem 0;
 }
 
-/* Buttons */
+/* BUTTONS */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -234,7 +232,7 @@ ul {
 .hero {
   position: relative;
   min-height: 85vh;
-  background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('image1.png') center/cover no-repeat;
+  background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('image1.png') center/cover no-repeat, url('https://picsum.photos/1200/800?dark=1') center/cover no-repeat;
   display: flex;
   align-items: center;
   color: #ffffff;
@@ -587,7 +585,7 @@ ul {
   color: var(--text-muted);
 }
 
-/* Gallery Media Content Grid */
+/* Gallery Grid Layout */
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
@@ -601,6 +599,7 @@ ul {
   border-radius: var(--radius-sm);
   cursor: pointer;
   transition: var(--transition);
+  background-color: var(--border-color);
 }
 
 .gallery-grid img:hover {
@@ -833,8 +832,6 @@ ul {
 /* ==========================================
    11. RESPONSIVE BREAKPOINTS
    ========================================== */
-
-/* Tablet & Smaller Screens */
 @media (max-width: 992px) {
   .hero-content h1 {
     font-size: 2.2rem;
@@ -857,7 +854,6 @@ ul {
   }
 }
 
-/* Mobile Screens */
 @media (max-width: 768px) {
   .nav-container {
     flex-direction: column;
