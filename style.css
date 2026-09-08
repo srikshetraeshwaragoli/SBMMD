@@ -227,7 +227,8 @@ img {
 
 .hero-content {
   max-width: 800px;
-  margin: 0 auto;
+  margin: 0;
+  text-align: left;
 }
 
 .welcome-text {
@@ -262,7 +263,7 @@ img {
 .hero-buttons {
   display: flex;
   gap: 1rem;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 /* ==========================================
