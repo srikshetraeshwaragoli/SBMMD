@@ -237,14 +237,14 @@ img {
 .welcome-text {
   font-size: 0.95rem;
   letter-spacing: 3px;
-  color: var(--accent-gold); /* Gold color */
+  color: #E2E8F0;
   font-weight: 600;
   text-transform: uppercase;
   margin-bottom: 0.75rem;
 }
 
 .hero-content h1 {
-  color: var(--accent-gold); /* Updated from white to match welcome-text */
+  color: #E2E8F0;
   font-size: 3rem;
   font-weight: 700;
   line-height: 1.15;
