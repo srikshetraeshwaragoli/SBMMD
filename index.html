@@ -213,7 +213,7 @@
         </div>
       </div>
 
-  <!-- GALLERY SECTION -->
+      <!-- GALLERY SECTION -->
       <div class="gallery-column" id="gallery">
         <div class="column-header">
           <h3 id="galleryTitle"><i class="fa-regular fa-images"></i> Gallery</h3>
@@ -222,9 +222,9 @@
           </button>
         </div>
 
-        <!-- 3 MAIN GALLERY FOLDERS -->
+        <!-- 4 MAIN GALLERY FOLDERS -->
         <div id="mainGalleryFolders" class="folder-grid">
-          <!-- Folder 1: Photos -->
+          <!-- Folder 1: General Photos -->
           <div class="folder-card" onclick="openMediaContent('general_photos')" role="button" tabindex="0">
             <div class="folder-icon"><i class="fa-solid fa-folder-open"></i></div>
             <h4>Photos</h4>
@@ -242,12 +242,11 @@
             <h4>Annual Nemothsava 2026</h4>
             <p>Photos & Videos</p>
           </div>
-        </div>
-        <!-- Folder 4: Videos -->
-          <div class="folder-card" onclick="openEventFolder('nemothsava2026')" role="button" tabindex="0">
-            <div class="folder-icon"><i class="fa-solid fa-folder"></i></div>
+          <!-- Folder 4: Standalone Videos -->
+          <div class="folder-card" onclick="openMediaContent('videosContent')" role="button" tabindex="0">
+            <div class="folder-icon"><i class="fa-solid fa-film"></i></div>
             <h4>Videos</h4>
-            <p>1 Items</p>
+            <p>1 Item</p>
           </div>
         </div>
 
@@ -256,7 +255,7 @@
           <div class="folder-card" onclick="openMediaContent('kalashotsava2024_photos')" role="button" tabindex="0">
             <div class="folder-icon"><i class="fa-regular fa-image"></i></div>
             <h4>Photos</h4>
-            <p>12 Items</p>
+            <p>8 Items</p>
           </div>
           <div class="folder-card" onclick="openMediaContent('kalashotsava2024_videos')" role="button" tabindex="0">
             <div class="folder-icon"><i class="fa-solid fa-film"></i></div>
@@ -281,7 +280,7 @@
 
         <!-- CONTENT: GENERAL PHOTOS (FOLDER 1) -->
         <div id="general_photos" class="gallery-media-content" style="display: none;">
-        <div class="gallery-grid">
+          <div class="gallery-grid">
             <img src="Gallery/Photos/image1.jpeg" alt="Temple Photo 1">
             <img src="Gallery/Photos/image2.jpeg" alt="Temple Photo 2">
             <img src="Gallery/Photos/image3.jpeg" alt="Temple Photo 3">
@@ -297,18 +296,17 @@
           </div>
         </div>
 
-         <!-- VIDEOS CONTENT -->
+        <!-- CONTENT: STANDALONE VIDEOS (FOLDER 4) -->
         <div id="videosContent" class="gallery-media-content" style="display: none;">
-          <div class="gallery-grid">
+          <div class="gallery-grid single-video">
             <div class="video-card">
-              <video id="galleryVideo" controls width="100%">
+              <video class="gallery-video-player" controls width="100%">
                 <source src="Gallery/Videos/Sankramana.mp4" type="video/mp4">
                 Your browser does not support video playback.
               </video>
             </div>
           </div>
         </div>
-      </div>
 
         <!-- CONTENT: KALASHOTSAVA 2024 PHOTOS -->
         <div id="kalashotsava2024_photos" class="gallery-media-content" style="display: none;">
@@ -365,6 +363,7 @@
             </div>
           </div>
         </div>
+
       </div>
 
     </div>
@@ -495,6 +494,7 @@
       document.getElementById('kalashotsava2024SubFolders').style.display = 'none';
       document.getElementById('nemothsava2026SubFolders').style.display = 'none';
       document.getElementById('general_photos').style.display = 'none';
+      document.getElementById('videosContent').style.display = 'none';
       document.getElementById('kalashotsava2024_photos').style.display = 'none';
       document.getElementById('kalashotsava2024_videos').style.display = 'none';
       document.getElementById('nemothsava2026_photos').style.display = 'none';
@@ -527,7 +527,7 @@
 
     function openMediaContent(contentId) {
       resetGalleryViews();
-      galleryState = contentId === 'general_photos' ? 'main_media' : 'media';
+      galleryState = (contentId === 'general_photos' || contentId === 'videosContent') ? 'main_media' : 'media';
 
       const backBtn = document.getElementById('backToFoldersBtn');
       const backText = document.getElementById('backBtnText');
@@ -539,6 +539,9 @@
       if (contentId === 'general_photos') {
         backText.textContent = 'Back to Gallery';
         title.innerHTML = '<i class="fa-regular fa-image"></i> Photos';
+      } else if (contentId === 'videosContent') {
+        backText.textContent = 'Back to Gallery';
+        title.innerHTML = '<i class="fa-solid fa-film"></i> Videos';
       } else {
         backText.textContent = 'Back to Event';
         if (contentId.includes('kalashotsava2024')) {
