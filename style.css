@@ -276,7 +276,7 @@ img {
 }
 
 /* ==========================================
-   QUICK INFO BAR
+   QUICK INFO BAR & SANKRAMANA POOJA LIST FIX
    ========================================== */
 .quick-info {
   margin-top: -3rem;
@@ -289,6 +289,7 @@ img {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.5rem;
+  align-items: start;
 }
 
 .info-card {
@@ -302,29 +303,63 @@ img {
   align-items: flex-start;
 }
 
+.info-card-content {
+  width: 100%;
+}
+
 .info-icon {
   font-size: 2rem;
   color: var(--primary-maroon);
   background-color: var(--accent-gold-light);
   padding: 0.8rem;
   border-radius: 50%;
+  flex-shrink: 0;
 }
 
 .info-card h4 {
   font-size: 1.1rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
 }
 
+/* Updated List Styling to display full list cleanly without overflow hiding */
 .info-card ul {
-  max-height: 120px;
+  display: block;
+  visibility: visible;
+  opacity: 1;
+  max-height: 240px; /* Expanded capacity for full schedule list */
   overflow-y: auto;
   padding-right: 0.5rem;
-  font-size: 0.85rem;
+  font-size: 0.88rem;
+  scroll-behavior: smooth;
+}
+
+/* Scrollbar styling for smooth reading */
+.info-card ul::-webkit-scrollbar {
+  width: 5px;
+}
+
+.info-card ul::-webkit-scrollbar-track {
+  background: var(--bg-light);
+  border-radius: 4px;
+}
+
+.info-card ul::-webkit-scrollbar-thumb {
+  background: var(--primary-maroon);
+  border-radius: 4px;
 }
 
 .info-card ul li {
-  padding: 0.2rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.4rem 0;
   border-bottom: 1px dashed var(--border-color);
+  color: var(--text-dark);
+}
+
+.info-card ul li:last-child {
+  border-bottom: none;
 }
 
 .highlight {
