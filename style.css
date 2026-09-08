@@ -1,25 +1,34 @@
 /* ==========================================
-   GLOBAL VARIABLES & RESET
+   1. DESIGN SYSTEM & BASE RESET
    ========================================== */
 :root {
-  --primary-maroon: #5B0E14;        
+  /* Brand Color Palette */
+  --primary-maroon: #5B0E14;     
   --secondary-maroon: #7D181E;
   --primary-hover: #A52A2A;
   --accent-gold: #D4AF37;           /* Traditional Brass/Gold */
   --accent-gold-light: #FFF8E7;
+  
+  /* Neutral Color Palette */
   --text-dark: #2B2B2B;
   --text-muted: #666666;
   --bg-light: #FDFBF7;              /* Warm Ivory Background */
   --bg-white: #FFFFFF;
   --border-color: #E2D7C5;
+  
+  /* Elevation & Motion */
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --transition-fast: 0.3s ease;
+  
+  /* Typography Tokens */
   --font-heading: 'Cinzel', serif;
   --font-body: 'Poppins', sans-serif;
-  --transition-fast: 0.3s ease;
 }
 
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -36,7 +45,9 @@ body {
   line-height: 1.6;
 }
 
-/* Base Typography & Helpers */
+/* ==========================================
+   2. TYPOGRAPHY & GLOBAL REUSABLES
+   ========================================== */
 h1, h2, h3, h4 {
   font-family: var(--font-heading);
   color: var(--secondary-maroon);
@@ -58,12 +69,14 @@ img {
   display: block;
 }
 
+/* Layout Containers */
 .container {
   width: 90%;
   max-width: 1200px;
   margin: 0 auto;
 }
 
+/* Section Decoration */
 .divider {
   font-size: 1.5rem;
   text-align: center;
@@ -81,7 +94,13 @@ img {
   color: var(--primary-maroon);
 }
 
-/* Buttons */
+.highlight {
+  color: var(--primary-maroon);
+  font-weight: 600;
+  margin-top: 0.2rem;
+}
+
+/* Component: Buttons & Links */
 .btn {
   display: inline-block;
   padding: 0.75rem 1.8rem;
@@ -139,7 +158,7 @@ img {
 }
 
 /* ==========================================
-   HEADER / NAVBAR
+   3. SITE HEADER & NAVIGATION
    ========================================== */
 .navbar {
   position: sticky;
@@ -211,8 +230,9 @@ img {
 }
 
 /* ==========================================
-   HERO SECTION
+   4. HERO & QUICK INFO BAR
    ========================================== */
+/* Hero Unit */
 .hero {
   background: linear-gradient(to right, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 45%, rgba(0, 0, 0, 0.1) 100%), 
               url('https://raw.githubusercontent.com/srikshetraeshwaragoli/SBMMD/main/image2.png') center center / cover no-repeat;
@@ -274,9 +294,7 @@ img {
   justify-content: flex-start;
 }
 
-/* ==========================================
-   QUICK INFO BAR
-   ========================================== */
+/* Quick Info Section */
 .quick-info {
   margin-top: -3rem;
   position: relative;
@@ -326,15 +344,10 @@ img {
   border-bottom: 1px dashed var(--border-color);
 }
 
-.highlight {
-  color: var(--primary-maroon);
-  font-weight: 600;
-  margin-top: 0.2rem;
-}
-
 /* ==========================================
-   ABOUT SECTION
+   5. ABOUT & POOJA/SEVA SECTIONS
    ========================================== */
+/* About Section */
 .about-section {
   padding: 4rem 0;
   background-color: var(--bg-white);
@@ -362,6 +375,10 @@ img {
   text-align: left;
 }
 
+.about-content button {
+  margin-top: 1.5rem;
+}
+
 .kannada-details {
   display: none;
   margin-top: 1.2rem;
@@ -377,13 +394,7 @@ img {
   display: block;
 }
 
-.about-content button {
-  margin-top: 1.5rem;
-}
-
-/* ==========================================
-   POOJA / SEVA SECTION
-   ========================================== */
+/* Pooja / Seva Section */
 .pooja-section {
   padding: 2rem 0;
   background-color: var(--bg-light);
@@ -428,7 +439,7 @@ img {
 }
 
 /* ==========================================
-   EVENTS & GALLERY SPLIT SECTION
+   6. EVENTS & INTERACTIVE GALLERY
    ========================================== */
 .events-gallery-section {
   padding: 4rem 0;
@@ -465,7 +476,7 @@ img {
   font-weight: 600;
 }
 
-/* Events Column */
+/* Sub-Module: Event List */
 .event-list {
   display: flex;
   flex-direction: column;
@@ -514,9 +525,7 @@ img {
   color: var(--text-muted);
 }
 
-/* ==========================================
-   INTERACTIVE GALLERY & FOLDER STYLES
-   ========================================== */
+/* Sub-Module: Interactive Folder Gallery */
 .folder-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -545,7 +554,6 @@ img {
   align-items: center;
 }
 
-/* Prevent icons and titles inside the header from blocking click events */
 .folder-header, 
 .folder-header h4, 
 .folder-header i {
@@ -563,7 +571,6 @@ img {
   margin-right: 0.4rem;
 }
 
-/* Keep the back button clickable */
 .folder-header .back-btn {
   pointer-events: auto;
   display: none;
@@ -576,7 +583,7 @@ img {
   background-color: var(--accent-gold-light);
 }
 
-/* Hide media previews by default until folder is opened */
+/* Hidden Media Grid Initial State */
 .folder-group .media-grid {
   display: none;
   grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
@@ -584,7 +591,7 @@ img {
   margin-top: 1rem;
 }
 
-/* Active Expanded Folder Styles */
+/* Expanded Active Folder State */
 .folder-group.active {
   grid-column: 1 / -1;
   background-color: var(--bg-white);
@@ -600,7 +607,7 @@ img {
   display: inline-block;
 }
 
-/* Image Thumbnails & Zoom Hover */
+/* Media Gallery Thumbnails & Overlays */
 .media-grid a {
   display: block;
   height: 85px;
@@ -639,7 +646,7 @@ img {
   color: var(--accent-gold);
 }
 
-/* GLightbox Override Arrows & Controls */
+/* Sub-Module: GLightbox Overrides */
 .gnext, .gprev {
   background-color: rgba(91, 14, 20, 0.75) !important;
   border-radius: 50% !important;
@@ -652,7 +659,7 @@ img {
 }
 
 /* ==========================================
-   DONATION SECTION
+   7. DONATION SECTION
    ========================================== */
 .donation-section {
   padding: 3rem 0;
@@ -703,7 +710,7 @@ img {
 }
 
 /* ==========================================
-   FOOTER
+   8. SITE FOOTER
    ========================================== */
 .footer {
   background-color: var(--secondary-maroon);
@@ -727,6 +734,13 @@ img {
   color: var(--accent-gold);
 }
 
+.footer h4 {
+  color: var(--accent-gold);
+  font-size: 1.1rem;
+  margin-bottom: 1.2rem;
+  position: relative;
+}
+
 .social-links {
   display: flex;
   gap: 0.8rem;
@@ -746,13 +760,6 @@ img {
 
 .social-links a:hover {
   background-color: var(--primary-maroon);
-}
-
-.footer h4 {
-  color: var(--accent-gold);
-  font-size: 1.1rem;
-  margin-bottom: 1.2rem;
-  position: relative;
 }
 
 .footer-links ul li {
@@ -800,14 +807,15 @@ img {
   font-size: 0.85rem;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   display: flex;
-  justify-style: space-around;
+  justify-content: space-around;
   flex-wrap: wrap;
   gap: 0.5rem;
 }
 
 /* ==========================================
-   RESPONSIVE DESIGN (MEDIA QUERIES)
+   9. MEDIA QUERIES & RESPONSIVE BREAKPOINTS
    ========================================== */
+/* Medium Devices / Tablets (Landscape) */
 @media (max-width: 992px) {
   .about-container,
   .split-grid {
@@ -819,6 +827,7 @@ img {
   }
 }
 
+/* Small Devices / Mobile Phones */
 @media (max-width: 768px) {
   .nav-container {
     flex-direction: column;
