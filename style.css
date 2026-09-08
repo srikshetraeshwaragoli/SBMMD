@@ -214,10 +214,11 @@ img {
    HERO SECTION
    ========================================== */
 .hero {
-  background: url('image2.png') center center / cover no-repeat;
-  height: 70vh;            /* Reduced from 80vh to 55vh */
-  min-height: 380px;        /* Reduced from 500px to 380px */
-  position: relative;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+              url('https://raw.githubusercontent.com/srikshetraeshwaragoli/SBMMD/main/image2.png') no-repeat center center/cover;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
 }
 
 .hero-overlay {
