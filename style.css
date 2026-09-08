@@ -214,7 +214,7 @@ img {
    HERO SECTION
    ========================================== */
 .hero {
-  background: url('https://github.com/srikshetraeshwaragoli/SBMMD/blob/main/image2.png') center center / cover no-repeat;
+  background: url('image2.png') center center / cover no-repeat;
   height: 70vh;            /* Reduced from 80vh to 55vh */
   min-height: 380px;        /* Reduced from 500px to 380px */
   position: relative;
