@@ -360,26 +360,27 @@
     { folderPath: 'Gallery/Brahma Kalashothsava 2024', containerId: 'gallery-kalashothsava2024', galleryGroup: 'kalashothsava2024' }
   ];
 
-  // Open a specific folder view
-  function openFolder(folderId) {
-    document.querySelectorAll('.folder-group').forEach(group => group.classList.remove('active'));
-    
-    const targetFolder = document.getElementById(folderId).closest('.folder-group');
-    if (targetFolder) {
-      targetFolder.classList.add('active');
-    }
+  // Open folder
+  function openFolder(folderGroup) {
+    if (folderGroup.classList.contains('active')) return;
 
-    // Refresh Lightbox for arrow navigation within the active folder
+    // Close all other active folders
+    document.querySelectorAll('.folder-group').forEach(group => group.classList.remove('active'));
+
+    // Open target folder
+    folderGroup.classList.add('active');
+
+    // Re-initialize lightbox for the newly visible images
     initLightbox();
   }
 
-  // Close folder view and go back to all folders
-  function closeFolder(event) {
+  // Close active folder
+  function closeFolder(event, folderGroup) {
     event.stopPropagation();
-    document.querySelectorAll('.folder-group').forEach(group => group.classList.remove('active'));
+    folderGroup.classList.remove('active');
   }
 
-  // Initialize or update Lightbox with navigation arrows enabled
+  // Setup Lightbox for image popup with arrow navigation
   function initLightbox() {
     if (lightboxInstance) {
       lightboxInstance.destroy();
@@ -397,7 +398,7 @@
     });
   }
 
-  // Load repository images into their respective folders
+  // Fetch images from GitHub repo
   async function loadGithubGallery() {
     for (const folder of galleryFolders) {
       const container = document.getElementById(folder.containerId);
@@ -416,7 +417,7 @@
           const fileUrl = file.download_url;
           const fileName = file.name;
 
-          // Video element
+          // Handle Videos
           if (fileUrl.match(/\.(mp4|webm|ogg)$/i)) {
             const anchor = document.createElement('a');
             anchor.href = fileUrl;
@@ -432,7 +433,7 @@
             `;
             container.appendChild(anchor);
           } 
-          // Image element
+          // Handle Images
           else if (fileUrl.match(/\.(jpg|jpeg|png|gif|webp|svg)$/i)) {
             const anchor = document.createElement('a');
             anchor.href = fileUrl;
@@ -449,34 +450,51 @@
           }
         });
       } catch (error) {
-        console.error(`Error loading images for ${folder.folderPath}:`, error);
+        console.error(`Error loading gallery folder ${folder.folderPath}:`, error);
       }
     }
 
-    // Attach click listeners to folder headers to enable opening/closing
+    // Add back buttons to header if missing
     document.querySelectorAll('.folder-group').forEach(group => {
       const header = group.querySelector('.folder-header');
-      const mediaGrid = group.querySelector('.media-grid');
-
-      if (header && mediaGrid) {
-        // Add back button dynamically
-        if (!header.querySelector('.back-btn')) {
-          const backBtn = document.createElement('span');
-          backBtn.className = 'back-btn';
-          backBtn.innerHTML = '<i class="fa-solid fa-arrow-left"></i> Back';
-          backBtn.onclick = closeFolder;
-          header.appendChild(backBtn);
-        }
-
-        // Header click toggles folder
-        header.onclick = () => openFolder(mediaGrid.id);
+      if (header && !header.querySelector('.back-btn')) {
+        const backBtn = document.createElement('span');
+        backBtn.className = 'back-btn';
+        backBtn.innerHTML = '<i class="fa-solid fa-arrow-left"></i> Back';
+        backBtn.addEventListener('click', (e) => closeFolder(e, group));
+        header.appendChild(backBtn);
       }
     });
 
     initLightbox();
   }
 
-  document.addEventListener('DOMContentLoaded', loadGithubGallery);
+  // Global click event handler for folder switching
+  document.addEventListener('DOMContentLoaded', () => {
+    loadGithubGallery();
+
+    const folderGrid = document.querySelector('.folder-grid');
+    if (folderGrid) {
+      folderGrid.addEventListener('click', (e) => {
+        // Find nearest folder group
+        const folderGroup = e.target.closest('.folder-group');
+        
+        // If back button clicked, don't re-open
+        if (e.target.classList.contains('back-btn') || e.target.closest('.back-btn')) {
+          return;
+        }
+
+        // If lightbox image clicked, don't interfere
+        if (e.target.closest('.media-grid')) {
+          return;
+        }
+
+        if (folderGroup) {
+          openFolder(folderGroup);
+        }
+      });
+    }
+  });
 
   function toggleLearnMore() {
     const content = document.getElementById("kannadaContent");
