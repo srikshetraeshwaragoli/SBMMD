@@ -213,74 +213,103 @@
         </div>
       </div>
 
-      <!-- GALLERY SECTION -->
-      <div class="gallery-column" id="gallery">
-        <div class="column-header">
-          <h3><i class="fa-regular fa-images"></i> Gallery</h3>
-          <button id="backToFoldersBtn" class="btn-back" onclick="showFolderGrid()" style="display: none;">
-            &larr; Back to Folders
-          </button>
-        </div>
-
-        <!-- FOLDER SELECTION GRID -->
-        <div id="folderGrid" class="folder-grid">
-          <div class="folder-card" onclick="openFolder('photos')" role="button" tabindex="0">
-            <div class="folder-icon"><i class="fa-solid fa-folder-open"></i></div>
-            <h4>Photos</h4>
-            <p>12 Items</p>
-          </div>
-          <div class="folder-card" onclick="openFolder('videos')" role="button" tabindex="0">
-            <div class="folder-icon"><i class="fa-solid fa-folder-open"></i></div>
-            <h4>Videos</h4>
-            <p>1 Item</p>
-          </div>
-        </div>
-
-        <!-- PHOTOS CONTENT -->
-        <div id="photosContent" class="gallery-media-content" style="display: none;">
-          <div class="gallery-grid">
-            <img src="Gallery/Photos/image1.jpeg" alt="Temple Photo 1">
-            <img src="Gallery/Photos/image2.jpeg" alt="Temple Photo 2">
-            <img src="Gallery/Photos/image3.jpeg" alt="Temple Photo 3">
-            <img src="Gallery/Photos/image4.jpeg" alt="Temple Photo 4">
-            <img src="Gallery/Photos/image5.jpeg" alt="Temple Photo 5">
-            <img src="Gallery/Photos/image6.jpeg" alt="Temple Photo 6">
-            <img src="Gallery/Photos/image7.jpeg" alt="Temple Photo 7">
-            <img src="Gallery/Photos/image8.jpeg" alt="Temple Photo 8">
-            <img src="Gallery/Photos/image9.jpeg" alt="Temple Photo 9">
-            <img src="Gallery/Photos/image10.jpeg" alt="Temple Photo 10">
-            <img src="Gallery/Photos/image11.jpeg" alt="Temple Photo 11">
-            <img src="Gallery/Photos/image12.jpeg" alt="Temple Photo 12">
-          </div>
-        </div>
-
-        <!-- VIDEOS CONTENT -->
-        <div id="videosContent" class="gallery-media-content" style="display: none;">
-          <div class="gallery-grid">
-            <div class="video-card">
-              <video id="galleryVideo" controls width="100%">
-                <source src="Gallery/Videos/Sankramana.mp4" type="video/mp4">
-                Your browser does not support video playback.
-              </video>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Lightbox Modal -->
-  <div id="lightbox" class="lightbox">
-    <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
-    
-    <!-- Navigation Arrows -->
-    <button class="lightbox-arrow prev-arrow" onclick="changeImage(-1)" aria-label="Previous Image">&#10094;</button>
-    <button class="lightbox-arrow next-arrow" onclick="changeImage(1)" aria-label="Next Image">&#10095;</button>
-    
-    <!-- Main Display Image -->
-    <img id="lightbox-img" class="lightbox-content" src="" alt="Gallery Image">
+<!-- GALLERY SECTION -->
+<div class="gallery-column" id="gallery">
+  <div class="column-header">
+    <h3 id="galleryTitle"><i class="fa-regular fa-images"></i> Gallery</h3>
+    <button id="backToFoldersBtn" class="btn-back" onclick="navigateGalleryBack()" style="display: none;">
+      <i class="fa-solid fa-arrow-left"></i> <span id="backBtnText">Back</span>
+    </button>
   </div>
+
+  <!-- LEVEL 1: MAIN EVENT FOLDERS -->
+  <div id="mainGalleryFolders" class="folder-grid">
+    <div class="folder-card" onclick="openEventFolder('kalashotsava2026')" role="button" tabindex="0">
+      <div class="folder-icon"><i class="fa-solid fa-folder"></i></div>
+      <h4>Brahma Kalashotsava 2026</h4>
+      <p>10 Photos</p>
+    </div>
+    <div class="folder-card" onclick="openEventFolder('nemothsava2026')" role="button" tabindex="0">
+      <div class="folder-icon"><i class="fa-solid fa-folder"></i></div>
+      <h4>Annual Nemotsava 2026</h4>
+      <p>Photos & Videos</p>
+    </div>
+  </div>
+
+  <!-- LEVEL 2: BRAHMA KALASHOTSAVA 2026 SUB-FOLDERS -->
+  <div id="kalashotsava2026SubFolders" class="folder-grid" style="display: none;">
+    <div class="folder-card" onclick="openMediaContent('kalashotsava2026_photos')" role="button" tabindex="0">
+      <div class="folder-icon"><i class="fa-regular fa-image"></i></div>
+      <h4>Photos</h4>
+      <p>10 Items</p>
+    </div>
+  </div>
+
+  <!-- LEVEL 2: ANNUAL NEMOTSAVA 2026 SUB-FOLDERS -->
+  <div id="nemothsava2026SubFolders" class="folder-grid" style="display: none;">
+    <div class="folder-card" onclick="openMediaContent('nemothsava2026_photos')" role="button" tabindex="0">
+      <div class="folder-icon"><i class="fa-regular fa-image"></i></div>
+      <h4>Photos</h4>
+      <p>12 Items</p>
+    </div>
+    <div class="folder-card" onclick="openMediaContent('nemothsava2026_videos')" role="button" tabindex="0">
+      <div class="folder-icon"><i class="fa-solid fa-film"></i></div>
+      <h4>Videos</h4>
+      <p>1 Item</p>
+    </div>
+  </div>
+
+  <!-- MEDIA CONTENT: BRAHMA KALASHOTSAVA 2026 PHOTOS (10 Images) -->
+  <div id="kalashotsava2026_photos" class="gallery-media-content" style="display: none;">
+    <div class="gallery-grid">
+      <img src="Gallery/Brahma Kalashotsava 2026/image1.jpeg" alt="Brahma Kalashotsava 2026 Photo 1" loading="lazy">
+      <img src="Gallery/Brahma Kalashotsava 2026/image2.jpeg" alt="Brahma Kalashotsava 2026 Photo 2" loading="lazy">
+      <img src="Gallery/Brahma Kalashotsava 2026/image7.jpeg" alt="Brahma Kalashotsava 2026 Photo 3" loading="lazy">
+      <img src="Gallery/Brahma Kalashotsava 2026/image8.jpeg" alt="Brahma Kalashotsava 2026 Photo 4" loading="lazy">
+      <img src="Gallery/Brahma Kalashotsava 2026/image9.jpeg" alt="Brahma Kalashotsava 2026 Photo 5" loading="lazy">
+      <img src="Gallery/Brahma Kalashotsava 2026/image10.jpeg" alt="Brahma Kalashotsava 2026 Photo 6" loading="lazy">
+      <img src="Gallery/Brahma Kalashotsava 2026/image11.jpeg" alt="Brahma Kalashotsava 2026 Photo 7" loading="lazy">
+    </div>
+  </div>
+
+  <!-- MEDIA CONTENT: ANNUAL NEMOTSAVA 2026 PHOTOS -->
+  <div id="nemothsava2026_photos" class="gallery-media-content" style="display: none;">
+    <div class="gallery-grid">
+      <img src="Gallery/Photos/image1.jpeg" alt="Nemotsava 2026 Photo 1" loading="lazy">
+      <img src="Gallery/Photos/image2.jpeg" alt="Nemotsava 2026 Photo 2" loading="lazy">
+      <img src="Gallery/Photos/image3.jpeg" alt="Nemotsava 2026 Photo 3" loading="lazy">
+      <img src="Gallery/Photos/image4.jpeg" alt="Nemotsava 2026 Photo 4" loading="lazy">
+      <img src="Gallery/Photos/image5.jpeg" alt="Nemotsava 2026 Photo 5" loading="lazy">
+      <img src="Gallery/Photos/image6.jpeg" alt="Nemotsava 2026 Photo 6" loading="lazy">
+      <img src="Gallery/Photos/image7.jpeg" alt="Nemotsava 2026 Photo 7" loading="lazy">
+      <img src="Gallery/Photos/image8.jpeg" alt="Nemotsava 2026 Photo 8" loading="lazy">
+      <img src="Gallery/Photos/image9.jpeg" alt="Nemotsava 2026 Photo 9" loading="lazy">
+      <img src="Gallery/Photos/image10.jpeg" alt="Nemotsava 2026 Photo 10" loading="lazy">
+      <img src="Gallery/Photos/image11.jpeg" alt="Nemotsava 2026 Photo 11" loading="lazy">
+      <img src="Gallery/Photos/image12.jpeg" alt="Nemotsava 2026 Photo 12" loading="lazy">
+    </div>
+  </div>
+
+  <!-- MEDIA CONTENT: ANNUAL NEMOTSAVA 2026 VIDEOS -->
+  <div id="nemothsava2026_videos" class="gallery-media-content" style="display: none;">
+    <div class="gallery-grid single-video">
+      <div class="video-card">
+        <video class="gallery-video-player" controls width="100%">
+          <source src="Gallery/Videos/Sankramana.mp4" type="video/mp4">
+          Your browser does not support video playback.
+        </video>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Lightbox Modal -->
+<div id="lightbox" class="lightbox" aria-hidden="true">
+  <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+  <button class="lightbox-arrow prev-arrow" onclick="changeImage(-1)" aria-label="Previous Image">&#10094;</button>
+  <button class="lightbox-arrow next-arrow" onclick="changeImage(1)" aria-label="Next Image">&#10095;</button>
+  <img id="lightbox-img" class="lightbox-content" src="" alt="Gallery Image">
+</div>
 
   <!-- DONATION BANNER -->
   <section class="donation-section" id="donation">
