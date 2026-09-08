@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sri Brahma Mugera Mahankali Daivasthana (R.), Eshwaragoli, Kulai-Hosabettu</title>
   
-  <!-- Google Fonts -->
+  <!-- Google Fonts for Traditional / Elegant Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -108,7 +108,7 @@
   <section class="about-section" id="about">
     <div class="container about-container">
       <div class="about-image">
-        <img src="./image1.png" alt="Temple Deity at Sri Brahma Mugera Mahankali Daivasthana" onerror="this.src='https://picsum.photos/600/400?temple=1'">
+      <img src="image1.png" alt="Temple Deity at Sri Brahma Mugera Mahankali Daivasthana">
       </div>
       <div class="about-content">
         <h2>About Our Daivasthana</h2>
@@ -118,7 +118,7 @@
           This sacred Daivasthana serves as a spiritual center for the worship of several revered Daivas of Tulu Nadu, including Daivarasu Ullaya, Mahankali, Brahma Mugera, Thangadi, Alera Panjurli, Swami Koragajja, and Daivaraja Mantra Guliga.
         </p>
 
-        <!-- KANNADA CONTENT TOGGLE -->
+        <!-- HIDDEN KANNADA CONTENT -->
         <div id="kannadaContent" class="kannada-details" style="display: none;">
           <p>
             ದೈವ ದೇವರ ಕೃಪೆಯಲ್ಲಿ ಕಂಗೊಳಿಸುತ್ತಿರುವ ನಮ್ಮ ತುಳುನಾಡಿನ ಅನೇಕ ಆರಾಧನಾ ಕ್ಷೇತ್ರಗಳಲ್ಲಿ ಮಂಗಳೂರು ತಾಲೂಕು ಹೊಸಬೆಟ್ಟು ಗ್ರಾಮದ ಶ್ರೀ ಕ್ಷೇತ್ರ ಈಶ್ವರಗೋಳಿಯೂ ಒಂದು. ಸುಮಾರು 350 ವರ್ಷಗಳಷ್ಟು ಇತಿಹಾಸವುಳ್ಳ ಈ ಕ್ಷೇತ್ರವು ಮುಗೇರ ಜನಾಂಗದಲ್ಲಿ ಜನಿಸಿ ನಾಟಿ ವೈದ್ಯೆಯಾದ ಪಯ್ಯು ಮುಗೆರ್ತಿಯು ಗಿಡಮುಲಿಕೆಯಾದ "ಇಸರ ಬೇರ"ನ್ನು ಹುಡುಕುತ್ತಾ ಗೋಳಿ ಮರದ ಬುಡದಲ್ಲಿ ಶಿವನನ್ನು ಪ್ರಾರ್ಥಿಸಿದ ಸಂದರ್ಭದಲ್ಲಿ ಅವಳ ಭಕ್ತಿಗೆ ಮೆಚ್ಚಿ ಪರಮ ಭಕ್ತೆಯಾದ ನಿನಗೆ ಮುಂದೊಂದು ದಿನ ಶಿವಜಾಯೆಯಾದ ಶ್ರೀ ಪಾರ್ವತಿಯು ಮಹಾಂಕಾಳಿಯಾಗಿ ಧರ್ಮದೈವಗಳು ಇಲ್ಲಿ ನೆಲೆಯಾಗಿ ಈ ನೆಲದ ಸತ್ಯವನ್ನು ಕಾಪಾಡುವರು ಎಂದು ಅಭಯ ನೀಡಿದರು.
@@ -129,6 +129,7 @@
           </p>
         </div>
 
+        <!-- TOGGLE BUTTON -->
         <button id="toggleBtn" class="btn btn-dark" onclick="toggleLearnMore()">Learn More &rarr;</button>
       </div>
     </div>
@@ -215,65 +216,27 @@
       <!-- GALLERY SECTION -->
       <div class="gallery-column" id="gallery">
         <div class="column-header">
-          <h3 id="galleryTitle"><i class="fa-regular fa-images"></i> Gallery</h3>
-          <button id="backToFoldersBtn" class="btn-back" onclick="navigateGalleryBack()" style="display: none;">
-            <i class="fa-solid fa-arrow-left"></i> <span id="backBtnText">Back</span>
+          <h3><i class="fa-regular fa-images"></i> Gallery</h3>
+          <button id="backToFoldersBtn" class="btn-back" onclick="showFolderGrid()" style="display: none;">
+            &larr; Back to Folders
           </button>
         </div>
 
-        <!-- MAIN GALLERY FOLDERS -->
-        <div id="mainGalleryFolders" class="folder-grid">
-          <div class="folder-card" onclick="openMediaContent('general_photos')" role="button" tabindex="0">
+        <!-- FOLDER SELECTION GRID -->
+        <div id="folderGrid" class="folder-grid">
+          <div class="folder-card" onclick="openFolder('photos')" role="button" tabindex="0">
             <div class="folder-icon"><i class="fa-solid fa-folder-open"></i></div>
             <h4>Photos</h4>
             <p>12 Items</p>
           </div>
-          <div class="folder-card" onclick="openEventFolder('kalashotsava2024')" role="button" tabindex="0">
-            <div class="folder-icon"><i class="fa-solid fa-folder"></i></div>
-            <h4>Brahma Kalashothsava 2024</h4>
-            <p>Photos & Videos</p>
-          </div>
-          <div class="folder-card" onclick="openEventFolder('nemothsava2026')" role="button" tabindex="0">
-            <div class="folder-icon"><i class="fa-solid fa-folder"></i></div>
-            <h4>Annual Nemothsava 2026</h4>
-            <p>Photos & Videos</p>
-          </div>
-          <div class="folder-card" onclick="openMediaContent('videosContent')" role="button" tabindex="0">
-            <div class="folder-icon"><i class="fa-solid fa-film"></i></div>
+          <div class="folder-card" onclick="openFolder('videos')" role="button" tabindex="0">
+            <div class="folder-icon"><i class="fa-solid fa-folder-open"></i></div>
             <h4>Videos</h4>
             <p>1 Item</p>
           </div>
         </div>
 
-        <!-- KALASHOTHSAVA 2024 SUB-FOLDERS -->
-        <div id="kalashotsava2024SubFolders" class="folder-grid" style="display: none;">
-          <div class="folder-card" onclick="openMediaContent('kalashotsava2024_photos')" role="button" tabindex="0">
-            <div class="folder-icon"><i class="fa-regular fa-image"></i></div>
-            <h4>Photos</h4>
-            <p>8 Items</p>
-          </div>
-          <div class="folder-card" onclick="openMediaContent('kalashotsava2024_videos')" role="button" tabindex="0">
-            <div class="folder-icon"><i class="fa-solid fa-film"></i></div>
-            <h4>Videos</h4>
-            <p>1 Item</p>
-          </div>
-        </div>
-
-        <!-- ANNUAL NEMOTHSAVA 2026 SUB-FOLDERS -->
-        <div id="nemothsava2026SubFolders" class="folder-grid" style="display: none;">
-          <div class="folder-card" onclick="openMediaContent('nemothsava2026_photos')" role="button" tabindex="0">
-            <div class="folder-icon"><i class="fa-regular fa-image"></i></div>
-            <h4>Photos</h4>
-            <p>12 Items</p>
-          </div>
-          <div class="folder-card" onclick="openMediaContent('nemothsava2026_videos')" role="button" tabindex="0">
-            <div class="folder-icon"><i class="fa-solid fa-film"></i></div>
-            <h4>Videos</h4>
-            <p>1 Item</p>
-          </div>
-        </div>
-
-        <!-- MEDIA CONTENT: GENERAL PHOTOS -->
+        <!-- PHOTOS CONTENT -->
         <div id="photosContent" class="gallery-media-content" style="display: none;">
           <div class="gallery-grid">
             <img src="Gallery/Photos/image1.jpeg" alt="Temple Photo 1">
@@ -291,84 +254,31 @@
           </div>
         </div>
 
-        <!-- MEDIA CONTENT: STANDALONE VIDEOS -->
+        <!-- VIDEOS CONTENT -->
         <div id="videosContent" class="gallery-media-content" style="display: none;">
-          <div class="gallery-grid single-video">
-            <div class="video-card">
-              <video class="gallery-video-player" controls width="100%">
-                <source src="./Gallery/Videos/Sankramana.mp4" type="video/mp4">
-                Your browser does not support video playback.
-              </video>
-            </div>
-          </div>
-        </div>
-
-        <!-- MEDIA CONTENT: KALASHOTSAVA 2024 PHOTOS -->
-        <div id="kalashotsava2024_photos" class="gallery-media-content" style="display: none;">
           <div class="gallery-grid">
-            <img src="./Gallery/Brahma%20Kalashotsava%202024/image1.jpeg" alt="Kalashotsava 2024 Photo 1" loading="lazy" onerror="this.src='https://picsum.photos/300/200?random=13'">
-            <img src="./Gallery/Brahma%20Kalashotsava%202024/image2.jpeg" alt="Kalashotsava 2024 Photo 2" loading="lazy" onerror="this.src='https://picsum.photos/300/200?random=14'">
-            <img src="./Gallery/Brahma%20Kalashotsava%202024/image7.jpeg" alt="Kalashotsava 2024 Photo 7" loading="lazy" onerror="this.src='https://picsum.photos/300/200?random=15'">
-            <img src="./Gallery/Brahma%20Kalashotsava%202024/image8.jpeg" alt="Kalashotsava 2024 Photo 8" loading="lazy" onerror="this.src='https://picsum.photos/300/200?random=16'">
-            <img src="./Gallery/Brahma%20Kalashotsava%202024/image9.jpeg" alt="Kalashotsava 2024 Photo 9" loading="lazy" onerror="this.src='https://picsum.photos/300/200?random=17'">
-            <img src="./Gallery/Brahma%20Kalashotsava%202024/image10.jpeg" alt="Kalashotsava 2024 Photo 10" loading="lazy" onerror="this.src='https://picsum.photos/300/200?random=18'">
-            <img src="./Gallery/Brahma%20Kalashotsava%202024/image11.jpeg" alt="Kalashotsava 2024 Photo 11" loading="lazy" onerror="this.src='https://picsum.photos/300/200?random=19'">
-            <img src="./Gallery/Brahma%20Kalashotsava%202024/image17.jpeg" alt="Kalashotsava 2024 Photo 17" loading="lazy" onerror="this.src='https://picsum.photos/300/200?random=20'">
-          </div>
-        </div>
-
-        <!-- MEDIA CONTENT: KALASHOTSAVA 2024 VIDEOS -->
-        <div id="kalashotsava2024_videos" class="gallery-media-content" style="display: none;">
-          <div class="gallery-grid single-video">
             <div class="video-card">
-              <video class="gallery-video-player" controls width="100%">
-                <source src="./Gallery/Videos/Sankramana.mp4" type="video/mp4">
+              <video id="galleryVideo" controls width="100%">
+                <source src="Gallery/Videos/Sankramana.mp4" type="video/mp4">
                 Your browser does not support video playback.
               </video>
             </div>
           </div>
         </div>
-
-        <!-- MEDIA CONTENT: NEMOTSAVA 2026 PHOTOS -->
-        <div id="nemothsava2026_photos" class="gallery-media-content" style="display: none;">
-          <div class="gallery-grid">
-            <img src="./Gallery/Annual%20Nemotsava%202026/image1.jpeg" alt="Nemotsava 2026 Photo 1" loading="lazy" onerror="this.src='https://picsum.photos/300/200?random=21'">
-            <img src="./Gallery/Annual%20Nemotsava%202026/image2.jpeg" alt="Nemotsava 2026 Photo 2" loading="lazy" onerror="this.src='https://picsum.photos/300/200?random=22'">
-            <img src="./Gallery/Annual%20Nemotsava%202026/image3.jpeg" alt="Nemotsava 2026 Photo 3" loading="lazy" onerror="this.src='https://picsum.photos/300/200?random=23'">
-            <img src="./Gallery/Annual%20Nemotsava%202026/image4.jpeg" alt="Nemotsava 2026 Photo 4" loading="lazy" onerror="this.src='https://picsum.photos/300/200?random=24'">
-            <img src="./Gallery/Annual%20Nemotsava%202026/image5.jpeg" alt="Nemotsava 2026 Photo 5" loading="lazy" onerror="this.src='https://picsum.photos/300/200?random=25'">
-            <img src="./Gallery/Annual%20Nemotsava%202026/image6.jpeg" alt="Nemotsava 2026 Photo 6" loading="lazy" onerror="this.src='https://picsum.photos/300/200?random=26'">
-            <img src="./Gallery/Annual%20Nemotsava%202026/image7.jpeg" alt="Nemotsava 2026 Photo 7" loading="lazy" onerror="this.src='https://picsum.photos/300/200?random=27'">
-            <img src="./Gallery/Annual%20Nemotsava%202026/image8.jpeg" alt="Nemotsava 2026 Photo 8" loading="lazy" onerror="this.src='https://picsum.photos/300/200?random=28'">
-            <img src="./Gallery/Annual%20Nemotsava%202026/image9.jpeg" alt="Nemotsava 2026 Photo 9" loading="lazy" onerror="this.src='https://picsum.photos/300/200?random=29'">
-            <img src="./Gallery/Annual%20Nemotsava%202026/image10.jpeg" alt="Nemotsava 2026 Photo 10" loading="lazy" onerror="this.src='https://picsum.photos/300/200?random=30'">
-            <img src="./Gallery/Annual%20Nemotsava%202026/image11.jpeg" alt="Nemotsava 2026 Photo 11" loading="lazy" onerror="this.src='https://picsum.photos/300/200?random=31'">
-            <img src="./Gallery/Annual%20Nemotsava%202026/image12.jpeg" alt="Nemotsava 2026 Photo 12" loading="lazy" onerror="this.src='https://picsum.photos/300/200?random=32'">
-          </div>
-        </div>
-
-        <!-- MEDIA CONTENT: NEMOTSAVA 2026 VIDEOS -->
-        <div id="nemothsava2026_videos" class="gallery-media-content" style="display: none;">
-          <div class="gallery-grid single-video">
-            <div class="video-card">
-              <video class="gallery-video-player" controls width="100%">
-                <source src="./Gallery/Videos/Sankramana.mp4" type="video/mp4">
-                Your browser does not support video playback.
-              </video>
-            </div>
-          </div>
-        </div>
-
       </div>
 
     </div>
   </section>
 
-  <!-- LIGHTBOX MODAL -->
-  <div id="lightbox" class="lightbox" aria-hidden="true">
+  <!-- Lightbox Modal -->
+  <div id="lightbox" class="lightbox">
     <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+    
+    <!-- Navigation Arrows -->
     <button class="lightbox-arrow prev-arrow" onclick="changeImage(-1)" aria-label="Previous Image">&#10094;</button>
     <button class="lightbox-arrow next-arrow" onclick="changeImage(1)" aria-label="Next Image">&#10095;</button>
+    
+    <!-- Main Display Image -->
     <img id="lightbox-img" class="lightbox-content" src="" alt="Gallery Image">
   </div>
 
@@ -460,6 +370,7 @@
 
   <!-- SCRIPT SECTION -->
   <script>
+    // Learn More Toggle Function
     function toggleLearnMore() {
       const content = document.getElementById("kannadaContent");
       const btn = document.getElementById("toggleBtn");
@@ -475,134 +386,111 @@
       }
     }
 
-    let galleryState = 'main';
-    let activeEvent = '';
+    // Gallery Folder Navigation Functions
+    function openFolder(folderType) {
+      document.getElementById('folderGrid').style.display = 'none';
+      document.getElementById('backToFoldersBtn').style.display = 'inline-block';
+
+      if (folderType === 'photos') {
+        document.getElementById('photosContent').style.display = 'block';
+        document.getElementById('videosContent').style.display = 'none';
+      } else if (folderType === 'videos') {
+        document.getElementById('videosContent').style.display = 'block';
+        document.getElementById('photosContent').style.display = 'none';
+      }
+    }
+
+    function showFolderGrid() {
+      document.getElementById('folderGrid').style.display = 'grid';
+      document.getElementById('photosContent').style.display = 'none';
+      document.getElementById('videosContent').style.display = 'none';
+      document.getElementById('backToFoldersBtn').style.display = 'none';
+
+      // Pause active video when switching back
+      const video = document.getElementById('galleryVideo');
+      if (video) {
+        video.pause();
+      }
+    }
+
+    // Lightbox & Navigation JavaScript
     let currentImageIndex = 0;
     let galleryImages = [];
+
+    // Touch Tracking Variables
     let touchStartX = 0;
     let touchEndX = 0;
 
-    function resetGalleryViews() {
-      document.getElementById('mainGalleryFolders').style.display = 'none';
-      document.getElementById('kalashotsava2024SubFolders').style.display = 'none';
-      document.getElementById('nemothsava2026SubFolders').style.display = 'none';
-      document.getElementById('general_photos').style.display = 'none';
-      document.getElementById('videosContent').style.display = 'none';
-      document.getElementById('kalashotsava2024_photos').style.display = 'none';
-      document.getElementById('kalashotsava2024_videos').style.display = 'none';
-      document.getElementById('nemothsava2026_photos').style.display = 'none';
-      document.getElementById('nemothsava2026_videos').style.display = 'none';
-
-      document.querySelectorAll('.gallery-video-player').forEach(video => video.pause());
-    }
-
-    function openEventFolder(eventId) {
-      resetGalleryViews();
-      activeEvent = eventId;
-      galleryState = 'event';
-
-      const backBtn = document.getElementById('backToFoldersBtn');
-      const backText = document.getElementById('backBtnText');
-      const title = document.getElementById('galleryTitle');
-
-      backBtn.style.display = 'inline-flex';
-      backText.textContent = 'Back to Gallery';
-
-      if (eventId === 'kalashotsava2024') {
-        document.getElementById('kalashotsava2024SubFolders').style.display = 'grid';
-        title.innerHTML = '<i class="fa-regular fa-folder-open"></i> Brahma Kalashotsava 2024';
-      } else if (eventId === 'nemothsava2026') {
-        document.getElementById('nemothsava2026SubFolders').style.display = 'grid';
-        title.innerHTML = '<i class="fa-regular fa-folder-open"></i> Annual Nemotsava 2026';
-      }
-    }
-
-    function openMediaContent(contentId) {
-      resetGalleryViews();
-      galleryState = (contentId === 'general_photos' || contentId === 'videosContent') ? 'main_media' : 'media';
-
-      const backBtn = document.getElementById('backToFoldersBtn');
-      const backText = document.getElementById('backBtnText');
-      const title = document.getElementById('galleryTitle');
-
-      backBtn.style.display = 'inline-flex';
+    document.addEventListener("DOMContentLoaded", () => {
+      const images = document.querySelectorAll(".gallery-grid img");
       
-      const contentEl = document.getElementById(contentId);
-      if(contentEl) contentEl.style.display = 'block';
-
-      if (contentId === 'general_photos') {
-        backText.textContent = 'Back to Gallery';
-        title.innerHTML = '<i class="fa-regular fa-image"></i> Photos';
-      } else if (contentId === 'videosContent') {
-        backText.textContent = 'Back to Gallery';
-        title.innerHTML = '<i class="fa-solid fa-film"></i> Videos';
-      } else {
-        backText.textContent = 'Back to Event';
-        if (contentId.includes('kalashotsava2024')) {
-          title.innerHTML = contentId.includes('photos') 
-            ? '<i class="fa-regular fa-image"></i> Kalashotsava 2024 - Photos' 
-            : '<i class="fa-solid fa-film"></i> Kalashotsava 2024 - Videos';
-        } else if (contentId.includes('nemothsava2026')) {
-          title.innerHTML = contentId.includes('photos') 
-            ? '<i class="fa-regular fa-image"></i> Nemotsava 2026 - Photos' 
-            : '<i class="fa-solid fa-film"></i> Nemotsava 2026 - Videos';
-        }
-      }
-
-      setupLightboxForActiveMedia(contentId);
-    }
-
-    function navigateGalleryBack() {
-      if (galleryState === 'media') {
-        openEventFolder(activeEvent);
-      } else if (galleryState === 'event' || galleryState === 'main_media') {
-        showMainGalleryFolders();
-      }
-    }
-
-    function showMainGalleryFolders() {
-      resetGalleryViews();
-      galleryState = 'main';
-      activeEvent = '';
-
-      document.getElementById('mainGalleryFolders').style.display = 'grid';
-      document.getElementById('backToFoldersBtn').style.display = 'none';
-      document.getElementById('galleryTitle').innerHTML = '<i class="fa-regular fa-images"></i> Gallery';
-    }
-
-    function setupLightboxForActiveMedia(activeContentId) {
-      galleryImages = [];
-      const images = document.querySelectorAll(`#${activeContentId} .gallery-grid img`);
       images.forEach((img, index) => {
         galleryImages.push(img.src);
-        img.onclick = () => openLightbox(index);
+        img.addEventListener("click", () => {
+          openLightbox(index);
+        });
       });
+
+      const lightbox = document.getElementById("lightbox");
+
+      // Touch Event Listeners for Mobile Swiping
+      lightbox.addEventListener("touchstart", (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+
+      lightbox.addEventListener("touchend", (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+      }, { passive: true });
+    });
+
+    // Handle Swipe Gestures
+    function handleSwipe() {
+      const swipeThreshold = 50; // Minimum distance (in px) to qualify as a swipe
+      const diff = touchEndX - touchStartX;
+
+      if (Math.abs(diff) > swipeThreshold) {
+        if (diff < 0) {
+          // Swiped Left -> Go to Next Image
+          changeImage(1);
+        } else {
+          // Swiped Right -> Go to Previous Image
+          changeImage(-1);
+        }
+      }
     }
 
+    // Open Lightbox
     function openLightbox(index) {
-      if (galleryImages.length === 0) return;
       currentImageIndex = index;
-      
       const lightbox = document.getElementById("lightbox");
       const lightboxImg = document.getElementById("lightbox-img");
       
       lightboxImg.src = galleryImages[currentImageIndex];
       lightbox.style.display = "flex";
-      lightbox.setAttribute("aria-hidden", "false");
     }
 
+    // Close Lightbox
     function closeLightbox() {
-      const lightbox = document.getElementById("lightbox");
-      lightbox.style.display = "none";
-      lightbox.setAttribute("aria-hidden", "true");
+      document.getElementById("lightbox").style.display = "none";
     }
 
+    // Change Image (Next / Previous)
     function changeImage(direction) {
       if (galleryImages.length === 0) return;
-      currentImageIndex = (currentImageIndex + direction + galleryImages.length) % galleryImages.length;
+
+      currentImageIndex += direction;
+      
+      if (currentImageIndex < 0) {
+        currentImageIndex = galleryImages.length - 1;
+      } else if (currentImageIndex >= galleryImages.length) {
+        currentImageIndex = 0;
+      }
+      
       document.getElementById("lightbox-img").src = galleryImages[currentImageIndex];
     }
 
+    // Keyboard Navigation Support
     document.addEventListener("keydown", (event) => {
       const lightbox = document.getElementById("lightbox");
       if (lightbox && lightbox.style.display === "flex") {
@@ -615,31 +503,6 @@
         }
       }
     });
-
-    document.addEventListener("DOMContentLoaded", () => {
-      const lightbox = document.getElementById("lightbox");
-      if (lightbox) {
-        lightbox.addEventListener("touchstart", (e) => {
-          touchStartX = e.changedTouches[0].screenX;
-        }, { passive: true });
-
-        lightbox.addEventListener("touchend", (e) => {
-          touchEndX = e.changedTouches[0].screenX;
-          handleSwipe();
-        }, { passive: true });
-      }
-    });
-
-    function handleSwipe() {
-      const diff = touchEndX - touchStartX;
-      if (Math.abs(diff) > 50) {
-        if (diff < 0) {
-          changeImage(1);
-        } else {
-          changeImage(-1);
-        }
-      }
-    }
   </script>
 
 </body>
