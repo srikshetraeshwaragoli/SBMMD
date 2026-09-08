@@ -230,7 +230,7 @@ img {
 }
 
 .hero-content {
-  max-width: 550px;
+  max-width: 500px;
   margin: 0; /* Removed margin-left offset completely */
   text-align: left;
 }
@@ -239,7 +239,7 @@ img {
   font-size: 1.1rem;
   letter-spacing: 3px;
   color: var(--accent-gold);
-  font-weight: 600;
+  font-weight: 550;
   margin-bottom: 0.5rem;
   text-align: left;
 }
