@@ -531,6 +531,7 @@ img {
   transition: var(--transition-fast);
   cursor: pointer;
   position: relative;
+  user-select: none;
 }
 
 .folder-group:hover {
@@ -544,11 +545,17 @@ img {
   align-items: center;
 }
 
+/* Prevent icons and titles inside the header from blocking click events */
+.folder-header, 
+.folder-header h4, 
+.folder-header i {
+  pointer-events: none;
+}
+
 .folder-header h4 {
   font-size: 1rem;
   color: var(--secondary-maroon);
   margin-bottom: 0;
-  pointer-events: none;
 }
 
 .folder-header i {
@@ -556,15 +563,9 @@ img {
   margin-right: 0.4rem;
 }
 
-/* Hide media previews by default until folder is opened */
-.folder-group .media-grid {
-  display: none;
-  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-  gap: 0.8rem;
-  margin-top: 1rem;
-}
-
+/* Keep the back button clickable */
 .folder-header .back-btn {
+  pointer-events: auto;
   display: none;
   font-size: 0.8rem;
   color: var(--primary-maroon);
@@ -573,6 +574,14 @@ img {
   padding: 0.2rem 0.6rem;
   border-radius: 4px;
   background-color: var(--accent-gold-light);
+}
+
+/* Hide media previews by default until folder is opened */
+.folder-group .media-grid {
+  display: none;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 0.8rem;
+  margin-top: 1rem;
 }
 
 /* Active Expanded Folder Styles */
