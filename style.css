@@ -213,21 +213,24 @@ img {
 /* ==========================================
    HERO SECTION
    ========================================== */
-.hero {
+hero {
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
               url('https://raw.githubusercontent.com/srikshetraeshwaragoli/SBMMD/main/image2.png') no-repeat center center/cover;
   min-height: 70vh;
   display: flex;
   align-items: center;
+  justify-content: flex-start; /* Ensures content aligns to the far left */
 }
+
 .hero-overlay {
   width: 100%;
-  padding: 5rem 0;
+  padding: 5rem 5%; /* Adds 5% space on the left and right edges */
 }
 
 .hero-content {
-  max-width: 800px;
+  max-width: 550px; /* Reduced width so text stays confined to the left blank space */
   margin: 0;
+  margin-left: 2rem; /* Shifts the text box slightly inward from the absolute edge */
   text-align: left;
 }
 
