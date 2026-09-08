@@ -3,53 +3,58 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shri Kshetra Eshwaragoli</title>
+  <title>Sri Brahma Mugera Mahankali Daivasthana (R.), Eshwaragoli, Kulai-Hosabettu</title>
   
-  <!-- Google Fonts for Cinzel & Poppins -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   
-  <!-- FontAwesome for Icons -->
+  <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <!-- Link your external CSS stylesheet here -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- NAVBAR -->
-  <nav class="navbar">
+  <!-- TOP HEADER / NAVBAR -->
+  <header class="navbar">
     <div class="container nav-container">
       <div class="logo">
         <i class="fa-solid fa-gopuram logo-icon"></i>
         <div class="logo-text">
-          <h2>Shri Kshetra</h2>
-          <span>ESHWARAGOLI</span>
+          <h2>Sri Kshetra Eshwaragoli</h2>
+          <span>Faith • Tradition • Community</span>
         </div>
       </div>
-      <ul class="nav-links">
-        <li><a href="#home" class="active">Home</a></li>
-        <li><a href="#about">About Us</a></li>
-        <li><a href="#sevas">Pooja & Sevas</a></li>
-        <li><a href="#events">Events</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#pooja">Pooja / Seva</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#donation">Donation</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
     </div>
-  </nav>
+  </header>
 
   <!-- HERO SECTION -->
-  <section id="home" class="hero">
+  <section class="hero" id="home">
     <div class="hero-overlay">
       <div class="container">
         <div class="hero-content">
-          <span class="welcome-text">Welcome to Sacred Kshetra</span>
-          <h1>Shri Kshetra Eshwaragoli</h1>
-          <p class="subtext">A divine sanctuary of peace, devotion, and ancient heritage.</p>
+          <p class="welcome-text">WELCOME TO</p>
+          <h1>Sri Brahma Sri Mugera<br>Sri Mahankali Daivasthana (R.)</h1>
+          <p class="subtext">Eshwaragoli, Kulai-Hosabettu.</p>
+          <br>
+          <p class="blessing-text">
+            May the divine blessings of our deities bring peace, prosperity, and happiness to all.
+          </p>
           <div class="hero-buttons">
-            <a href="#sevas" class="btn btn-primary">Book Seva <i class="fa-solid fa-arrow-right"></i></a>
-            <a href="#about" class="btn btn-outline">Explore Kshetra</a>
+            <a href="#about" class="btn btn-primary">About Our Daivasthana &rarr;</a>
+            <a href="#events" class="btn btn-outline">Upcoming Events &rarr;</a>
           </div>
         </div>
       </div>
@@ -58,246 +63,592 @@
 
   <!-- QUICK INFO BAR -->
   <section class="quick-info">
-    <div class="container">
-      <div class="info-grid">
-        <div class="info-card">
-          <i class="fa-regular fa-clock info-icon"></i>
-          <div>
-            <h4>Temple Timings</h4>
-            <p>Morning: 6:00 AM - 1:00 PM</p>
-            <p>Evening: 4:00 PM - 8:30 PM</p>
-          </div>
+    <div class="container info-grid">
+      <div class="info-card">
+        <i class="fa-regular fa-clock info-icon"></i>
+        <div>
+          <h4>Monthly Sankramana Pooja – 2026</h4>
+          <ul>
+            <li>January 14: Makara Sankranti</li>
+            <li>February 13: Kumbha Sankranti</li>
+            <li>March 15: Meena Sankranti</li>
+            <li>April 14: Mesha Sankranti</li>
+            <li>May 15: Vrishabha Sankranti</li>
+            <li>June 15: Mithuna Sankranti</li>
+            <li>July 16: Karka Sankranti</li>
+            <li>August 17: Simha Sankranti</li>
+            <li>September 17: Kanya Sankranti</li>
+            <li>October 17: Tula Sankranti</li>
+            <li>November 16: Vrischika Sankranti</li>
+            <li>December 16: Dhanu Sankranti</li>
+          </ul>
         </div>
-        <div class="info-card">
-          <i class="fa-solid fa-fire info-icon"></i>
-          <div>
-            <h4>Mahapooja</h4>
-            <p>Daily at <span class="highlight">12:30 PM</span> & <span class="highlight">8:00 PM</span></p>
-          </div>
+      </div>
+      <div class="info-card">
+        <i class="fa-regular fa-calendar-days info-icon"></i>
+        <div>
+          <h4>Next Event</h4>
+          <p>Annual Nemothsava</p>
+          <p class="highlight">(3rd week Feb 2027)</p>
         </div>
-        <div class="info-card">
-          <i class="fa-solid fa-hand-holding-heart info-icon"></i>
-          <div>
-            <h4>Annadana</h4>
-            <p>Daily Prasada distribution following afternoon Pooja.</p>
-          </div>
-        </div>
-        <div class="info-card">
-          <i class="fa-solid fa-location-dot info-icon"></i>
-          <div>
-            <h4>Location</h4>
-            <p>Eshwaragoli, Dakshina Kannada</p>
-            <a href="#contact" class="link-btn">Get Directions <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
+      </div>
+      <div class="info-card">
+        <i class="fa-solid fa-location-dot info-icon"></i>
+        <div>
+          <h4>Daivasthana's Location</h4>
+          <p>Eshwaragoli, Kulai - Hosabettu,</p>
+          <p>Mangaluru, Karnataka – 575019</p>
+          <a href="#contact" class="link-btn">View on Map &rarr;</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ABOUT SECTION -->
-  <section id="about" class="about-section">
+  <!-- ABOUT OUR DAIVASTHANA -->
+  <section class="about-section" id="about">
     <div class="container about-container">
       <div class="about-image">
-        <img src="https://raw.githubusercontent.com/srikshetraeshwaragoli/SBMMD/main/image2.png" alt="Temple Architecture">
+        <img src="image1.png" alt="Temple Deity at Sri Brahma Mugera Mahankali Daivasthana">
       </div>
       <div class="about-content">
-        <h2>History & Sacred Heritage</h2>
-        <div class="divider"><i class="fa-solid fa-om"></i></div>
-        <p>Shri Kshetra Eshwaragoli has stood as a beacon of faith and spiritual serenity for centuries. Nestled amidst peaceful surroundings, the temple attracts thousands of devotees seeking divine grace, inner peace, and spiritual uplifting.</p>
-        
-        <button id="toggleKannadaBtn" class="btn btn-dark">
-          Read in Kannada <i class="fa-solid fa-language"></i>
-        </button>
+        <h2>About Our Daivasthana</h2>
+        <div class="divider">🪔</div>
+        <p>
+          Sri Brahma Mugera Mahankali Daivasthana (R.), Eshwaragoli is a revered center of worship in Kulai-Hosabettu. 
+          This sacred Daivasthana serves as a spiritual center for the worship of several revered Daivas of Tulu Nadu, including Daivarasu Ullaya, Mahankali, Brahma Mugera, Thangadi, Alera Panjurli, Swami Koragajja, and Daivaraja Mantra Guliga.
+        </p>
 
-        <div id="kannadaContent" class="kannada-details">
-          <p>ಶ್ರೀ ಕ್ಷೇತ್ರ ಈಶ್ವರಗೋಳಿಯು ಶತಮಾನಗಳಿಂದ ಭಕ್ತಿ ಮತ್ತು ಆಧ್ಯಾತ್ಮಿಕ ಶಾಂತಿಯ ಕೇಂದ್ರವಾಗಿದೆ. ಸುಂದರ ನೈಸರ್ಗಿಕ ಪರಿಸರದಲ್ಲಿರುವ ಈ ಕ್ಷೇತ್ರಕ್ಕೆ ಸಾವಿರಾರು ಭಕ್ತರು ಆಗಮಿಸಿ ದೇವರ ಕೃಪೆಗೆ ಪಾತ್ರರಾಗುತ್ತಾರೆ.</p>
+        <!-- HIDDEN KANNADA CONTENT -->
+        <div id="kannadaContent" class="kannada-details" style="display: none;">
+          <p>
+            ದೈವ ದೇವರ ಕೃಪೆಯಲ್ಲಿ ಕಂಗೊಳಿಸುತ್ತಿರುವ ನಮ್ಮ ತುಳುನಾಡಿನ ಅನೇಕ ಆರಾಧನಾ ಕ್ಷೇತ್ರಗಳಲ್ಲಿ ಮಂಗಳೂರು ತಾಲೂಕು ಹೊಸಬೆಟ್ಟು ಗ್ರಾಮದ ಶ್ರೀ ಕ್ಷೇತ್ರ ಈಶ್ವರಗೋಳಿಯೂ ಒಂದು. ಸುಮಾರು 350 ವರ್ಷಗಳಷ್ಟು ಇತಿಹಾಸವುಳ್ಳ ಈ ಕ್ಷೇತ್ರವು ಮುಗೇರ ಜನಾಂಗದಲ್ಲಿ ಜನಿಸಿ ನಾಟಿ ವೈದ್ಯೆಯಾದ ಪಯ್ಯು ಮುಗೆರ್ತಿಯು ಗಿಡಮುಲಿಕೆಯಾದ "ಇಸರ ಬೇರ"ನ್ನು ಹುಡುಕುತ್ತಾ ಗೋಳಿ ಮರದ ಬುಡದಲ್ಲಿ ಶಿವನನ್ನು ಪ್ರಾರ್ಥಿಸಿದ ಸಂದರ್ಭದಲ್ಲಿ ಅವಳ ಭಕ್ತಿಗೆ ಮೆಚ್ಚಿ ಪರಮ ಭಕ್ತೆಯಾದ ನಿನಗೆ ಮುಂದೊಂದು ದಿನ ಶಿವಜಾಯೆಯಾದ ಶ್ರೀ ಪಾರ್ವತಿಯು ಮಹಾಂಕಾಳಿಯಾಗಿ ಧರ್ಮದೈವಗಳು ಇಲ್ಲಿ ನೆಲೆಯಾಗಿ ಈ ನೆಲದ ಸತ್ಯವನ್ನು ಕಾಪಾಡುವರು ಎಂದು ಅಭಯ ನೀಡಿದರು.
+            <br><br>
+            ಮುಂದಕ್ಕೆ ಒಂದು ದಿನ ಉಜ್ಜೋಡಿಯಿಂದ ಶ್ರೀ ಬೊಗ್ರ ಪೂಜಾರಿ ಮತ್ತು ದೆಯ್ಯು ಮುಗೇರ ಇವರ ಭಕ್ತಿಗೆ ಒಲಿದು ಶ್ರೀ ಆದಿಮಾಯೆ ಮಹಾಂಕಾಳಿ ಅಮ್ಮನವರು ಈಶ್ವರಗೋಳಿಯಲ್ಲಿ ಬಂದು ನೆಲೆ ನಿಂತರು. ಇಂತಹ ಶಿವ ಒಲುಮೆಯ ಶ್ರೀ ಕ್ಷೇತ್ರದಲ್ಲಿ ನೆಲೆನಿಂತ ಶ್ರೀ ಬ್ರಹ್ಮರು, ಶ್ರೀ ಧರ್ಮರಸು ಉಳ್ಳಾಯ, ಮಹಾಮಾತೆ ಮಹಾಂಕಾಳಿ, ಶ್ರೀ ಬ್ರಹ್ಮ ಮುಗೇರರು, ಶಕ್ತಿಸ್ವರೂಪಿಣಿಯಾದ ತಂಗಡಿ ದೈವ, ವರಾಹಮೂರ್ತಿ ಅಲೇರಾ ಪಂಜುರ್ಲಿ, ದೈವರಾಜ ಮಂತ್ರಗುಳಿಗ, ಸ್ವಾಮಿ ಕೊರಗಜ್ಜ ಧರ್ಮದೈವಗಳ ಆರಾಧನೆ ನಡೆಯುತ್ತಾ ಬಂತು.
+            <br><br>
+            ಈ ಕ್ಷೇತ್ರದ ಶ್ರೀ ಕೊರಗಜ್ಜ ಸಾನಿಧ್ಯವು ಊರ ಪರವೂರ ಭಕ್ತದಿಗಳ ಸಹಾಯದಿಂದ 2014 ರಲ್ಲಿ ಜೀರ್ಣೋದ್ಧಾರಗೊಂಡು ಭಕ್ತರ ಪಾಲಿಗೆ ಶಕ್ತಿ ಕೇಂದ್ರವಾಗಿದೆ. ಪ್ರತಿ ತಿಂಗಳ ಸಂಕ್ರಮಣದಂದು ದಾನಿಗಳ ಮುಖೇನ ಸುಮಾರು 1500ಕ್ಕಿಂತಲೂ ಹೆಚ್ಚು ಭಕ್ತಾಧಿಗಳು ಅನ್ನ ಪ್ರಸಾದ ಸ್ವೀಕರಿಸುತ್ತಾರೆ.
+          </p>
         </div>
+
+        <!-- TOGGLE BUTTON -->
+        <button id="toggleBtn" class="btn btn-dark" onclick="toggleLearnMore()">Learn More &rarr;</button>
       </div>
     </div>
   </section>
 
   <!-- POOJA / SEVA SECTION -->
-  <section id="sevas" class="pooja-section">
+  <section class="pooja-section" id="pooja">
     <div class="container">
       <div class="section-title">
-        <h2>Sacred Pooja & Sevas</h2>
-        <p>Participate in offerings and seek blessings for your family</p>
+        <h2>Pooja / Seva</h2>
+        <div class="divider">🪔</div>
+        <p>Participate in our daily poojas and special seva services</p>
       </div>
 
       <div class="seva-grid">
         <div class="seva-card">
-          <i class="fa-solid fa-hands-praying seva-icon"></i>
-          <h3>Rudrabhisheka</h3>
-          <a href="#" class="btn btn-dark">Offer Seva</a>
+          <i class="fa-solid fa-water seva-icon"></i>
+          <h3>Sankramana and Annadana Seva</h3>
+          <p>Every Month Sankramana</p>
+          <p>Contact Office</p>
         </div>
         <div class="seva-card">
-          <i class="fa-solid fa-sun seva-icon"></i>
-          <h3>Maha Pooja</h3>
-          <a href="#" class="btn btn-dark">Offer Seva</a>
+          <i class="fa-solid fa-spa seva-icon"></i>
+          <h3>Sankramana Seva</h3>
+          <p>Every Month Sankramana</p>
+          <p>Contact Office</p>
         </div>
         <div class="seva-card">
-          <i class="fa-solid fa-bowl-food seva-icon"></i>
-          <h3>Annadana Seva</h3>
-          <a href="#" class="btn btn-dark">Offer Seva</a>
-        </div>
-        <div class="seva-card">
-          <i class="fa-solid fa-lightbulb seva-icon"></i>
-          <h3>Nanda Deepa</h3>
-          <a href="#" class="btn btn-dark">Offer Seva</a>
+          <i class="fa-solid fa-bowl-rice seva-icon"></i>
+          <h3>Agelu Seva</h3>
+          <p>Only During Annual Nemotsava</p>
+          <p>Contact Office</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- EVENTS & GALLERY SECTION -->
-  <section id="events" class="events-gallery-section">
-    <div class="container">
-      <div class="split-grid">
-        
-        <!-- Upcoming Events -->
-        <div class="events-column">
-          <div class="column-header">
-            <h3>Upcoming Events</h3>
-            <a href="#" class="view-all">View All <i class="fa-solid fa-arrow-right"></i></a>
-          </div>
-          <div class="event-list">
-            <div class="event-item">
-              <div class="event-date">
-                <span class="month">MAR</span>
-                <span class="day">08</span>
-              </div>
-              <div class="event-info">
-                <h4>Maha Shivaratri Celebration</h4>
-                <p>Special Abhisheka, Night long Bhajan & Prasadam.</p>
-              </div>
+  <!-- EVENTS & GALLERY SPLIT SECTION -->
+  <section class="events-gallery-section" id="events">
+    <div class="container split-grid">
+      
+      <!-- UPCOMING EVENTS -->
+      <div class="events-column">
+        <div class="column-header">
+          <h3><i class="fa-regular fa-calendar-check"></i> Upcoming Events</h3>
+          <a href="#events" class="view-all">View All &rarr;</a>
+        </div>
+        <div class="event-list">
+          <div class="event-item">
+            <div class="event-date">
+              <span class="month">SEP</span>
+              <span class="day">17</span>
             </div>
-            <div class="event-item">
-              <div class="event-date">
-                <span class="month">APR</span>
-                <span class="day">14</span>
-              </div>
-              <div class="event-info">
-                <h4>Vishu Festival</h4>
-                <p>Special Deeparadhana and Golden Chariot Utsava.</p>
-              </div>
+            <div class="event-info">
+              <h4>Sankramana Seva</h4>
+              <p>Full Day</p>
+              <h4>Annadaana</h4>
+              <p>1:00 PM - 3:00 PM</p>
+            </div>
+          </div>
+          <div class="event-item">
+            <div class="event-date">
+              <span class="month">FEB</span>
+              <span class="day">2027</span>
+            </div>
+            <div class="event-info">
+              <h4>Annual Nemothsava</h4>
+              <p>Feb 2027</p>
+            </div>
+          </div>
+          <div class="event-item">
+            <div class="event-date">
+              <span class="month">FEB</span>
+              <span class="day">20</span>
+            </div>
+            <div class="event-info">
+              <h4>Cultural & Religious Program</h4>
+              <p>6:30 PM – 10:00 PM</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GALLERY SECTION -->
+      <div class="gallery-column" id="gallery">
+        <div class="column-header">
+          <h3 id="galleryTitle"><i class="fa-regular fa-images"></i> Gallery</h3>
+          <button id="backToFoldersBtn" class="btn-back" onclick="navigateGalleryBack()" style="display: none;">
+            <i class="fa-solid fa-arrow-left"></i> <span id="backBtnText">Back</span>
+          </button>
+        </div>
+
+        <!-- 4 MAIN GALLERY FOLDERS -->
+        <div id="mainGalleryFolders" class="folder-grid">
+          <!-- Folder 1: General Photos -->
+          <div class="folder-card" onclick="openMediaContent('general_photos')" role="button" tabindex="0">
+            <div class="folder-icon"><i class="fa-solid fa-folder-open"></i></div>
+            <h4>Photos</h4>
+            <p>12 Items</p>
+          </div>
+          <!-- Folder 2: Brahma Kalashothsava 2024 -->
+          <div class="folder-card" onclick="openEventFolder('kalashotsava2024')" role="button" tabindex="0">
+            <div class="folder-icon"><i class="fa-solid fa-folder"></i></div>
+            <h4>Brahma Kalashothsava 2024</h4>
+            <p>Photos & Videos</p>
+          </div>
+          <!-- Folder 3: Annual Nemothsava 2026 -->
+          <div class="folder-card" onclick="openEventFolder('nemothsava2026')" role="button" tabindex="0">
+            <div class="folder-icon"><i class="fa-solid fa-folder"></i></div>
+            <h4>Annual Nemothsava 2026</h4>
+            <p>Photos & Videos</p>
+          </div>
+          <!-- Folder 4: Standalone Videos -->
+          <div class="folder-card" onclick="openMediaContent('videosContent')" role="button" tabindex="0">
+            <div class="folder-icon"><i class="fa-solid fa-film"></i></div>
+            <h4>Videos</h4>
+            <p>1 Item</p>
+          </div>
+        </div>
+
+        <!-- LEVEL 2: BRAHMA KALASHOTHSAVA 2024 SUB-FOLDERS -->
+        <div id="kalashotsava2024SubFolders" class="folder-grid" style="display: none;">
+          <div class="folder-card" onclick="openMediaContent('kalashotsava2024_photos')" role="button" tabindex="0">
+            <div class="folder-icon"><i class="fa-regular fa-image"></i></div>
+            <h4>Photos</h4>
+            <p>8 Items</p>
+          </div>
+          <div class="folder-card" onclick="openMediaContent('kalashotsava2024_videos')" role="button" tabindex="0">
+            <div class="folder-icon"><i class="fa-solid fa-film"></i></div>
+            <h4>Videos</h4>
+            <p>1 Item</p>
+          </div>
+        </div>
+
+        <!-- LEVEL 2: ANNUAL NEMOTHSAVA 2026 SUB-FOLDERS -->
+        <div id="nemothsava2026SubFolders" class="folder-grid" style="display: none;">
+          <div class="folder-card" onclick="openMediaContent('nemothsava2026_photos')" role="button" tabindex="0">
+            <div class="folder-icon"><i class="fa-regular fa-image"></i></div>
+            <h4>Photos</h4>
+            <p>12 Items</p>
+          </div>
+          <div class="folder-card" onclick="openMediaContent('nemothsava2026_videos')" role="button" tabindex="0">
+            <div class="folder-icon"><i class="fa-solid fa-film"></i></div>
+            <h4>Videos</h4>
+            <p>1 Item</p>
+          </div>
+        </div>
+
+        <!-- CONTENT: GENERAL PHOTOS (FOLDER 1) -->
+        <div id="general_photos" class="gallery-media-content" style="display: none;">
+          <div class="gallery-grid">
+            <img src="Gallery/Photos/image1.jpeg" alt="Temple Photo 1">
+            <img src="Gallery/Photos/image2.jpeg" alt="Temple Photo 2">
+            <img src="Gallery/Photos/image3.jpeg" alt="Temple Photo 3">
+            <img src="Gallery/Photos/image4.jpeg" alt="Temple Photo 4">
+            <img src="Gallery/Photos/image5.jpeg" alt="Temple Photo 5">
+            <img src="Gallery/Photos/image6.jpeg" alt="Temple Photo 6">
+            <img src="Gallery/Photos/image7.jpeg" alt="Temple Photo 7">
+            <img src="Gallery/Photos/image8.jpeg" alt="Temple Photo 8">
+            <img src="Gallery/Photos/image9.jpeg" alt="Temple Photo 9">
+            <img src="Gallery/Photos/image10.jpeg" alt="Temple Photo 10">
+            <img src="Gallery/Photos/image11.jpeg" alt="Temple Photo 11">
+            <img src="Gallery/Photos/image12.jpeg" alt="Temple Photo 12">
+          </div>
+        </div>
+
+        <!-- CONTENT: STANDALONE VIDEOS (FOLDER 4) -->
+        <div id="videosContent" class="gallery-media-content" style="display: none;">
+          <div class="gallery-grid single-video">
+            <div class="video-card">
+              <video class="gallery-video-player" controls width="100%">
+                <source src="Gallery/Videos/Sankramana.mp4" type="video/mp4">
+                Your browser does not support video playback.
+              </video>
             </div>
           </div>
         </div>
 
-        <!-- Photo & Video Folders -->
-        <div id="gallery" class="gallery-column">
-          <div class="column-header">
-            <h3>Temple Gallery</h3>
-            <a href="#" class="view-all">See Full Gallery <i class="fa-solid fa-arrow-right"></i></a>
+        <!-- CONTENT: KALASHOTSAVA 2024 PHOTOS -->
+        <div id="kalashotsava2024_photos" class="gallery-media-content" style="display: none;">
+          <div class="gallery-grid">
+            <img src="Gallery/Brahma Kalashotsava 2024/image1.jpeg" alt="Kalashotsava 2024 Photo 1" loading="lazy">
+            <img src="Gallery/Brahma Kalashotsava 2024/image2.jpeg" alt="Kalashotsava 2024 Photo 2" loading="lazy">
+            <img src="Gallery/Brahma Kalashotsava 2024/image7.jpeg" alt="Kalashotsava 2024 Photo 7" loading="lazy">
+            <img src="Gallery/Brahma Kalashotsava 2024/image8.jpeg" alt="Kalashotsava 2024 Photo 8" loading="lazy">
+            <img src="Gallery/Brahma Kalashotsava 2024/image9.jpeg" alt="Kalashotsava 2024 Photo 9" loading="lazy">
+            <img src="Gallery/Brahma Kalashotsava 2024/image10.jpeg" alt="Kalashotsava 2024 Photo 10" loading="lazy">
+            <img src="Gallery/Brahma Kalashotsava 2024/image11.jpeg" alt="Kalashotsava 2024 Photo 11" loading="lazy">
+            <img src="Gallery/Brahma Kalashotsava 2024/image17.jpeg" alt="Kalashotsava 2024 Photo 17" loading="lazy">
           </div>
-          <div class="folder-grid">
-            <div class="folder-card">
-              <i class="fa-solid fa-folder-open folder-icon"></i>
-              <h4>Utsava 2025</h4>
-              <p>24 Photos</p>
+        </div>
+
+        <!-- CONTENT: KALASHOTSAVA 2024 VIDEOS -->
+        <div id="kalashotsava2024_videos" class="gallery-media-content" style="display: none;">
+          <div class="gallery-grid single-video">
+            <div class="video-card">
+              <video class="gallery-video-player" controls width="100%">
+                <source src="Gallery/Videos/Sankramana.mp4" type="video/mp4">
+                Your browser does not support video playback.
+              </video>
             </div>
-            <div class="folder-card">
-              <i class="fa-solid fa-photo-film folder-icon"></i>
-              <h4>Daily Alankara</h4>
-              <p>18 Photos</p>
+          </div>
+        </div>
+
+        <!-- CONTENT: NEMOTSAVA 2026 PHOTOS -->
+        <div id="nemothsava2026_photos" class="gallery-media-content" style="display: none;">
+          <div class="gallery-grid">
+            <img src="Gallery/Annual Nemotsava 2026/image1.jpeg" alt="Nemotsava 2026 Photo 1" loading="lazy">
+            <img src="Gallery/Annual Nemotsava 2026/image2.jpeg" alt="Nemotsava 2026 Photo 2" loading="lazy">
+            <img src="Gallery/Annual Nemotsava 2026/image3.jpeg" alt="Nemotsava 2026 Photo 3" loading="lazy">
+            <img src="Gallery/Annual Nemotsava 2026/image4.jpeg" alt="Nemotsava 2026 Photo 4" loading="lazy">
+            <img src="Gallery/Annual Nemotsava 2026/image5.jpeg" alt="Nemotsava 2026 Photo 5" loading="lazy">
+            <img src="Gallery/Annual Nemotsava 2026/image6.jpeg" alt="Nemotsava 2026 Photo 6" loading="lazy">
+            <img src="Gallery/Annual Nemotsava 2026/image7.jpeg" alt="Nemotsava 2026 Photo 7" loading="lazy">
+            <img src="Gallery/Annual Nemotsava 2026/image8.jpeg" alt="Nemotsava 2026 Photo 8" loading="lazy">
+            <img src="Gallery/Annual Nemotsava 2026/image9.jpeg" alt="Nemotsava 2026 Photo 9" loading="lazy">
+            <img src="Gallery/Annual Nemotsava 2026/image10.jpeg" alt="Nemotsava 2026 Photo 10" loading="lazy">
+            <img src="Gallery/Annual Nemotsava 2026/image11.jpeg" alt="Nemotsava 2026 Photo 11" loading="lazy">
+            <img src="Gallery/Annual Nemotsava 2026/image12.jpeg" alt="Nemotsava 2026 Photo 12" loading="lazy">
+          </div>
+        </div>
+
+        <!-- CONTENT: NEMOTSAVA 2026 VIDEOS -->
+        <div id="nemothsava2026_videos" class="gallery-media-content" style="display: none;">
+          <div class="gallery-grid single-video">
+            <div class="video-card">
+              <video class="gallery-video-player" controls width="100%">
+                <source src="Gallery/Videos/Sankramana.mp4" type="video/mp4">
+                Your browser does not support video playback.
+              </video>
             </div>
           </div>
         </div>
 
       </div>
+
     </div>
   </section>
 
   <!-- LIGHTBOX MODAL -->
-  <div id="lightbox" class="lightbox">
-    <span class="close-lightbox">&times;</span>
-    <button class="lightbox-arrow prev-arrow">&#10094;</button>
-    <img class="lightbox-content" id="lightbox-img" src="" alt="Enlarged View">
-    <button class="lightbox-arrow next-arrow">&#10095;</button>
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+    <button class="lightbox-arrow prev-arrow" onclick="changeImage(-1)" aria-label="Previous Image">&#10094;</button>
+    <button class="lightbox-arrow next-arrow" onclick="changeImage(1)" aria-label="Next Image">&#10095;</button>
+    <img id="lightbox-img" class="lightbox-content" src="" alt="Gallery Image">
   </div>
 
   <!-- DONATION BANNER -->
-  <section class="donation-section">
+  <section class="donation-section" id="donation">
     <div class="container donation-container">
       <div class="donation-content">
-        <i class="fa-solid fa-heart-handshake donation-icon"></i>
+        <i class="fa-solid fa-hand-holding-heart donation-icon"></i>
         <div>
-          <h3>Support the Temple Shrine & Services</h3>
-          <p>Your generous contributions power daily Annadana and temple upkeep.</p>
+          <h3>Support Our Daivasthana</h3>
+          <p>Your generous donations help us maintain the Daivasthana and serve the community.</p>
         </div>
       </div>
       <div class="donation-actions">
+        <a href="#contact" class="btn btn-primary">Donate Now &rarr;</a>
         <div class="qr-code-box">
           <i class="fa-solid fa-qrcode qr-icon"></i>
-          <span>Scan UPI to Donate</span>
+          <div>
+            <p><strong>Scan to Donate</strong></p>
+            <p><small>UPI | Bank Transfer | Online Payment</small></p>
+          </div>
         </div>
-        <a href="#" class="btn btn-primary">Donate Online</a>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer id="contact" class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        
-        <div>
-          <h4>Shri Kshetra Eshwaragoli</h4>
-          <p>A place of reverence, quiet reflection, and community devotion.</p>
-          <div class="social-links">
-            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+  <!-- FOOTER SECTION -->
+  <footer class="footer" id="contact">
+    <div class="container footer-grid">
+      
+      <!-- Brand column -->
+      <div class="footer-brand">
+        <div class="logo">
+          <i class="fa-solid fa-gopuram logo-icon"></i>
+          <div class="logo-text">
+            <h3>Sri Kshetra Eshwaragoli</h3>
+            <span>Faith • Tradition • Community</span>
           </div>
         </div>
-
-        <div class="footer-links">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#sevas">Sevas</a></li>
-            <li><a href="#events">Events</a></li>
-            <li><a href="#gallery">Gallery</a></li>
-          </ul>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
         </div>
-
-        <div class="footer-contact">
-          <h4>Contact Us</h4>
-          <p><i class="fa-solid fa-location-dot"></i> Eshwaragoli Temple Road, Dakshina Kannada, Karnataka</p>
-          <p><i class="fa-solid fa-phone"></i> +91 98765 43210</p>
-          <p><i class="fa-solid fa-envelope"></i> info@eshwaragoli.org</p>
-        </div>
-
-        <div>
-          <h4>Find Us</h4>
-          <div class="map-container">
-            <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15555.0!2d74.85!3d12.91!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDU0JzAwLjAiTiA3NMK1NTEnMDAuMCJF!5e0!3m2!1sen!2sin!4v1600000000000!5m2!1sen!2sin" 
-              width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
-            </iframe>
-          </div>
-          <a href="https://maps.google.com" target="_blank" class="map-link">Open in Google Maps <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-
       </div>
+
+      <!-- Quick Links -->
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#pooja">Pooja / Seva</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#donation">Donations</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p><i class="fa-solid fa-phone"></i> +91 90355 22423</p>
+        <p><i class="fa-solid fa-envelope"></i> srikshetraeshwaragoli@gmail.com</p>
+        <p><i class="fa-solid fa-location-dot"></i> Eshwaragoli, Kulai - Hosabettu,<br>Mangaluru – 575019.</p>
+      </div>
+
+      <!-- Map Embed -->
+      <div class="footer-map">
+        <h4>Find Us</h4>
+        <div class="map-container">
+          <iframe 
+            title="Google Map Location of Kulai, Mangaluru"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15551.815598951817!2d74.8080!3d12.9730!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba353e6bb6bc8f1%3A0x6b306a4b127453!2sKulai%2C%20Mangaluru%2C%20Karnataka%20575019!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+            width="100%" height="100" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        <a href="https://maps.app.goo.gl/pkzcqt6EuibGCv247" target="_blank" rel="noopener noreferrer" class="map-link">View Larger Map &rarr;</a>
+      </div>
+
     </div>
 
+    <!-- Copyright Bar -->
     <div class="footer-bottom">
-      <span>&copy; 2026 Shri Kshetra Eshwaragoli. All Rights Reserved.</span>
-      <span>Designed for Devotees</span>
+      <p>© 2026 Sri Brahma Sri Mugera Sri Mahankali Daivasthana (R.). All rights reserved.</p>
+      <p>🕉️ Designed with devotion 🕉️</p>
     </div>
   </footer>
 
-  <!-- Optional Toggle Script for Kannada Text -->
+  <!-- SCRIPT SECTION -->
   <script>
-    const toggleBtn = document.getElementById('toggleKannadaBtn');
-    const kannadaContent = document.getElementById('kannadaContent');
+    // Learn More Toggle Function
+    function toggleLearnMore() {
+      const content = document.getElementById("kannadaContent");
+      const btn = document.getElementById("toggleBtn");
 
-    if (toggleBtn && kannadaContent) {
-      toggleBtn.addEventListener('click', () => {
-        kannadaContent.classList.toggle('show');
+      if (content.style.display === "block") {
+        content.style.display = "none";
+        content.classList.remove("show");
+        btn.innerHTML = "Learn More &rarr;";
+      } else {
+        content.style.display = "block";
+        content.classList.add("show");
+        btn.innerHTML = "Show Less &larr;";
+      }
+    }
+
+    // Gallery Folder Navigation State
+    let galleryState = 'main'; // States: 'main', 'event', 'media', 'main_media'
+    let activeEvent = '';
+    let currentImageIndex = 0;
+    let galleryImages = [];
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    function resetGalleryViews() {
+      document.getElementById('mainGalleryFolders').style.display = 'none';
+      document.getElementById('kalashotsava2024SubFolders').style.display = 'none';
+      document.getElementById('nemothsava2026SubFolders').style.display = 'none';
+      document.getElementById('general_photos').style.display = 'none';
+      document.getElementById('videosContent').style.display = 'none';
+      document.getElementById('kalashotsava2024_photos').style.display = 'none';
+      document.getElementById('kalashotsava2024_videos').style.display = 'none';
+      document.getElementById('nemothsava2026_photos').style.display = 'none';
+      document.getElementById('nemothsava2026_videos').style.display = 'none';
+
+      // Pause playing videos on view change
+      document.querySelectorAll('.gallery-video-player').forEach(video => video.pause());
+    }
+
+    function openEventFolder(eventId) {
+      resetGalleryViews();
+      activeEvent = eventId;
+      galleryState = 'event';
+
+      const backBtn = document.getElementById('backToFoldersBtn');
+      const backText = document.getElementById('backBtnText');
+      const title = document.getElementById('galleryTitle');
+
+      backBtn.style.display = 'inline-flex';
+      backText.textContent = 'Back to Gallery';
+
+      if (eventId === 'kalashotsava2024') {
+        document.getElementById('kalashotsava2024SubFolders').style.display = 'grid';
+        title.innerHTML = '<i class="fa-regular fa-folder-open"></i> Brahma Kalashotsava 2024';
+      } else if (eventId === 'nemothsava2026') {
+        document.getElementById('nemothsava2026SubFolders').style.display = 'grid';
+        title.innerHTML = '<i class="fa-regular fa-folder-open"></i> Annual Nemotsava 2026';
+      }
+    }
+
+    function openMediaContent(contentId) {
+      resetGalleryViews();
+      galleryState = (contentId === 'general_photos' || contentId === 'videosContent') ? 'main_media' : 'media';
+
+      const backBtn = document.getElementById('backToFoldersBtn');
+      const backText = document.getElementById('backBtnText');
+      const title = document.getElementById('galleryTitle');
+
+      backBtn.style.display = 'inline-flex';
+      document.getElementById(contentId).style.display = 'block';
+
+      if (contentId === 'general_photos') {
+        backText.textContent = 'Back to Gallery';
+        title.innerHTML = '<i class="fa-regular fa-image"></i> Photos';
+      } else if (contentId === 'videosContent') {
+        backText.textContent = 'Back to Gallery';
+        title.innerHTML = '<i class="fa-solid fa-film"></i> Videos';
+      } else {
+        backText.textContent = 'Back to Event';
+        if (contentId.includes('kalashotsava2024')) {
+          title.innerHTML = contentId.includes('photos') 
+            ? '<i class="fa-regular fa-image"></i> Kalashotsava 2024 - Photos' 
+            : '<i class="fa-solid fa-film"></i> Kalashotsava 2024 - Videos';
+        } else if (contentId.includes('nemothsava2026')) {
+          title.innerHTML = contentId.includes('photos') 
+            ? '<i class="fa-regular fa-image"></i> Nemotsava 2026 - Photos' 
+            : '<i class="fa-solid fa-film"></i> Nemotsava 2026 - Videos';
+        }
+      }
+
+      setupLightboxForActiveMedia(contentId);
+    }
+
+    function navigateGalleryBack() {
+      if (galleryState === 'media') {
+        openEventFolder(activeEvent);
+      } else if (galleryState === 'event' || galleryState === 'main_media') {
+        showMainGalleryFolders();
+      }
+    }
+
+    function showMainGalleryFolders() {
+      resetGalleryViews();
+      galleryState = 'main';
+      activeEvent = '';
+
+      document.getElementById('mainGalleryFolders').style.display = 'grid';
+      document.getElementById('backToFoldersBtn').style.display = 'none';
+      document.getElementById('galleryTitle').innerHTML = '<i class="fa-regular fa-images"></i> Gallery';
+    }
+
+    // Lightbox Functionality
+    function setupLightboxForActiveMedia(activeContentId) {
+      galleryImages = [];
+      const images = document.querySelectorAll(`#${activeContentId} .gallery-grid img`);
+      images.forEach((img, index) => {
+        galleryImages.push(img.src);
+        img.onclick = () => openLightbox(index);
       });
+    }
+
+    function openLightbox(index) {
+      if (galleryImages.length === 0) return;
+      currentImageIndex = index;
+      
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = document.getElementById("lightbox-img");
+      
+      lightboxImg.src = galleryImages[currentImageIndex];
+      lightbox.style.display = "flex";
+      lightbox.setAttribute("aria-hidden", "false");
+    }
+
+    function closeLightbox() {
+      const lightbox = document.getElementById("lightbox");
+      lightbox.style.display = "none";
+      lightbox.setAttribute("aria-hidden", "true");
+    }
+
+    function changeImage(direction) {
+      if (galleryImages.length === 0) return;
+      currentImageIndex = (currentImageIndex + direction + galleryImages.length) % galleryImages.length;
+      document.getElementById("lightbox-img").src = galleryImages[currentImageIndex];
+    }
+
+    // Keyboard Navigation
+    document.addEventListener("keydown", (event) => {
+      const lightbox = document.getElementById("lightbox");
+      if (lightbox && lightbox.style.display === "flex") {
+        if (event.key === "ArrowLeft") {
+          changeImage(-1);
+        } else if (event.key === "ArrowRight") {
+          changeImage(1);
+        } else if (event.key === "Escape") {
+          closeLightbox();
+        }
+      }
+    });
+
+    // Mobile Swipe Gesture Support
+    document.addEventListener("DOMContentLoaded", () => {
+      const lightbox = document.getElementById("lightbox");
+      
+      if (lightbox) {
+        lightbox.addEventListener("touchstart", (e) => {
+          touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        lightbox.addEventListener("touchend", (e) => {
+          touchEndX = e.changedTouches[0].screenX;
+          handleSwipe();
+        }, { passive: true });
+      }
+    });
+
+    function handleSwipe() {
+      const diff = touchEndX - touchStartX;
+      if (Math.abs(diff) > 50) {
+        if (diff < 0) {
+          changeImage(1);  // Swipe Left -> Next Image
+        } else {
+          changeImage(-1); // Swipe Right -> Previous Image
+        }
+      }
     }
   </script>
 
