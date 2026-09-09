@@ -303,12 +303,11 @@
       }
     }
 
-    // GitHub Media Slider Logic
-    const GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/srikshetraeshwaragoli/SBMMD/main';
+// GitHub Gallery & Lightbox Logic
 const MANIFEST_URL = './gallery.json';
 
 const galleryContainer = document.getElementById('gallery-container');
-    
+
 let galleryStore = {};
 let activeFolderFiles = [];
 let activeFolderTitle = '';
@@ -325,7 +324,7 @@ async function initGallery() {
     renderFolderGrid();
   } catch (err) {
     console.error('Gallery Fetch Error:', err);
-    galleryContainer.innerHTML = `<p style="color:#5B0E14; padding:1rem;">Unable to load media content. Error: ${err.message}</p>`;
+    galleryContainer.innerHTML = `<p style="color:#5B0E14; padding:1rem;">Unable to load media content. Error: ${escapeHtml(err.message)}</p>`;
   }
 }
 
@@ -335,18 +334,23 @@ function renderFolderGrid() {
   
   for (const [folderName, files] of Object.entries(galleryStore)) {
     const count = files ? files.length : 0;
-    const cardHTML = `
-      <div class="folder-card-item" onclick="openFolder('${escapeJsString(folderName)}')">
-        <div class="folder-icon-wrapper">
-          <i class="fa-solid fa-folder-closed folder-main-icon"></i>
-        </div>
-        <div class="folder-card-info">
-          <h4>${folderName}</h4>
-          <span class="file-count">${count} ${count === 1 ? 'item' : 'items'}</span>
-        </div>
+    
+    // Safely create card elements using DOM methods
+    const card = document.createElement('div');
+    card.className = 'folder-card-item';
+    card.addEventListener('click', () => openFolder(folderName));
+    
+    card.innerHTML = `
+      <div class="folder-icon-wrapper">
+        <i class="fa-solid fa-folder-closed folder-main-icon"></i>
+      </div>
+      <div class="folder-card-info">
+        <h4>${escapeHtml(folderName)}</h4>
+        <span class="file-count">${count} ${count === 1 ? 'item' : 'items'}</span>
       </div>
     `;
-    galleryContainer.insertAdjacentHTML('beforeend', cardHTML);
+    
+    galleryContainer.appendChild(card);
   }
 }
 
@@ -357,39 +361,48 @@ function openFolder(folderName) {
   
   const encodedFolder = encodeURIComponent(folderName);
   
-  let gridHTML = `
-    <div class="gallery-navigation-bar">
-      <button class="btn-back" onclick="renderFolderGrid()">
-        <i class="fa-solid fa-arrow-left"></i> Back to Folders
-      </button>
-      <h3>${folderName}</h3>
-    </div>
-    <div class="media-thumb-grid">
+  galleryContainer.innerHTML = '';
+
+  // Navigation Header
+  const navBar = document.createElement('div');
+  navBar.className = 'gallery-navigation-bar';
+  navBar.innerHTML = `
+    <button class="btn-back" id="backToFoldersBtn">
+      <i class="fa-solid fa-arrow-left"></i> Back to Folders
+    </button>
+    <h3>${escapeHtml(folderName)}</h3>
   `;
-  
+  galleryContainer.appendChild(navBar);
+
+  document.getElementById('backToFoldersBtn').addEventListener('click', renderFolderGrid);
+
+  // Media Thumbnails Grid
+  const thumbGrid = document.createElement('div');
+  thumbGrid.className = 'media-thumb-grid';
+
   activeFolderFiles.forEach((fileName, index) => {
-    // Correct Path: Includes Gallery/ prefix
     const fileUrl = `./Gallery/${encodedFolder}/${encodeURIComponent(fileName)}`;
     const isVideo = isVideoFile(fileName);
 
+    const thumbCard = document.createElement('div');
+    thumbCard.className = 'thumb-card';
+    thumbCard.addEventListener('click', () => openLightbox(index));
+
     if (isVideo) {
-      gridHTML += `
-        <div class="thumb-card" onclick="openLightbox(${index})">
-          <video src="${fileUrl}#t=0.1" preload="metadata" muted playsinline></video>
-          <div class="play-overlay"><i class="fa-solid fa-play"></i></div>
-        </div>
+      thumbCard.innerHTML = `
+        <video src="${fileUrl}#t=0.1" preload="metadata" muted playsinline></video>
+        <div class="play-overlay"><i class="fa-solid fa-play"></i></div>
       `;
     } else {
-      gridHTML += `
-        <div class="thumb-card" onclick="openLightbox(${index})">
-          <img src="${fileUrl}" alt="${fileName}" loading="lazy">
-        </div>
+      thumbCard.innerHTML = `
+        <img src="${fileUrl}" alt="${escapeHtml(fileName)}" loading="lazy">
       `;
     }
+
+    thumbGrid.appendChild(thumbCard);
   });
 
-  gridHTML += `</div>`;
-  galleryContainer.innerHTML = gridHTML;
+  galleryContainer.appendChild(thumbGrid);
 }
 
 // 3. Lightbox Modal Logic
@@ -401,14 +414,14 @@ function openLightbox(index) {
     updateLightboxMedia();
   }
 }
-    
+
 function closeLightbox() {
   const modal = document.getElementById('lightbox-modal');
   const mediaContainer = document.getElementById('lightbox-media-container');
   if (modal) modal.style.display = 'none';
   if (mediaContainer) mediaContainer.innerHTML = '';
 }
-    
+
 function navigateLightbox(direction) {
   currentLightboxIndex = (currentLightboxIndex + direction + activeFolderFiles.length) % activeFolderFiles.length;
   updateLightboxMedia();
@@ -423,7 +436,6 @@ function updateLightboxMedia() {
   const fileName = activeFolderFiles[currentLightboxIndex];
   const encodedFolder = encodeURIComponent(activeFolderTitle);
   
-  // Correct Path: Includes Gallery/ prefix
   const fileUrl = `./Gallery/${encodedFolder}/${encodeURIComponent(fileName)}`;
   const isVideo = isVideoFile(fileName);
 
@@ -441,13 +453,18 @@ function updateLightboxMedia() {
     counter.textContent = `${currentLightboxIndex + 1} / ${activeFolderFiles.length}`;
   }
 }
-    
+
 function isVideoFile(url) {
   return /\.(mp4|webm|ogg|mov)$/i.test(url);
 }
 
-function escapeJsString(str) {
-  return str.replace(/'/g, "\\'").replace(/"/g, '\\"');
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
 }
 
 document.addEventListener('DOMContentLoaded', initGallery);
