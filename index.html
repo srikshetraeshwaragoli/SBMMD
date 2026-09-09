@@ -308,7 +308,7 @@
 const MANIFEST_URL = './gallery.json';
 
 const galleryContainer = document.getElementById('gallery-container');
-
+    
 let galleryStore = {};
 let activeFolderFiles = [];
 let activeFolderTitle = '';
@@ -366,15 +366,16 @@ function openFolder(folderName) {
     </div>
     <div class="media-thumb-grid">
   `;
-
+  
   activeFolderFiles.forEach((fileName, index) => {
-    const fileUrl = `${GITHUB_RAW_BASE}/${encodedFolder}/${encodeURIComponent(fileName)}`;
+    // Correct Path: Includes Gallery/ prefix
+    const fileUrl = `./Gallery/${encodedFolder}/${encodeURIComponent(fileName)}`;
     const isVideo = isVideoFile(fileName);
 
     if (isVideo) {
       gridHTML += `
         <div class="thumb-card" onclick="openLightbox(${index})">
-          <video src="${fileUrl}#t=0.5" preload="metadata"></video>
+          <video src="${fileUrl}#t=0.1" preload="metadata" muted playsinline></video>
           <div class="play-overlay"><i class="fa-solid fa-play"></i></div>
         </div>
       `;
@@ -400,14 +401,14 @@ function openLightbox(index) {
     updateLightboxMedia();
   }
 }
-
+    
 function closeLightbox() {
   const modal = document.getElementById('lightbox-modal');
   const mediaContainer = document.getElementById('lightbox-media-container');
   if (modal) modal.style.display = 'none';
   if (mediaContainer) mediaContainer.innerHTML = '';
 }
-
+    
 function navigateLightbox(direction) {
   currentLightboxIndex = (currentLightboxIndex + direction + activeFolderFiles.length) % activeFolderFiles.length;
   updateLightboxMedia();
@@ -421,12 +422,14 @@ function updateLightboxMedia() {
 
   const fileName = activeFolderFiles[currentLightboxIndex];
   const encodedFolder = encodeURIComponent(activeFolderTitle);
-  const fileUrl = `${GITHUB_RAW_BASE}/${encodedFolder}/${encodeURIComponent(fileName)}`;
+  
+  // Correct Path: Includes Gallery/ prefix
+  const fileUrl = `./Gallery/${encodedFolder}/${encodeURIComponent(fileName)}`;
   const isVideo = isVideoFile(fileName);
 
   if (isVideo) {
     mediaContainer.innerHTML = `
-      <video src="${fileUrl}" controls autoplay style="max-width:90vw; max-height:80vh;"></video>
+      <video src="${fileUrl}" controls autoplay playsinline style="max-width:90vw; max-height:80vh;"></video>
     `;
   } else {
     mediaContainer.innerHTML = `
@@ -438,7 +441,7 @@ function updateLightboxMedia() {
     counter.textContent = `${currentLightboxIndex + 1} / ${activeFolderFiles.length}`;
   }
 }
-
+    
 function isVideoFile(url) {
   return /\.(mp4|webm|ogg|mov)$/i.test(url);
 }
