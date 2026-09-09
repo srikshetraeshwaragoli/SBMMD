@@ -10,8 +10,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
-  
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -205,41 +203,7 @@
           <h3><i class="fa-regular fa-images"></i> Gallery</h3>
         </div>
 
-        <div class="folder-grid">
-
-          <div class="folder-group" data-repo-path="Gallery/Photos">
-            <div class="folder-header">
-              <h4><i class="fa-solid fa-folder-open"></i> Photos</h4>
-              <span class="back-btn"><i class="fa-solid fa-xmark"></i> Close</span>
-            </div>
-            <div class="media-grid"></div>
-          </div>
-
-          <div class="folder-group" data-repo-path="Gallery/Videos">
-            <div class="folder-header">
-              <h4><i class="fa-solid fa-folder-open"></i> Videos</h4>
-              <span class="back-btn"><i class="fa-solid fa-xmark"></i> Close</span>
-            </div>
-            <div class="media-grid"></div>
-          </div>
-
-          <div class="folder-group" data-repo-path="Gallery/Annual Nemothsava 2026">
-            <div class="folder-header">
-              <h4><i class="fa-solid fa-folder-open"></i> Annual Nemothsava 2026</h4>
-              <span class="back-btn"><i class="fa-solid fa-xmark"></i> Close</span>
-            </div>
-            <div class="media-grid"></div>
-          </div>
-
-          <div class="folder-group" data-repo-path="Gallery/Brahma Kalashothsava 2024">
-            <div class="folder-header">
-              <h4><i class="fa-solid fa-folder-open"></i> Brahma Kalashothsava 2024</h4>
-              <span class="back-btn"><i class="fa-solid fa-xmark"></i> Close</span>
-            </div>
-            <div class="media-grid"></div>
-          </div>
-
-        </div>
+        <div id="gallery-container" class="folder-grid"></div>
       </div>
 
     </div>
@@ -323,17 +287,8 @@
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
-
   <script>
-    // GitHub Repository Configuration
-    const REPO_OWNER = 'srikshetraeshwaragoli';
-    const REPO_NAME = 'SBMMD';
-    const REPO_BRANCH = 'main';
-
-    let lightboxInstance = null;
-
-    // Helper: Toggle "Learn More" Kannada Content
+    // Toggle "Learn More" Kannada Content
     function toggleLearnMore() {
       const kannadaContent = document.getElementById('kannadaContent');
       const toggleBtn = document.getElementById('toggleBtn');
@@ -348,145 +303,94 @@
       }
     }
 
-    // Helper: Safe Lightbox Initialization
-    function initLightbox() {
-      if (lightboxInstance) {
-        lightboxInstance.destroy();
-      }
-      lightboxInstance = GLightbox({
-        selector: '.glightbox',
-        touchNavigation: true,
-        loop: true,
-        zoomable: true
-      });
-    }
+    // GitHub Media Slider Logic
+    const BASE_URL = 'https://raw.githubusercontent.com/srikshetraeshwaragoli/SBMMD/main';
+    const MANIFEST_URL = `${BASE_URL}/gallery.json`;
 
-    // Fetch images and videos from a specific directory in GitHub
-    async function loadFolderImages(folderGroup) {
-      const repoPath = folderGroup.getAttribute('data-repo-path');
-      const mediaGrid = folderGroup.querySelector('.media-grid');
+    const galleryContainer = document.getElementById('gallery-container');
+    const folderState = {};
 
-      if (!repoPath || !mediaGrid) return;
-
-      // Prevent redundant fetches if content is already rendered
-      if (mediaGrid.children.length > 0 && !mediaGrid.querySelector('.loading, .error')) return;
-
-      mediaGrid.innerHTML = '<p class="loading"><i class="fa-solid fa-spinner fa-spin"></i> Loading media...</p>';
+    async function initGallery() {
+      if (!galleryContainer) return;
 
       try {
-        const apiUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${encodeURIComponent(repoPath)}?ref=${REPO_BRANCH}`;
-        const response = await fetch(apiUrl);
+        const response = await fetch(MANIFEST_URL);
+        if (!response.ok) throw new Error('Failed to load gallery.json');
+        
+        const galleryData = await response.json();
+        galleryContainer.innerHTML = '';
 
-        // Handle GitHub Rate Limits (60 req/hr unauthenticated)
-        if (response.status === 403) {
-          const resetTime = response.headers.get('X-RateLimit-Reset');
-          const resetDate = resetTime ? new Date(resetTime * 1000).toLocaleTimeString() : 'later';
-          throw new Error(`API rate limit reached. Resets around ${resetDate}.`);
-        }
+        for (const [folderName, files] of Object.entries(galleryData)) {
+          if (!files || files.length === 0) continue;
 
-        if (!response.ok) {
-          throw new Error(`Directory not found (${response.status})`);
-        }
+          const encodedFolder = encodeURIComponent(folderName);
+          const fullUrls = files.map(file => `${BASE_URL}/${encodedFolder}/${encodeURIComponent(file)}`);
 
-        const files = await response.json();
-        mediaGrid.innerHTML = '';
+          const sanitizeId = folderName.replace(/[^a-zA-Z0-9_-]/g, '_');
+          folderState[sanitizeId] = { files: fullUrls, currentIndex: 0 };
 
-        const imageExts = ['.png', '.jpg', '.jpeg', '.webp', '.gif'];
-        const videoExts = ['.mp4', '.webm', '.ogg'];
+          const firstFile = fullUrls[0];
+          const isVideo = isVideoFile(firstFile);
 
-        const mediaFiles = files.filter(file => {
-          if (file.type !== 'file') return false;
-          const lowerName = file.name.toLowerCase();
-          return imageExts.some(ext => lowerName.endsWith(ext)) || videoExts.some(ext => lowerName.endsWith(ext));
-        });
+          const mediaHTML = isVideo
+            ? `<video id="media-${sanitizeId}" src="${firstFile}" controls preload="metadata"></video>`
+            : `<img id="media-${sanitizeId}" src="${firstFile}" alt="${folderName}">`;
 
-        if (mediaFiles.length === 0) {
-          mediaGrid.innerHTML = '<p class="empty">No images or videos found in this folder.</p>';
-          return;
-        }
-
-        const galleryId = repoPath.replace(/[^a-zA-Z0-9]/g, '-');
-
-        mediaFiles.forEach(file => {
-          const rawUrl = file.download_url;
-          const lowerName = file.name.toLowerCase();
-          const isVideo = videoExts.some(ext => lowerName.endsWith(ext));
-
-          const anchor = document.createElement('a');
-          anchor.href = rawUrl;
-          anchor.className = 'glightbox';
-          anchor.setAttribute('data-gallery', galleryId);
-
-          if (isVideo) {
-            anchor.setAttribute('data-type', 'video');
-            anchor.innerHTML = `
-              <div class="video-thumbnail">
-                <i class="fa-solid fa-circle-play"></i>
-                <span>Video</span>
+          const cardHTML = `
+            <div class="folder-card">
+              <div class="folder-preview-slider" id="container-${sanitizeId}">
+                <button class="slider-btn prev" onclick="changeMedia('${sanitizeId}', -1)">&#10094;</button>
+                ${mediaHTML}
+                <button class="slider-btn next" onclick="changeMedia('${sanitizeId}', 1)">&#10095;</button>
               </div>
-            `;
-          } else {
-            const img = document.createElement('img');
-            img.src = rawUrl;
-            img.alt = file.name;
-            img.loading = 'lazy';
-            anchor.appendChild(img);
-          }
+              <div class="folder-info-bar">
+                <h4><i class="fa-solid fa-folder-open"></i> ${folderName}</h4>
+                <span class="counter" id="count-${sanitizeId}">1 / ${files.length}</span>
+              </div>
+            </div>
+          `;
 
-          mediaGrid.appendChild(anchor);
-        });
-
-        initLightbox();
-
-      } catch (error) {
-        console.error('Error fetching media from GitHub:', error);
-        mediaGrid.innerHTML = `<p class="error" style="font-size:0.85rem; color:#A52A2A; padding:0.5rem 0;">${error.message}</p>`;
+          galleryContainer.insertAdjacentHTML('beforeend', cardHTML);
+        }
+      } catch (err) {
+        console.error(err);
+        galleryContainer.innerHTML = '<p class="error" style="font-size:0.85rem; color:#A52A2A; padding:0.5rem 0;">Unable to load media content. Please verify gallery.json exists on GitHub.</p>';
       }
     }
 
-    // Toggle and render active folder
-    async function handleFolderToggle(folderGroup) {
-      const isActive = folderGroup.classList.contains('active');
-
-      document.querySelectorAll('.folder-group').forEach(group => {
-        group.classList.remove('active');
-      });
-
-      if (!isActive) {
-        folderGroup.classList.add('active');
-        await loadFolderImages(folderGroup);
-      }
-
-      setTimeout(() => {
-        initLightbox();
-      }, 100);
+    function isVideoFile(url) {
+      return /\.(mp4|webm|ogg|mov)$/i.test(url);
     }
 
-    // DOM Ready Setup
-    document.addEventListener('DOMContentLoaded', () => {
-      initLightbox();
+    function changeMedia(folderId, direction) {
+      const folder = folderState[folderId];
+      if (!folder) return;
 
-      const folderGrid = document.querySelector('.folder-grid');
-      if (folderGrid) {
-        folderGrid.addEventListener('click', (e) => {
-          const backBtn = e.target.closest('.back-btn');
-          const mediaGrid = e.target.closest('.media-grid');
-          const folderGroup = e.target.closest('.folder-group');
+      folder.currentIndex = (folder.currentIndex + direction + folder.files.length) % folder.files.length;
+      const currentFile = folder.files[folder.currentIndex];
+      const isVideo = isVideoFile(currentFile);
 
-          if (mediaGrid) return;
+      let mediaElement = document.getElementById(`media-${folderId}`);
 
-          if (backBtn && folderGroup) {
-            e.stopPropagation();
-            folderGroup.classList.remove('active');
-            return;
-          }
-
-          if (folderGroup) {
-            handleFolderToggle(folderGroup);
-          }
-        });
+      if (isVideo && mediaElement.tagName !== 'VIDEO') {
+        const newVideo = document.createElement('video');
+        newVideo.id = `media-${folderId}`;
+        newVideo.controls = true;
+        newVideo.preload = 'metadata';
+        mediaElement.replaceWith(newVideo);
+        mediaElement = newVideo;
+      } else if (!isVideo && mediaElement.tagName !== 'IMG') {
+        const newImg = document.createElement('img');
+        newImg.id = `media-${folderId}`;
+        mediaElement.replaceWith(newImg);
+        mediaElement = newImg;
       }
-    });
+
+      mediaElement.src = currentFile;
+      document.getElementById(`count-${folderId}`).textContent = `${folder.currentIndex + 1} / ${folder.files.length}`;
+    }
+
+    document.addEventListener('DOMContentLoaded', initGallery);
   </script>
 </body>
 </html>
