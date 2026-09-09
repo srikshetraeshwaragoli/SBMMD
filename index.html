@@ -303,7 +303,7 @@
       }
     }
 
-// GitHub Gallery & Lightbox Logic
+// GitHub Gallery & Lightbox Script
 const MANIFEST_URL = './gallery.json';
 
 const galleryContainer = document.getElementById('gallery-container');
@@ -318,8 +318,10 @@ async function initGallery() {
 
   try {
     const response = await fetch(`${MANIFEST_URL}?v=${Date.now()}`);
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    
+    if (!response.ok) {
+      throw new Error(`Failed to load gallery.json (HTTP ${response.status})`);
+    }
+
     galleryStore = await response.json();
     renderFolderGrid();
   } catch (err) {
@@ -328,18 +330,19 @@ async function initGallery() {
   }
 }
 
-// 1. Render Folder Cards
+// 1. Render Folder Grid
 function renderFolderGrid() {
   galleryContainer.innerHTML = '';
-  
+
   for (const [folderName, files] of Object.entries(galleryStore)) {
-    const count = files ? files.length : 0;
-    
-    // Safely create card elements using DOM methods
+    const count = Array.isArray(files) ? files.length : 0;
+
     const card = document.createElement('div');
     card.className = 'folder-card-item';
-    card.addEventListener('click', () => openFolder(folderName));
-    
+    card.addEventListener('click', function () {
+      openFolder(folderName);
+    });
+
     card.innerHTML = `
       <div class="folder-icon-wrapper">
         <i class="fa-solid fa-folder-closed folder-main-icon"></i>
@@ -349,34 +352,37 @@ function renderFolderGrid() {
         <span class="file-count">${count} ${count === 1 ? 'item' : 'items'}</span>
       </div>
     `;
-    
+
     galleryContainer.appendChild(card);
   }
 }
 
-// 2. Render Media Grid Inside a Selected Folder
+// 2. Render Folder Contents
 function openFolder(folderName) {
   activeFolderTitle = folderName;
   activeFolderFiles = galleryStore[folderName] || [];
-  
+
   const encodedFolder = encodeURIComponent(folderName);
-  
+
   galleryContainer.innerHTML = '';
 
   // Navigation Header
   const navBar = document.createElement('div');
   navBar.className = 'gallery-navigation-bar';
-  navBar.innerHTML = `
-    <button class="btn-back" id="backToFoldersBtn">
-      <i class="fa-solid fa-arrow-left"></i> Back to Folders
-    </button>
-    <h3>${escapeHtml(folderName)}</h3>
-  `;
+
+  const backBtn = document.createElement('button');
+  backBtn.className = 'btn-back';
+  backBtn.innerHTML = '<i class="fa-solid fa-arrow-left"></i> Back to Folders';
+  backBtn.addEventListener('click', renderFolderGrid);
+
+  const titleHeader = document.createElement('h3');
+  titleHeader.textContent = folderName;
+
+  navBar.appendChild(backBtn);
+  navBar.appendChild(titleHeader);
   galleryContainer.appendChild(navBar);
 
-  document.getElementById('backToFoldersBtn').addEventListener('click', renderFolderGrid);
-
-  // Media Thumbnails Grid
+  // Thumbnail Grid
   const thumbGrid = document.createElement('div');
   thumbGrid.className = 'media-thumb-grid';
 
@@ -386,7 +392,9 @@ function openFolder(folderName) {
 
     const thumbCard = document.createElement('div');
     thumbCard.className = 'thumb-card';
-    thumbCard.addEventListener('click', () => openLightbox(index));
+    thumbCard.addEventListener('click', function () {
+      openLightbox(index);
+    });
 
     if (isVideo) {
       thumbCard.innerHTML = `
@@ -405,7 +413,7 @@ function openFolder(folderName) {
   galleryContainer.appendChild(thumbGrid);
 }
 
-// 3. Lightbox Modal Logic
+// 3. Lightbox Logic
 function openLightbox(index) {
   currentLightboxIndex = index;
   const modal = document.getElementById('lightbox-modal');
@@ -423,6 +431,7 @@ function closeLightbox() {
 }
 
 function navigateLightbox(direction) {
+  if (!activeFolderFiles.length) return;
   currentLightboxIndex = (currentLightboxIndex + direction + activeFolderFiles.length) % activeFolderFiles.length;
   updateLightboxMedia();
 }
@@ -430,12 +439,12 @@ function navigateLightbox(direction) {
 function updateLightboxMedia() {
   const mediaContainer = document.getElementById('lightbox-media-container');
   const counter = document.getElementById('lightbox-counter');
-  
+
   if (!mediaContainer) return;
 
   const fileName = activeFolderFiles[currentLightboxIndex];
   const encodedFolder = encodeURIComponent(activeFolderTitle);
-  
+
   const fileUrl = `./Gallery/${encodedFolder}/${encodeURIComponent(fileName)}`;
   const isVideo = isVideoFile(fileName);
 
@@ -454,8 +463,11 @@ function updateLightboxMedia() {
   }
 }
 
-function isVideoFile(url) {
-  return /\.(mp4|webm|ogg|mov)$/i.test(url);
+// Helper Functions
+function isVideoFile(fileName) {
+  if (typeof fileName !== 'string') return false;
+  const cleanName = fileName.split('?')[0].split('#')[0];
+  return /\.(mp4|webm|ogg|mov)$/i.test(cleanName);
 }
 
 function escapeHtml(str) {
