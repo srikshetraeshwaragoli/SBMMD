@@ -387,7 +387,7 @@ function openFolder(folderName) {
   thumbGrid.className = 'media-thumb-grid';
 
   activeFolderFiles.forEach((fileName, index) => {
-    const fileUrl = `./Gallery/${encodedFolder}/${encodeURIComponent(fileName)}`;
+    const fileUrl = `./gallery/${encodedFolder}/${encodeURIComponent(fileName)}`;
     const isVideo = isVideoFile(fileName);
 
     const thumbCard = document.createElement('div');
@@ -445,7 +445,7 @@ function updateLightboxMedia() {
   const fileName = activeFolderFiles[currentLightboxIndex];
   const encodedFolder = encodeURIComponent(activeFolderTitle);
 
-  const fileUrl = `./Gallery/${encodedFolder}/${encodeURIComponent(fileName)}`;
+  const fileUrl = `./gallery/${encodedFolder}/${encodeURIComponent(fileName)}`;
   const isVideo = isVideoFile(fileName);
 
   if (isVideo) {
