@@ -448,6 +448,15 @@ function escapeJsString(str) {
 }
 
 document.addEventListener('DOMContentLoaded', initGallery);
-  </script>
+</script>
+
+<div id="lightbox-modal" class="lightbox-modal">
+  <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+  <button class="lightbox-btn prev" onclick="navigateLightbox(-1)">&#10094;</button>
+  <div id="lightbox-media-container"></div>
+  <button class="lightbox-btn next" onclick="navigateLightbox(1)">&#10095;</button>
+  <div id="lightbox-counter" class="lightbox-counter"></div>
+</div>
+  
 </body>
 </html>
