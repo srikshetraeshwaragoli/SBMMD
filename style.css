@@ -5,11 +5,11 @@
   --primary-maroon: #5B0E14;        
   --secondary-maroon: #7D181E;
   --primary-hover: #A52A2A;
-  --accent-gold: #D4AF37;          /* Traditional Brass/Gold */
+  --accent-gold: #D4AF37;           /* Traditional Brass/Gold */
   --accent-gold-light: #FFF8E7;
   --text-dark: #2B2B2B;
   --text-muted: #666666;
-  --bg-light: #FDFBF7;            /* Warm Ivory Background */
+  --bg-light: #FDFBF7;             /* Warm Ivory Background */
   --bg-white: #FFFFFF;
   --border-color: #E2D7C5;
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -522,24 +522,102 @@ img {
   gap: 1.2rem;
 }
 
-.folder-group {
-  background-color: var(--bg-light);
+/* ==========================================
+   GALLERY SLIDER & VIDEO MEDIA STYLES
+   ========================================== */
+.folder-card {
+  position: relative;
+  background-color: var(--bg-white);
   border: 1px solid var(--border-color);
-  border-radius: 6px;
-  padding: 0.8rem;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 }
 
-.folder-header h4 {
-  font-size: 0.9rem;
-  margin-bottom: 0.8rem;
-  color: var(--secondary-maroon);
+.folder-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
 }
 
-.folder-header i {
-  color: var(--accent-gold);
-  margin-right: 0.3rem;
+.folder-preview-slider {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  background-color: #000000;
+  overflow: hidden;
+  border-radius: 8px 8px 0 0;
 }
 
+/* Image and Video Sizing Adjustments */
+.folder-preview-slider img,
+.folder-preview-slider video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Forward / Backward Arrow Navigation Buttons */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+  border: none;
+  font-size: 1.2rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0; /* Hidden by default */
+  transition: opacity 0.3s ease, background 0.3s ease;
+  z-index: 10;
+}
+
+/* Reveal arrows when hovering over the folder card */
+.folder-card:hover .slider-btn {
+  opacity: 1;
+}
+
+.slider-btn:hover {
+  background: var(--primary-maroon);
+}
+
+.slider-btn.prev {
+  left: 10px;
+}
+
+.slider-btn.next {
+  right: 10px;
+}
+
+.folder-info-bar {
+  padding: 0.8rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--border-color);
+  background-color: var(--bg-white);
+}
+
+.folder-info-bar h4 {
+  font-size: 0.95rem;
+  color: var(--primary-maroon);
+  font-weight: 600;
+}
+
+.folder-info-bar .counter {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+/* Legacy Static Media Grid (Fallback) */
 .media-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
