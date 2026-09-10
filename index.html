@@ -402,7 +402,7 @@
       const thumbGrid = document.createElement('div');
       thumbGrid.className = 'media-thumb-grid';
 
-      const githubBase = 'https://raw.githubusercontent.com/srikshetraeshwaragoli/SBMMD/main/Gallery';
+      const githubBase = 'https://raw.githubusercontent.com/srikshetraeshwaragoli/SBMMD/main';
 
       activeFolderFiles.forEach((fileName, index) => {
         const isVideo = isVideoFile(fileName);
@@ -411,11 +411,11 @@
         thumbCard.addEventListener('click', () => openLightbox(index));
 
         // Alternate paths (Local uppercase/lowercase + GitHub CDN)
-        const primaryUrl = `./Gallery/${encodeURIComponent(folderName)}/${encodeURIComponent(fileName)}`;
+        const primaryUrl = `./${encodeURIComponent(folderName)}/${encodeURIComponent(fileName)}`;
         const altFileName = getAltExtension(fileName);
-        const fallback1 = `./gallery/${encodeURIComponent(folderName.toLowerCase())}/${encodeURIComponent(fileName)}`;
-        const fallback2 = `./Gallery/${encodeURIComponent(folderName)}/${encodeURIComponent(altFileName)}`;
-        const fallback3 = `${githubBase}/${encodeURIComponent(folderName)}/${encodeURIComponent(fileName)}`;
+        const fallback1 = `./${encodeURIComponent(folderName)}/${encodeURIComponent(altFileName)}`;
+        const fallback2 = `${githubBase}/${encodeURIComponent(folderName)}/${encodeURIComponent(fileName)}`;
+        const fallback3 = `${githubBase}/${encodeURIComponent(folderName)}/${encodeURIComponent(altFileName)}`;
 
         if (isVideo) {
           thumbCard.innerHTML = `
@@ -478,9 +478,9 @@
       if (!mediaContainer) return;
 
       const fileName = activeFolderFiles[currentLightboxIndex];
-      const primaryUrl = `./Gallery/${encodeURIComponent(activeFolderTitle)}/${encodeURIComponent(fileName)}`;
-      const fallback1 = `./gallery/${encodeURIComponent(activeFolderTitle.toLowerCase())}/${encodeURIComponent(fileName)}`;
-      const fallback2 = `https://raw.githubusercontent.com/srikshetraeshwaragoli/SBMMD/main/Gallery/${encodeURIComponent(activeFolderTitle)}/${encodeURIComponent(fileName)}`;
+      const primaryUrl = `./${encodeURIComponent(activeFolderTitle)}/${encodeURIComponent(fileName)}`;
+      const fallback1 = `https://raw.githubusercontent.com/srikshetraeshwaragoli/SBMMD/main/${encodeURIComponent(activeFolderTitle)}/${encodeURIComponent(fileName)}`;
+      const fallback2 = `./${encodeURIComponent(activeFolderTitle)}/${encodeURIComponent(getAltExtension(fileName))}`;
       const isVideo = isVideoFile(fileName);
 
       if (isVideo) {
