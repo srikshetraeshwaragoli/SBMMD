@@ -667,13 +667,10 @@
       const fileName =
         activeFolderFiles[currentLightboxIndex];
 
-
-      const localUrl =
-        `./${encodeURIComponent(activeFolderPath)}/${encodeURIComponent(fileName)}`;
-
       const githubUrl =
-        `${GITHUB_BASE}/${encodeURIComponent(activeFolderPath)}/${encodeURIComponent(fileName)}`;
+      `${GITHUB_BASE}/${encodeURIComponent(activeFolderPath)}/${encodeURIComponent(fileName)}`;
 
+      const localUrl = githubUrl;
 
       const isVideo =
         isVideoFile(fileName);
