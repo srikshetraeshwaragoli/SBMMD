@@ -142,7 +142,7 @@ ul {
               url('https://raw.githubusercontent.com/srikshetraeshwaragoli/SBMMD/main/image2.png') center/cover no-repeat;
   color: #FFF;
   text-align: center;
-  padding: 100px 0;
+  padding: 50px 0;
 }
 
 .hero-content {
@@ -151,7 +151,7 @@ ul {
 }
 
 .welcome-text {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   letter-spacing: 2px;
   color: var(--accent-color);
 }
