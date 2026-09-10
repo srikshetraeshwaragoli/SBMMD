@@ -270,14 +270,13 @@
       </div>
 
       <div class="footer-map">
-
-      <h4>Find Us</h4>
-      <div class="map-container">
-      <iframe 
-         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.3582121307255!2d74.8093121!3d12.9489249!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba351962773e73d%3A0xab0d38f3b8552039!2sSri%20Brahma%20Sri%20Mugera%20Mahankali%20Devasthana!5e0!3m2!1sen!2sin!4v1725877800000!5m2!1sen!2sin" 
-         width="100%" height="100" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-      </div>
-      <a href="https://maps.app.goo.gl/UZWVKfmwSDom49KbA" target="_blank" class="map-link">View Larger Map →</a>
+        <h4>Find Us</h4>
+        <div class="map-container">
+          <iframe 
+             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.3582121307255!2d74.8093121!3d12.9489249!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba351962773e73d%3A0xab0d38f3b8552039!2sSri%20Brahma%20Sri%20Mugera%20Mahankali%20Devasthana!5e0!3m2!1sen!2sin!4v1725877800000!5m2!1sen!2sin" 
+             width="100%" height="100" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        <a href="https://maps.app.goo.gl/UZWVKfmwSDom49KbA" target="_blank" class="map-link">View Larger Map →</a>
       </div>
     </div>
 
@@ -288,7 +287,6 @@
   </footer>
 
   <script>
-    // Toggle "Learn More" Kannada Content
     function toggleLearnMore() {
       const kannadaContent = document.getElementById('kannadaContent');
       const toggleBtn = document.getElementById('toggleBtn');
@@ -303,213 +301,196 @@
       }
     }
 
-// GitHub Gallery & Lightbox Script
-const MANIFEST_URL = './gallery.json';
+    const MANIFEST_URL = './gallery.json';
+    const galleryContainer = document.getElementById('gallery-container');
 
-const galleryContainer = document.getElementById('gallery-container');
+    let galleryStore = {};
+    let activeFolderFiles = [];
+    let activeFolderTitle = '';
+    let currentLightboxIndex = 0;
 
-let galleryStore = {};
-let activeFolderFiles = [];
-let activeFolderTitle = '';
-let currentLightboxIndex = 0;
+    async function initGallery() {
+      if (!galleryContainer) return;
 
-async function initGallery() {
-  if (!galleryContainer) return;
-
-  try {
-    const response = await fetch(`${MANIFEST_URL}?v=${Date.now()}`);
-    if (!response.ok) {
-      throw new Error(`Failed to load gallery.json (HTTP ${response.status})`);
+      try {
+        const response = await fetch(`${MANIFEST_URL}?v=${Date.now()}`);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        galleryStore = await response.json();
+        renderFolderGrid();
+      } catch (err) {
+        console.error('Gallery Fetch Error:', err);
+        galleryContainer.innerHTML = `<p style="color:#5B0E14; padding:1rem;">Unable to load media content.</p>`;
+      }
     }
 
-    galleryStore = await response.json();
-    renderFolderGrid();
-  } catch (err) {
-    console.error('Gallery Fetch Error:', err);
-    galleryContainer.innerHTML = `<p style="color:#5B0E14; padding:1rem;">Unable to load media content. Error: ${escapeHtml(err.message)}</p>`;
-  }
-}
+    function renderFolderGrid() {
+      galleryContainer.innerHTML = '';
 
-// 1. Render Folder Grid
-function renderFolderGrid() {
-  galleryContainer.innerHTML = '';
+      for (const [folderName, files] of Object.entries(galleryStore)) {
+        const count = Array.isArray(files) ? files.length : 0;
+        const card = document.createElement('div');
+        card.className = 'folder-card-item';
+        card.addEventListener('click', () => openFolder(folderName));
 
-  for (const [folderName, files] of Object.entries(galleryStore)) {
-    const count = Array.isArray(files) ? files.length : 0;
-
-    const card = document.createElement('div');
-    card.className = 'folder-card-item';
-    card.addEventListener('click', function () {
-      openFolder(folderName);
-    });
-
-    card.innerHTML = `
-      <div class="folder-icon-wrapper">
-        <i class="fa-solid fa-folder-closed folder-main-icon"></i>
-      </div>
-      <div class="folder-card-info">
-        <h4>${escapeHtml(folderName)}</h4>
-        <span class="file-count">${count} ${count === 1 ? 'item' : 'items'}</span>
-      </div>
-    `;
-
-    galleryContainer.appendChild(card);
-  }
-}
-
-// Helper function to generate alternate extensions/folder casing on image load errors
-function getAltExtension(fileName) {
-  if (/\.jpeg$/i.test(fileName)) return fileName.replace(/\.jpeg$/i, '.jpg');
-  if (/\.jpg$/i.test(fileName)) return fileName.replace(/\.jpg$/i, '.jpeg');
-  return fileName;
-}
-
-// 2. Render Folder Contents
-function openFolder(folderName) {
-  activeFolderTitle = folderName;
-  activeFolderFiles = galleryStore[folderName] || [];
-
-  const encodedFolder = encodeURIComponent(folderName);
-
-  galleryContainer.innerHTML = '';
-
-  // Navigation Header
-  const navBar = document.createElement('div');
-  navBar.className = 'gallery-navigation-bar';
-
-  const backBtn = document.createElement('button');
-  backBtn.className = 'btn-back';
-  backBtn.innerHTML = '<i class="fa-solid fa-arrow-left"></i> Back to Folders';
-  backBtn.addEventListener('click', renderFolderGrid);
-
-  const titleHeader = document.createElement('h3');
-  titleHeader.textContent = folderName;
-
-  navBar.appendChild(backBtn);
-  navBar.appendChild(titleHeader);
-  galleryContainer.appendChild(navBar);
-
-  // Thumbnail Grid
-  const thumbGrid = document.createElement('div');
-  thumbGrid.className = 'media-thumb-grid';
-
-  activeFolderFiles.forEach((fileName, index) => {
-    const fileUrl = `./Gallery/${encodedFolder}/${encodeURIComponent(fileName)}`;
-    const isVideo = isVideoFile(fileName);
-
-    const thumbCard = document.createElement('div');
-    thumbCard.className = 'thumb-card';
-    thumbCard.addEventListener('click', function () {
-      openLightbox(index);
-    });
-
-    if (isVideo) {
-      thumbCard.innerHTML = `
-        <video src="${fileUrl}#t=0.1" preload="metadata" muted playsinline></video>
-        <div class="play-overlay"><i class="fa-solid fa-play"></i></div>
-      `;
-    } else {
-      const altFile = getAltExtension(fileName);
-      const fallbackUrl1 = `./Gallery/${encodedFolder}/${encodeURIComponent(altFile)}`;
-      const fallbackUrl2 = `./Gallery/${encodeURIComponent(folderName.toUpperCase())}/${encodeURIComponent(fileName)}`;
-
-      thumbCard.innerHTML = `
-        <img src="${fileUrl}" 
-             alt="${escapeHtml(fileName)}" 
-             loading="lazy"
-             onerror="if(!this.dataset.try1){this.dataset.try1=true;this.src='${fallbackUrl1}';}else if(!this.dataset.try2){this.dataset.try2=true;this.src='${fallbackUrl2}';}">
-      `;
+        card.innerHTML = `
+          <div class="folder-icon-wrapper">
+            <i class="fa-solid fa-folder-closed folder-main-icon"></i>
+          </div>
+          <div class="folder-card-info">
+            <h4>${escapeHtml(folderName)}</h4>
+            <span class="file-count">${count} ${count === 1 ? 'item' : 'items'}</span>
+          </div>
+        `;
+        galleryContainer.appendChild(card);
+      }
     }
 
-    thumbGrid.appendChild(thumbCard);
-  });
+    function getAltExtension(fileName) {
+      if (/\.jpeg$/i.test(fileName)) return fileName.replace(/\.jpeg$/i, '.jpg');
+      if (/\.jpg$/i.test(fileName)) return fileName.replace(/\.jpg$/i, '.jpeg');
+      return fileName;
+    }
 
-  galleryContainer.appendChild(thumbGrid);
-}
+    function openFolder(folderName) {
+      activeFolderTitle = folderName;
+      activeFolderFiles = galleryStore[folderName] || [];
 
-// 3. Lightbox Logic
-function openLightbox(index) {
-  currentLightboxIndex = index;
-  const modal = document.getElementById('lightbox-modal');
-  if (modal) {
-    modal.style.display = 'flex';
-    updateLightboxMedia();
-  }
-}
+      const encodedFolder = encodeURIComponent(folderName);
+      galleryContainer.innerHTML = '';
 
-function closeLightbox() {
-  const modal = document.getElementById('lightbox-modal');
-  const mediaContainer = document.getElementById('lightbox-media-container');
-  if (modal) modal.style.display = 'none';
-  if (mediaContainer) mediaContainer.innerHTML = '';
-}
+      const navBar = document.createElement('div');
+      navBar.className = 'gallery-navigation-bar';
 
-function navigateLightbox(direction) {
-  if (!activeFolderFiles.length) return;
-  currentLightboxIndex = (currentLightboxIndex + direction + activeFolderFiles.length) % activeFolderFiles.length;
-  updateLightboxMedia();
-}
+      const backBtn = document.createElement('button');
+      backBtn.className = 'btn-back';
+      backBtn.innerHTML = '<i class="fa-solid fa-arrow-left"></i> Back to Folders';
+      backBtn.addEventListener('click', renderFolderGrid);
 
-function updateLightboxMedia() {
-  const mediaContainer = document.getElementById('lightbox-media-container');
-  const counter = document.getElementById('lightbox-counter');
+      const titleHeader = document.createElement('h3');
+      titleHeader.textContent = folderName;
 
-  if (!mediaContainer) return;
+      navBar.appendChild(backBtn);
+      navBar.appendChild(titleHeader);
+      galleryContainer.appendChild(navBar);
 
-  const fileName = activeFolderFiles[currentLightboxIndex];
-  const encodedFolder = encodeURIComponent(activeFolderTitle);
+      const thumbGrid = document.createElement('div');
+      thumbGrid.className = 'media-thumb-grid';
 
-  const fileUrl = `./Gallery/${encodedFolder}/${encodeURIComponent(fileName)}`;
-  const isVideo = isVideoFile(fileName);
+      activeFolderFiles.forEach((fileName, index) => {
+        const fileUrl = `./Gallery/${encodedFolder}/${encodeURIComponent(fileName)}`;
+        const lowerFolderUrl = `./gallery/${encodeURIComponent(folderName.toLowerCase())}/${encodeURIComponent(fileName)}`;
+        const isVideo = isVideoFile(fileName);
 
-  if (isVideo) {
-    mediaContainer.innerHTML = `
-      <video src="${fileUrl}" controls autoplay playsinline style="max-width:90vw; max-height:80vh;"></video>
-    `;
-  } else {
-    const altFile = getAltExtension(fileName);
-    const fallbackUrl1 = `./Gallery/${encodedFolder}/${encodeURIComponent(altFile)}`;
-    const fallbackUrl2 = `./Gallery/${encodeURIComponent(activeFolderTitle.toUpperCase())}/${encodeURIComponent(fileName)}`;
+        const thumbCard = document.createElement('div');
+        thumbCard.className = 'thumb-card';
+        thumbCard.addEventListener('click', () => openLightbox(index));
 
-    mediaContainer.innerHTML = `
-      <img src="${fileUrl}" 
-           alt="Media ${currentLightboxIndex + 1}" 
-           style="max-width:90vw; max-height:80vh; object-fit:contain;"
-           onerror="if(!this.dataset.try1){this.dataset.try1=true;this.src='${fallbackUrl1}';}else if(!this.dataset.try2){this.dataset.try2=true;this.src='${fallbackUrl2}';}">
-    `;
-  }
+        if (isVideo) {
+          thumbCard.innerHTML = `
+            <video src="${fileUrl}#t=0.1" preload="metadata" muted playsinline 
+                   onerror="if(!this.dataset.tried){this.dataset.tried=true;this.src='${lowerFolderUrl}#t=0.1';}"></video>
+            <div class="play-overlay"><i class="fa-solid fa-play"></i></div>
+          `;
+        } else {
+          const altFile = getAltExtension(fileName);
+          const fallbackUrl1 = `./Gallery/${encodedFolder}/${encodeURIComponent(altFile)}`;
+          const fallbackUrl2 = `./gallery/${encodeURIComponent(folderName.toLowerCase())}/${encodeURIComponent(fileName)}`;
 
-  if (counter) {
-    counter.textContent = `${currentLightboxIndex + 1} / ${activeFolderFiles.length}`;
-  }
-}
+          thumbCard.innerHTML = `
+            <img src="${fileUrl}" 
+                 alt="${escapeHtml(fileName)}" 
+                 loading="lazy"
+                 onerror="if(!this.dataset.try1){this.dataset.try1=true;this.src='${fallbackUrl1}';}else if(!this.dataset.try2){this.dataset.try2=true;this.src='${fallbackUrl2}';}">
+          `;
+        }
 
-// Helper Functions
-function isVideoFile(fileName) {
-  if (typeof fileName !== 'string') return false;
-  const cleanName = fileName.split('?')[0].split('#')[0];
-  return /\.(mp4|webm|ogg|mov)$/i.test(cleanName);
-}
+        thumbGrid.appendChild(thumbCard);
+      });
 
-function escapeHtml(str) {
-  return String(str)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;');
-}
+      galleryContainer.appendChild(thumbGrid);
+    }
 
-document.addEventListener('DOMContentLoaded', initGallery);
-</script>
+    function openLightbox(index) {
+      currentLightboxIndex = index;
+      const modal = document.getElementById('lightbox-modal');
+      if (modal) {
+        modal.style.display = 'flex';
+        updateLightboxMedia();
+      }
+    }
 
-<div id="lightbox-modal" class="lightbox-modal">
-  <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-  <button class="lightbox-btn prev" onclick="navigateLightbox(-1)">&#10094;</button>
-  <div id="lightbox-media-container"></div>
-  <button class="lightbox-btn next" onclick="navigateLightbox(1)">&#10095;</button>
-  <div id="lightbox-counter" class="lightbox-counter"></div>
-</div>
-  
+    function closeLightbox() {
+      const modal = document.getElementById('lightbox-modal');
+      const mediaContainer = document.getElementById('lightbox-media-container');
+      if (modal) modal.style.display = 'none';
+      if (mediaContainer) mediaContainer.innerHTML = '';
+    }
+
+    function navigateLightbox(direction) {
+      if (!activeFolderFiles.length) return;
+      currentLightboxIndex = (currentLightboxIndex + direction + activeFolderFiles.length) % activeFolderFiles.length;
+      updateLightboxMedia();
+    }
+
+    function updateLightboxMedia() {
+      const mediaContainer = document.getElementById('lightbox-media-container');
+      const counter = document.getElementById('lightbox-counter');
+      if (!mediaContainer) return;
+
+      const fileName = activeFolderFiles[currentLightboxIndex];
+      const encodedFolder = encodeURIComponent(activeFolderTitle);
+      const fileUrl = `./Gallery/${encodedFolder}/${encodeURIComponent(fileName)}`;
+      const lowerFolderUrl = `./gallery/${encodeURIComponent(activeFolderTitle.toLowerCase())}/${encodeURIComponent(fileName)}`;
+      const isVideo = isVideoFile(fileName);
+
+      if (isVideo) {
+        mediaContainer.innerHTML = `
+          <video src="${fileUrl}" controls autoplay playsinline style="max-width:90vw; max-height:80vh;"
+                 onerror="if(!this.dataset.tried){this.dataset.tried=true;this.src='${lowerFolderUrl}';}"></video>
+        `;
+      } else {
+        const altFile = getAltExtension(fileName);
+        const fallbackUrl1 = `./Gallery/${encodedFolder}/${encodeURIComponent(altFile)}`;
+        const fallbackUrl2 = `./gallery/${encodeURIComponent(activeFolderTitle.toLowerCase())}/${encodeURIComponent(fileName)}`;
+
+        mediaContainer.innerHTML = `
+          <img src="${fileUrl}" 
+               alt="Media ${currentLightboxIndex + 1}" 
+               style="max-width:90vw; max-height:80vh; object-fit:contain;"
+               onerror="if(!this.dataset.try1){this.dataset.try1=true;this.src='${fallbackUrl1}';}else if(!this.dataset.try2){this.dataset.try2=true;this.src='${fallbackUrl2}';}">
+        `;
+      }
+
+      if (counter) {
+        counter.textContent = `${currentLightboxIndex + 1} / ${activeFolderFiles.length}`;
+      }
+    }
+
+    function isVideoFile(fileName) {
+      if (typeof fileName !== 'string') return false;
+      const cleanName = fileName.split('?')[0].split('#')[0];
+      return /\.(mp4|webm|ogg|mov)$/i.test(cleanName);
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    document.addEventListener('DOMContentLoaded', initGallery);
+  </script>
+
+  <div id="lightbox-modal" class="lightbox-modal">
+    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+    <button class="lightbox-btn prev" onclick="navigateLightbox(-1)">&#10094;</button>
+    <div id="lightbox-media-container"></div>
+    <button class="lightbox-btn next" onclick="navigateLightbox(1)">&#10095;</button>
+    <div id="lightbox-counter" class="lightbox-counter"></div>
+  </div>
+
 </body>
 </html>
