@@ -333,6 +333,8 @@
     }
 
     function renderFolderGrid() {
+      galleryContainer.className = 'folder-grid';
+      galleryContainer.style = '';
       galleryContainer.innerHTML = '';
 
       for (const [folderName, files] of Object.entries(galleryStore)) {
@@ -357,6 +359,7 @@
     function getAltExtension(fileName) {
       if (/\.jpeg$/i.test(fileName)) return fileName.replace(/\.jpeg$/i, '.jpg');
       if (/\.jpg$/i.test(fileName)) return fileName.replace(/\.jpg$/i, '.jpeg');
+      if (/\.png$/i.test(fileName)) return fileName.replace(/\.png$/i, '.PNG');
       return fileName;
     }
 
@@ -364,52 +367,68 @@
       activeFolderTitle = folderName;
       activeFolderFiles = galleryStore[folderName] || [];
 
-      const encodedFolder = encodeURIComponent(folderName);
+      // Override grid layout on gallery container for proper header stacking
+      galleryContainer.className = 'folder-view-active';
+      galleryContainer.style.display = 'flex';
+      galleryContainer.style.flexDirection = 'column';
+      galleryContainer.style.width = '100%';
       galleryContainer.innerHTML = '';
 
+      // 1. TOP NAVIGATION BAR
       const navBar = document.createElement('div');
       navBar.className = 'gallery-navigation-bar';
+      navBar.style.display = 'flex';
+      navBar.style.flexDirection = 'column';
+      navBar.style.alignItems = 'flex-start';
+      navBar.style.gap = '8px';
+      navBar.style.marginBottom = '16px';
+      navBar.style.width = '100%';
 
       const backBtn = document.createElement('button');
       backBtn.className = 'btn-back';
+      backBtn.style.cursor = 'pointer';
       backBtn.innerHTML = '<i class="fa-solid fa-arrow-left"></i> Back to Folders';
       backBtn.addEventListener('click', renderFolderGrid);
 
       const titleHeader = document.createElement('h3');
       titleHeader.textContent = folderName;
+      titleHeader.style.margin = '0';
 
       navBar.appendChild(backBtn);
       navBar.appendChild(titleHeader);
       galleryContainer.appendChild(navBar);
 
+      // 2. THUMBNAIL GRID
       const thumbGrid = document.createElement('div');
       thumbGrid.className = 'media-thumb-grid';
 
-      activeFolderFiles.forEach((fileName, index) => {
-        const fileUrl = `./Gallery/${encodedFolder}/${encodeURIComponent(fileName)}`;
-        const lowerFolderUrl = `./gallery/${encodeURIComponent(folderName.toLowerCase())}/${encodeURIComponent(fileName)}`;
-        const isVideo = isVideoFile(fileName);
+      const githubBase = 'https://raw.githubusercontent.com/srikshetraeshwaragoli/SBMMD/main/Gallery';
 
+      activeFolderFiles.forEach((fileName, index) => {
+        const isVideo = isVideoFile(fileName);
         const thumbCard = document.createElement('div');
         thumbCard.className = 'thumb-card';
         thumbCard.addEventListener('click', () => openLightbox(index));
 
+        // Alternate paths (Local uppercase/lowercase + GitHub CDN)
+        const primaryUrl = `./Gallery/${encodeURIComponent(folderName)}/${encodeURIComponent(fileName)}`;
+        const altFileName = getAltExtension(fileName);
+        const fallback1 = `./gallery/${encodeURIComponent(folderName.toLowerCase())}/${encodeURIComponent(fileName)}`;
+        const fallback2 = `./Gallery/${encodeURIComponent(folderName)}/${encodeURIComponent(altFileName)}`;
+        const fallback3 = `${githubBase}/${encodeURIComponent(folderName)}/${encodeURIComponent(fileName)}`;
+
         if (isVideo) {
           thumbCard.innerHTML = `
-            <video src="${fileUrl}#t=0.1" preload="metadata" muted playsinline 
-                   onerror="if(!this.dataset.tried){this.dataset.tried=true;this.src='${lowerFolderUrl}#t=0.1';}"></video>
+            <video src="${primaryUrl}#t=0.1" preload="metadata" muted playsinline 
+                   onerror="handleMediaError(this, ['${fallback1}#t=0.1', '${fallback3}#t=0.1'])"></video>
             <div class="play-overlay"><i class="fa-solid fa-play"></i></div>
           `;
         } else {
-          const altFile = getAltExtension(fileName);
-          const fallbackUrl1 = `./Gallery/${encodedFolder}/${encodeURIComponent(altFile)}`;
-          const fallbackUrl2 = `./gallery/${encodeURIComponent(folderName.toLowerCase())}/${encodeURIComponent(fileName)}`;
-
           thumbCard.innerHTML = `
-            <img src="${fileUrl}" 
+            <img src="${primaryUrl}" 
                  alt="${escapeHtml(fileName)}" 
                  loading="lazy"
-                 onerror="if(!this.dataset.try1){this.dataset.try1=true;this.src='${fallbackUrl1}';}else if(!this.dataset.try2){this.dataset.try2=true;this.src='${fallbackUrl2}';}">
+                 onerror="handleMediaError(this, ['${fallback1}', '${fallback2}', '${fallback3}'])">
           `;
         }
 
@@ -417,6 +436,18 @@
       });
 
       galleryContainer.appendChild(thumbGrid);
+    }
+
+    function handleMediaError(element, fallbackPaths) {
+      if (!element.dataset.retryIndex) {
+        element.dataset.retryIndex = "0";
+      }
+      let index = parseInt(element.dataset.retryIndex, 10);
+
+      if (index < fallbackPaths.length) {
+        element.dataset.retryIndex = (index + 1).toString();
+        element.src = fallbackPaths[index];
+      }
     }
 
     function openLightbox(index) {
@@ -447,26 +478,22 @@
       if (!mediaContainer) return;
 
       const fileName = activeFolderFiles[currentLightboxIndex];
-      const encodedFolder = encodeURIComponent(activeFolderTitle);
-      const fileUrl = `./Gallery/${encodedFolder}/${encodeURIComponent(fileName)}`;
-      const lowerFolderUrl = `./gallery/${encodeURIComponent(activeFolderTitle.toLowerCase())}/${encodeURIComponent(fileName)}`;
+      const primaryUrl = `./Gallery/${encodeURIComponent(activeFolderTitle)}/${encodeURIComponent(fileName)}`;
+      const fallback1 = `./gallery/${encodeURIComponent(activeFolderTitle.toLowerCase())}/${encodeURIComponent(fileName)}`;
+      const fallback2 = `https://raw.githubusercontent.com/srikshetraeshwaragoli/SBMMD/main/Gallery/${encodeURIComponent(activeFolderTitle)}/${encodeURIComponent(fileName)}`;
       const isVideo = isVideoFile(fileName);
 
       if (isVideo) {
         mediaContainer.innerHTML = `
-          <video src="${fileUrl}" controls autoplay playsinline style="max-width:90vw; max-height:80vh;"
-                 onerror="if(!this.dataset.tried){this.dataset.tried=true;this.src='${lowerFolderUrl}';}"></video>
+          <video src="${primaryUrl}" controls autoplay playsinline style="max-width:90vw; max-height:80vh;"
+                 onerror="handleMediaError(this, ['${fallback1}', '${fallback2}'])"></video>
         `;
       } else {
-        const altFile = getAltExtension(fileName);
-        const fallbackUrl1 = `./Gallery/${encodedFolder}/${encodeURIComponent(altFile)}`;
-        const fallbackUrl2 = `./gallery/${encodeURIComponent(activeFolderTitle.toLowerCase())}/${encodeURIComponent(fileName)}`;
-
         mediaContainer.innerHTML = `
-          <img src="${fileUrl}" 
+          <img src="${primaryUrl}" 
                alt="Media ${currentLightboxIndex + 1}" 
                style="max-width:90vw; max-height:80vh; object-fit:contain;"
-               onerror="if(!this.dataset.try1){this.dataset.try1=true;this.src='${fallbackUrl1}';}else if(!this.dataset.try2){this.dataset.try2=true;this.src='${fallbackUrl2}';}">
+               onerror="handleMediaError(this, ['${fallback1}', '${fallback2}'])">
         `;
       }
 
@@ -490,7 +517,6 @@
         .replace(/'/g, '&#039;');
     }
 
-    // Keyboard Shortcuts for Lightbox
     document.addEventListener('keydown', function(e) {
       const modal = document.getElementById('lightbox-modal');
       if (modal && modal.style.display === 'flex') {
