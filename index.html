@@ -518,13 +518,11 @@
           // ./Annual%20Nemotsava%2026/image1.jpeg
           // ./Brahma%20Kalashotsava%2024/image1.jpg
 
-          const localUrl =
-            `./${encodeURIComponent(activeFolderPath)}/${encodeURIComponent(fileName)}`;
-
           const githubUrl =
-            `${GITHUB_BASE}/${encodeURIComponent(activeFolderPath)}/${encodeURIComponent(fileName)}`;
+          `${GITHUB_BASE}/${encodeURIComponent(activeFolderPath)}/${encodeURIComponent(fileName)}`;
 
-
+          const localUrl = githubUrl;
+          
           if (isVideo) {
 
             thumbCard.innerHTML = `
