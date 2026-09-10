@@ -155,7 +155,7 @@ ul {
 }
 
 .welcome-text {
-  font-size: 0.9rem;
+  font-size: 0.7rem;
   letter-spacing: 2px;
   color: var(--accent-color);
   text-transform: uppercase;
