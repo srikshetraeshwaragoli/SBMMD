@@ -286,6 +286,15 @@
     </div>
   </footer>
 
+  <!-- LIGHTBOX MODAL CONTAINER -->
+  <div id="lightbox-modal" class="lightbox-modal" onclick="if(event.target === this) closeLightbox()">
+    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+    <button class="lightbox-btn prev" onclick="navigateLightbox(-1)">&#10094;</button>
+    <div id="lightbox-media-container"></div>
+    <button class="lightbox-btn next" onclick="navigateLightbox(1)">&#10095;</button>
+    <div id="lightbox-counter" class="lightbox-counter"></div>
+  </div>
+
   <script>
     function toggleLearnMore() {
       const kannadaContent = document.getElementById('kannadaContent');
@@ -481,16 +490,18 @@
         .replace(/'/g, '&#039;');
     }
 
+    // Keyboard Shortcuts for Lightbox
+    document.addEventListener('keydown', function(e) {
+      const modal = document.getElementById('lightbox-modal');
+      if (modal && modal.style.display === 'flex') {
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') navigateLightbox(-1);
+        if (e.key === 'ArrowRight') navigateLightbox(1);
+      }
+    });
+
     document.addEventListener('DOMContentLoaded', initGallery);
   </script>
-
-  <div id="lightbox-modal" class="lightbox-modal">
-    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
-    <button class="lightbox-btn prev" onclick="navigateLightbox(-1)">&#10094;</button>
-    <div id="lightbox-media-container"></div>
-    <button class="lightbox-btn next" onclick="navigateLightbox(1)">&#10095;</button>
-    <div id="lightbox-counter" class="lightbox-counter"></div>
-  </div>
 
 </body>
 </html>
