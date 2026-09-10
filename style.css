@@ -147,36 +147,41 @@ ul {
 
 .hero-content {
   max-width: 800px;
-  margin: 0 auto;
+  margin: 0; /* Align container to the left */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align flex children to the left */
+  text-align: left; /* Left-align all text */
 }
 
 .welcome-text {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   letter-spacing: 2px;
   color: var(--accent-color);
+  text-transform: uppercase;
+  margin: 0 0 5px 0;
+  text-align: left;
+  width: auto;
 }
 
 .hero-content h1 {
   font-family: var(--font-heading);
   font-size: 2.4rem;
-  margin: 15px 0;
-}
-
-.subtext {
-  font-size: 1.2rem;
-  font-weight: 500;
+  margin: 10px 0 15px 0;
+  text-align: left;
 }
 
 .blessing-text {
   font-style: italic;
   margin-bottom: 25px;
   opacity: 0.9;
+  text-align: left;
 }
 
 .hero-buttons {
   display: flex;
   gap: 15px;
-  justify-content: center;
+  justify-content: flex-start; /* Align buttons to the left */
 }
 
 /* ==========================================================================
