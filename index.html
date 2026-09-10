@@ -357,6 +357,13 @@ function renderFolderGrid() {
   }
 }
 
+// Helper function to generate alternate extensions/folder casing on image load errors
+function getAltExtension(fileName) {
+  if (/\.jpeg$/i.test(fileName)) return fileName.replace(/\.jpeg$/i, '.jpg');
+  if (/\.jpg$/i.test(fileName)) return fileName.replace(/\.jpg$/i, '.jpeg');
+  return fileName;
+}
+
 // 2. Render Folder Contents
 function openFolder(folderName) {
   activeFolderTitle = folderName;
@@ -387,7 +394,6 @@ function openFolder(folderName) {
   thumbGrid.className = 'media-thumb-grid';
 
   activeFolderFiles.forEach((fileName, index) => {
-    // Ensuring correct case sensitivity matching the exact local or remote folder structure
     const fileUrl = `./Gallery/${encodedFolder}/${encodeURIComponent(fileName)}`;
     const isVideo = isVideoFile(fileName);
 
@@ -403,8 +409,15 @@ function openFolder(folderName) {
         <div class="play-overlay"><i class="fa-solid fa-play"></i></div>
       `;
     } else {
+      const altFile = getAltExtension(fileName);
+      const fallbackUrl1 = `./Gallery/${encodedFolder}/${encodeURIComponent(altFile)}`;
+      const fallbackUrl2 = `./Gallery/${encodeURIComponent(folderName.toUpperCase())}/${encodeURIComponent(fileName)}`;
+
       thumbCard.innerHTML = `
-        <img src="${fileUrl}" alt="${escapeHtml(fileName)}" loading="lazy">
+        <img src="${fileUrl}" 
+             alt="${escapeHtml(fileName)}" 
+             loading="lazy"
+             onerror="if(!this.dataset.try1){this.dataset.try1=true;this.src='${fallbackUrl1}';}else if(!this.dataset.try2){this.dataset.try2=true;this.src='${fallbackUrl2}';}">
       `;
     }
 
@@ -454,8 +467,15 @@ function updateLightboxMedia() {
       <video src="${fileUrl}" controls autoplay playsinline style="max-width:90vw; max-height:80vh;"></video>
     `;
   } else {
+    const altFile = getAltExtension(fileName);
+    const fallbackUrl1 = `./Gallery/${encodedFolder}/${encodeURIComponent(altFile)}`;
+    const fallbackUrl2 = `./Gallery/${encodeURIComponent(activeFolderTitle.toUpperCase())}/${encodeURIComponent(fileName)}`;
+
     mediaContainer.innerHTML = `
-      <img src="${fileUrl}" alt="Media ${currentLightboxIndex + 1}" style="max-width:90vw; max-height:80vh; object-fit:contain;">
+      <img src="${fileUrl}" 
+           alt="Media ${currentLightboxIndex + 1}" 
+           style="max-width:90vw; max-height:80vh; object-fit:contain;"
+           onerror="if(!this.dataset.try1){this.dataset.try1=true;this.src='${fallbackUrl1}';}else if(!this.dataset.try2){this.dataset.try2=true;this.src='${fallbackUrl2}';}">
     `;
   }
 
