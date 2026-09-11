@@ -325,16 +325,6 @@
     // ----------------------------------------------------------
     // MAP JSON FOLDER NAMES TO ACTUAL GITHUB FOLDER NAMES
     // ----------------------------------------------------------
-    //
-    // Your screenshot shows:
-    //   Annual Nemotsava 2026
-    //
-    // But gallery.json currently says:
-    //   Annual Nemothsava 2026
-    //
-    // This mapping lets both continue working without requiring
-    // any change to gallery.json.
-    //
     const FOLDER_PATH_MAP = {
       'Annual Nemothsava 2026': 'Annual Nemotsava 2026',
       'Brahma Kalashotsava 2024': 'Brahma Kalashotsava 2024'
@@ -498,8 +488,8 @@
       activeFolderFiles.forEach(
         (fileName, index) => {
 
-          const isVideo =
-            isVideoFile(fileName);
+          const isVideo = isVideoFile(fileName);
+          const isAudio = isAudioFile(fileName);
 
           const thumbCard =
             document.createElement('div');
@@ -512,18 +502,21 @@
             () => openLightbox(index)
           );
 
-
-          // Correct path:
-          // ./Photos/image1.jpeg
-          // ./Annual%20Nemotsava%2026/image1.jpeg
-          // ./Brahma%20Kalashotsava%2024/image1.jpg
-
           const githubUrl =
           `${GITHUB_BASE}/${encodeURIComponent(activeFolderPath)}/${encodeURIComponent(fileName)}`;
 
           const localUrl = githubUrl;
           
-          if (isVideo) {
+          if (isAudio) {
+
+            thumbCard.innerHTML = `
+              <div class="audio-thumb-placeholder" style="width:100%; height:100%; background:var(--primary-color, #5B0E14); color:var(--accent-color, #D4AF37); display:flex; flex-direction:column; align-items:center; justify-content:center; padding:8px; text-align:center;">
+                <i class="fa-solid fa-music" style="font-size:1.8rem; margin-bottom:6px;"></i>
+                <span style="font-size:0.7rem; color:#FFF; word-break:break-all; line-clamp:2; display:-webkit-box; -webkit-box-orient:vertical; overflow:hidden;">${escapeHtml(fileName)}</span>
+              </div>
+            `;
+
+          } else if (isVideo) {
 
             thumbCard.innerHTML = `
               <video
@@ -672,11 +665,25 @@
 
       const localUrl = githubUrl;
 
-      const isVideo =
-        isVideoFile(fileName);
+      const isVideo = isVideoFile(fileName);
+      const isAudio = isAudioFile(fileName);
 
 
-      if (isVideo) {
+      if (isAudio) {
+
+        mediaContainer.innerHTML = `
+          <div style="text-align:center; color:#fff; padding:20px;">
+            <i class="fa-solid fa-music" style="font-size: 3rem; color: #D4AF37; margin-bottom: 15px;"></i>
+            <p style="margin-bottom: 15px;">${escapeHtml(fileName)}</p>
+            <audio controls autoplay style="width: 100%; max-width: 400px;"
+                   onerror="this.onerror=null; this.src='${githubUrl}';">
+              <source src="${localUrl}" type="audio/mpeg">
+              Your browser does not support audio playback.
+            </audio>
+          </div>
+        `;
+
+      } else if (isVideo) {
 
         mediaContainer.innerHTML = `
           <video
@@ -710,7 +717,7 @@
 
 
     // ----------------------------------------------------------
-    // FILE TYPE
+    // FILE TYPE DETECTION
     // ----------------------------------------------------------
 
     function isVideoFile(fileName) {
@@ -725,6 +732,22 @@
           .split('#')[0];
 
       return /\.(mp4|webm|ogg|mov)$/i.test(
+        cleanName
+      );
+    }
+
+    function isAudioFile(fileName) {
+
+      if (typeof fileName !== 'string') {
+        return false;
+      }
+
+      const cleanName =
+        fileName
+          .split('?')[0]
+          .split('#')[0];
+
+      return /\.(mp3|wav|ogg|aac|m4a)$/i.test(
         cleanName
       );
     }
