@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -709,22 +710,24 @@
        ========================================= -->
 
   <div
-    class="floating-music-player"
+    class="temple-music-player"
     id="floatingMusicPlayer">
 
 
-    <!-- Expanded Player -->
+    <!-- Music Player Panel -->
 
     <div
-      class="music-player-panel"
+      class="music-panel"
       id="musicPlayerPanel">
 
 
-      <div class="music-player-header">
+      <div class="music-panel-header">
 
-        <div class="music-player-title">
+        <div class="music-title">
 
-          <i class="fa-solid fa-om"></i>
+          <div class="music-icon">
+            <i class="fa-solid fa-om"></i>
+          </div>
 
           <div>
 
@@ -742,40 +745,96 @@
 
 
         <button
-          class="music-close-btn"
+          class="music-close"
           id="musicCloseBtn"
-          aria-label="Close music player">
+          type="button"
+          aria-label="Close music player"
+          title="Close">
 
-          &times;
+          <i class="fa-solid fa-xmark"></i>
 
         </button>
 
       </div>
 
 
-      <div class="music-track">
+      <!-- Music Controls -->
 
-        <div class="music-disc">
-
-          <i class="fa-solid fa-music"></i>
-
-        </div>
+      <div class="music-controls">
 
 
-        <div class="music-track-info">
+        <button
+          id="musicPlayBtn"
+          class="music-play"
+          type="button"
+          aria-label="Play music"
+          title="Play">
 
-          <strong>
+          <i class="fa-solid fa-play"></i>
+
+        </button>
+
+
+        <div class="music-track-wrap">
+
+
+          <div class="music-track-title">
             Temple Music
-          </strong>
+          </div>
 
-          <span>
-            audio1.mp3
-          </span>
+
+          <input
+            type="range"
+            id="musicProgress"
+            min="0"
+            max="100"
+            value="0"
+            step="0.1"
+            aria-label="Music progress">
+
+
+          <div class="music-time">
+
+            <span id="musicCurrentTime">
+              0:00
+            </span>
+
+            <span id="musicDuration">
+              0:00
+            </span>
+
+          </div>
 
         </div>
 
       </div>
 
+
+      <!-- Volume -->
+
+      <div class="music-volume-row">
+
+        <i class="fa-solid fa-volume-low"></i>
+
+
+        <input
+          type="range"
+          id="musicVolume"
+          min="0"
+          max="1"
+          step="0.01"
+          value="0.8"
+          aria-label="Music volume">
+
+
+        <span id="music-status">
+          Tap play to begin
+        </span>
+
+      </div>
+
+
+      <!-- Audio File -->
 
       <audio
         id="templeAudio"
@@ -789,84 +848,19 @@
 
       </audio>
 
-
-      <div class="music-controls">
-
-
-        <button
-          id="musicPlayBtn"
-          class="music-play-btn"
-          aria-label="Play music">
-
-          <i class="fa-solid fa-play"></i>
-
-        </button>
-
-
-        <div class="music-progress-area">
-
-
-          <div
-            class="music-progress-bar"
-            id="musicProgressBar">
-
-            <div
-              class="music-progress"
-              id="musicProgress">
-            </div>
-
-          </div>
-
-
-          <div class="music-time">
-
-            <span
-              id="musicCurrentTime">
-              0:00
-            </span>
-
-            <span
-              id="musicDuration">
-              0:00
-            </span>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <div class="music-volume">
-
-        <i class="fa-solid fa-volume-low"></i>
-
-        <input
-          type="range"
-          id="musicVolume"
-          min="0"
-          max="1"
-          step="0.01"
-          value="0.8"
-          aria-label="Volume">
-
-        <i class="fa-solid fa-volume-high"></i>
-
-      </div>
-
     </div>
 
 
     <!-- Floating Button -->
 
     <button
-      class="floating-music-btn"
+      class="music-floating-btn"
       id="floatingMusicBtn"
-      aria-label="Open temple music player">
+      type="button"
+      aria-label="Open temple music player"
+      title="Temple Music">
 
-      <span class="music-pulse"></span>
-
-      <i class="fa-solid fa-music"></i>
+      <i class="fa-solid fa-om"></i>
 
     </button>
 
@@ -1797,12 +1791,6 @@
       );
 
 
-    const musicProgressBar =
-      document.getElementById(
-        'musicProgressBar'
-      );
-
-
     const musicCurrentTime =
       document.getElementById(
         'musicCurrentTime'
@@ -1821,16 +1809,27 @@
       );
 
 
-    // Open / close player
+    const musicStatus =
+      document.getElementById(
+        'music-status'
+      );
 
-    if (floatingMusicBtn) {
+
+    // =========================================
+    // OPEN / CLOSE PLAYER
+    // =========================================
+
+    if (
+      floatingMusicBtn &&
+      floatingMusicPlayer
+    ) {
 
       floatingMusicBtn.addEventListener(
         'click',
         function() {
 
           floatingMusicPlayer.classList.toggle(
-            'player-open'
+            'open'
           );
 
         }
@@ -1839,14 +1838,17 @@
     }
 
 
-    if (musicCloseBtn) {
+    if (
+      musicCloseBtn &&
+      floatingMusicPlayer
+    ) {
 
       musicCloseBtn.addEventListener(
         'click',
         function() {
 
           floatingMusicPlayer.classList.remove(
-            'player-open'
+            'open'
           );
 
         }
@@ -1855,7 +1857,9 @@
     }
 
 
-    // Play / pause
+    // =========================================
+    // PLAY / PAUSE
+    // =========================================
 
     if (
       musicPlayBtn &&
@@ -1864,13 +1868,31 @@
 
       musicPlayBtn.addEventListener(
         'click',
-        function() {
+        async function() {
 
           if (
             templeAudio.paused
           ) {
 
-            templeAudio.play();
+            try {
+
+              await templeAudio.play();
+
+            } catch (error) {
+
+              console.error(
+                'Music playback error:',
+                error
+              );
+
+              if (musicStatus) {
+
+                musicStatus.textContent =
+                  'Unable to play music';
+
+              }
+
+            }
 
           } else {
 
@@ -1884,9 +1906,14 @@
     }
 
 
-    // Playing
+    // =========================================
+    // MUSIC PLAYING
+    // =========================================
 
-    if (templeAudio) {
+    if (
+      templeAudio &&
+      floatingMusicPlayer
+    ) {
 
       templeAudio.addEventListener(
         'play',
@@ -1897,6 +1924,16 @@
             musicPlayBtn.innerHTML =
               '<i class="fa-solid fa-pause"></i>';
 
+            musicPlayBtn.setAttribute(
+              'aria-label',
+              'Pause music'
+            );
+
+            musicPlayBtn.setAttribute(
+              'title',
+              'Pause'
+            );
+
           }
 
 
@@ -1904,11 +1941,21 @@
             'is-playing'
           );
 
+
+          if (musicStatus) {
+
+            musicStatus.textContent =
+              'Playing temple music';
+
+          }
+
         }
       );
 
 
-      // Paused
+      // =========================================
+      // MUSIC PAUSED
+      // =========================================
 
       templeAudio.addEventListener(
         'pause',
@@ -1919,6 +1966,16 @@
             musicPlayBtn.innerHTML =
               '<i class="fa-solid fa-play"></i>';
 
+            musicPlayBtn.setAttribute(
+              'aria-label',
+              'Play music'
+            );
+
+            musicPlayBtn.setAttribute(
+              'title',
+              'Play'
+            );
+
           }
 
 
@@ -1926,20 +1983,35 @@
             'is-playing'
           );
 
+
+          if (
+            musicStatus &&
+            templeAudio.currentTime > 0 &&
+            !templeAudio.ended
+          ) {
+
+            musicStatus.textContent =
+              'Music paused';
+
+          }
+
         }
       );
 
     }
 
 
-    // Format time
+    // =========================================
+    // FORMAT MUSIC TIME
+    // =========================================
 
     function formatMusicTime(
       seconds
     ) {
 
       if (
-        !isFinite(seconds)
+        !isFinite(seconds) ||
+        seconds < 0
       ) {
 
         return '0:00';
@@ -1969,7 +2041,9 @@
     }
 
 
-    // Duration
+    // =========================================
+    // MUSIC READY
+    // =========================================
 
     if (templeAudio) {
 
@@ -1989,10 +2063,30 @@
         }
       );
 
+
+      templeAudio.addEventListener(
+        'canplay',
+        function() {
+
+          if (
+            musicStatus &&
+            templeAudio.paused
+          ) {
+
+            musicStatus.textContent =
+              'Ready to play';
+
+          }
+
+        }
+      );
+
     }
 
 
-    // Progress
+    // =========================================
+    // MUSIC PROGRESS
+    // =========================================
 
     if (templeAudio) {
 
@@ -2001,7 +2095,10 @@
         function() {
 
           if (
-            !templeAudio.duration
+            !templeAudio.duration ||
+            !isFinite(
+              templeAudio.duration
+            )
           ) {
 
             return;
@@ -2020,8 +2117,8 @@
 
           if (musicProgress) {
 
-            musicProgress.style.width =
-              `${percentage}%`;
+            musicProgress.value =
+              percentage;
 
           }
 
@@ -2035,26 +2132,40 @@
 
           }
 
+
+          if (musicDuration) {
+
+            musicDuration.textContent =
+              formatMusicTime(
+                templeAudio.duration
+              );
+
+          }
+
         }
       );
 
     }
 
 
-    // Seek
+    // =========================================
+    // SEEK MUSIC
+    // =========================================
 
     if (
-      musicProgressBar &&
+      musicProgress &&
       templeAudio
     ) {
 
-      musicProgressBar.addEventListener(
-        'click',
-        function(event) {
-
+      musicProgress.addEventListener(
+        'input',
+        function() {
 
           if (
-            !templeAudio.duration
+            !templeAudio.duration ||
+            !isFinite(
+              templeAudio.duration
+            )
           ) {
 
             return;
@@ -2062,22 +2173,18 @@
           }
 
 
-          const rect =
-            musicProgressBar.getBoundingClientRect();
-
-
-          const clickPosition =
-            event.clientX -
-            rect.left;
-
-
           const percentage =
-            clickPosition /
-            rect.width;
+            parseFloat(
+              this.value
+            );
 
 
           templeAudio.currentTime =
-            percentage *
+
+            (
+              percentage /
+              100
+            ) *
             templeAudio.duration;
 
         }
@@ -2086,7 +2193,9 @@
     }
 
 
-    // Volume
+    // =========================================
+    // VOLUME
+    // =========================================
 
     if (
       musicVolume &&
@@ -2114,7 +2223,37 @@
     }
 
 
-    // Reset after music ends
+    // =========================================
+    // MUSIC ERROR
+    // =========================================
+
+    if (templeAudio) {
+
+      templeAudio.addEventListener(
+        'error',
+        function() {
+
+          console.error(
+            'Unable to load temple music.'
+          );
+
+
+          if (musicStatus) {
+
+            musicStatus.textContent =
+              'Music unavailable';
+
+          }
+
+        }
+      );
+
+    }
+
+
+    // =========================================
+    // MUSIC ENDED
+    // =========================================
 
     if (templeAudio) {
 
@@ -2125,8 +2264,8 @@
 
           if (musicProgress) {
 
-            musicProgress.style.width =
-              '0%';
+            musicProgress.value =
+              0;
 
           }
 
@@ -2135,6 +2274,41 @@
 
             musicCurrentTime.textContent =
               '0:00';
+
+          }
+
+
+          if (musicStatus) {
+
+            musicStatus.textContent =
+              'Music ended';
+
+          }
+
+
+          if (floatingMusicPlayer) {
+
+            floatingMusicPlayer.classList.remove(
+              'is-playing'
+            );
+
+          }
+
+
+          if (musicPlayBtn) {
+
+            musicPlayBtn.innerHTML =
+              '<i class="fa-solid fa-play"></i>';
+
+            musicPlayBtn.setAttribute(
+              'aria-label',
+              'Play music'
+            );
+
+            musicPlayBtn.setAttribute(
+              'title',
+              'Play'
+            );
 
           }
 
@@ -2157,3 +2331,4 @@
 
 </body>
 </html>
+```
