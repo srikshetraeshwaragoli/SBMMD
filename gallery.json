@@ -13,9 +13,11 @@
     "image11.jpeg",
     "image12.jpeg"
   ],
+
   "Videos": [
     "Sankramana.mp4"
   ],
+
   "Annual Nemotsava 2026": [
     "image1.jpeg",
     "image2.jpeg",
@@ -27,6 +29,7 @@
     "image8.jpeg",
     "image9.jpeg"
   ],
+
   "Brahma Kalashotsava 2024": [
     "image1.JPG",
     "image2.JPG",
@@ -45,7 +48,8 @@
     "image19.JPG",
     "image20.JPG",
     "image29.JPG"
-  ]
+  ],
+
   "Bhandara Saana": [
     "image1.jpeg",
     "image2.jpeg",
@@ -54,5 +58,5 @@
     "image5.jpeg",
     "image6.jpeg",
     "image7.jpeg"
-  ],
+  ]
 }
