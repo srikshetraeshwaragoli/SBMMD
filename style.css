@@ -673,7 +673,7 @@ ul {
   object-fit: contain;
   display: block;
   background-color: #FFF;
-  border-radius: 8px;
+  border-radius: 6px;
   box-shadow: var(--shadow);
 }
 
